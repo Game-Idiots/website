@@ -1,313 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Game Idiots | Latest Projects</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game Idiots | Latest Projects</title>
 
-   <style>
-       /* General Styles */
-       body {
-           font-family: Arial, sans-serif;
-           margin: 0;
-           padding: 0;
-           box-sizing: border-box;
-           background-color: #f4f4f4;
-           color: #333;
-           transition: background-color 0.5s, color 0.5s;
-       }
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
 
-       header {
-           background-color: #444;
-           color: #fff;
-           padding: 20px;
-           text-align: center;
-       }
+        header {
+            background-color: #444;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
 
-nav ul {
-    background-color: #333;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    margin: 0;
-}
+        nav ul {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+        }
 
-nav ul li {
-    margin: 0 15px;
-}
+        nav ul li {
+            margin: 0 15px;
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-nav ul li a:hover {
-    color: #f39c12;
-}
+        nav ul li a:hover {
+            color: #f39c12;
+        }
 
-       section {
-           padding: 40px;
-           text-align: center;
-       }
+        section {
+            padding: 40px;
+            text-align: center;
+        }
 
-       .project {
-           background-color: #fff;
-           margin: 20px auto;
-           padding: 20px;
-           width: 80%;
-           border-radius: 8px;
-           box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-           transition: transform 0.3s;
-       }
+        .project {
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
 
-       .project:hover {
-           transform: scale(1.05);
-       }
+        .project:hover {
+            transform: scale(1.05);
+        }
 
-       .project img {
-           width: 100%;
-           height: auto;
-           border-radius: 8px;
-           margin-bottom: 10px;
-       }
+        .project img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
 
-       .project .rating {
-           color: #f39c12;
-       }
+        .project .rating {
+            color: #f39c12;
+        }
 
-       button {
-           padding: 10px 20px;
-           margin: 20px;
-           background-color: #444;
-           color: white;
-           border: none;
-           border-radius: 5px;
-           cursor: pointer;
-           transition: background-color 0.3s;
-       }
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            background-color: #444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-       button:hover {
-           background-color: #555;
-       }
+        button:hover {
+            background-color: #555;
+        }
 
-       /* Testimonial Styles */
-       .testimonial {
-           background-color: #e2e2e2;
-           padding: 20px;
-           margin: 10px auto;
-           border-radius: 10px;
-           max-width: 600px;
-       }
+        /* Testimonial Styles */
+        .testimonial {
+            background-color: #e2e2e2;
+            padding: 20px;
+            margin: 10px auto;
+            border-radius: 10px;
+            max-width: 600px;
+        }
 
-       /* Contact Form Styles */
-       form {
-           display: flex;
-           flex-direction: column;
-           align-items: center;
-       }
+        /* Contact Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-       input, textarea {
-           width: 80%;
-           margin: 10px;
-           padding: 10px;
-           border: 1px solid #ccc;
-           border-radius: 4px;
-       }
+        input,
+        textarea {
+            width: 80%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-       footer {
-           background-color: #333;
-           color: #fff;
-           text-align: center;
-           padding: 10px;
-           position: relative;
-           bottom: 0;
-           width: 100%;
-       }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
-       /* Dark Mode */
-       .dark-mode {
-           background-color: #222;
-           color: #ccc;
-       }
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #222;
+            color: #ccc;
+        }
 
-       /* Responsive Design */
-       @media (max-width: 768px) {
-           .project {
-               width: 90%;
-           }
-           section {
-               padding: 20px;
-           }
-          
-    nav ul {
-        flex-wrap: wrap;   /* Ensure the nav items wrap onto the next line if needed */
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .project {
+                width: 90%;
+            }
 
-    nav ul li {
-        margin: 5px;       /* Reduce margin for smaller screens */
-    }
+            section {
+                padding: 20px;
+            }
 
-    nav ul li a {
-        font-size: 16px;   /* Adjust font size for readability on mobile */
-    }
-}
+            nav ul {
+                flex-wrap: wrap;
+                /* Ensure the nav items wrap onto the next line if needed */
+            }
 
-/* Landscape mode adjustments */
-@media (max-width: 1024px) and (orientation: landscape) {
-    nav ul li {
-        margin: 0 10px;     /* Reduce margins in landscape mode */
-    }
+            nav ul li {
+                margin: 5px;
+                /* Reduce margin for smaller screens */
+            }
 
-    nav ul li a {
-        font-size: 30px;    /* Slightly increase font size for landscape mode */
-    }
-}
+            nav ul li a {
+                font-size: 16px;
+                /* Adjust font size for readability on mobile */
+            }
+        }
 
-/* Computer/Desktop adjustments */
-@media (min-width: 1025px) {
-    nav ul {
-        padding: 15px;      /* Increase padding for larger screens */
-    }
+        /* Landscape mode adjustments */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            nav ul li {
+                margin: 0 10px;
+                /* Reduce margins in landscape mode */
+            }
 
-    nav ul li {
-        margin: 0 20px;     /* Increase spacing between items */
-    }
+            nav ul li a {
+                font-size: 30px;
+                /* Slightly increase font size for landscape mode */
+            }
+        }
 
-    nav ul li a {
-        font-size: 20px;    /* Increase font size for better readability on desktops */
-    }
-}
-   </style>
+        /* Computer/Desktop adjustments */
+        @media (min-width: 1025px) {
+            nav ul {
+                padding: 15px;
+                /* Increase padding for larger screens */
+            }
+
+            nav ul li {
+                margin: 0 20px;
+                /* Increase spacing between items */
+            }
+
+            nav ul li a {
+                font-size: 20px;
+                /* Increase font size for better readability on desktops */
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-   <!-- Header -->
-   <header>
-       <h1>Game Idiots</h1>
-       <p>Your hub for the latest gaming projects!</p>
-       <button id="theme-toggle">Toggle Dark Mode</button>
-   </header>
+    <!-- Header -->
+    <header>
+        <h1>Game Idiots</h1>
+        <p>Your hub for the latest gaming projects!</p>
+        <button id="theme-toggle">Toggle Dark Mode</button>
+    </header>
 
-   <!-- Navigation Bar -->
-   <nav>
-       <ul>
-           <li><a href="#home">Home</a></li>
-           <li><a href="#projects">Projects</a></li>
-           <li><a href="#testimonials">Testimonials</a></li>
-           <li><a href="#about">About</a></li>
-           <li><a href="#contact">Contact</a></li>
-       </ul>
-   </nav>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-   <!-- Main Section -->
-   <section id="home">
-       <h2>Welcome to Game Idiots!</h2>
-       <p>We create fun, unique, and entertaining games. Here you can find all our latest projects and updates.</p>
-       <button onclick="scrollToSection('projects')">Explore Projects</button>
-   </section>
+    <!-- Main Section -->
+    <section id="home">
+        <h2>Welcome to Game Idiots!</h2>
+        <p>We create fun, unique, and entertaining games. Here you can find all our latest projects and updates.</p>
+        <button onclick="scrollToSection('projects')">Explore Projects</button>
+    </section>
 
-   <!-- Latest Projects Section -->
-   <section id="projects">
-       <h2>Latest Projects</h2>
+    <!-- Latest Projects Section -->
+    <section id="projects">
+        <h2>Latest Projects</h2>
 
-       <div class="project">
-           <img src="Assets/msb1.jpg" alt="Sound Board">
-           <h3>Project 1: Sound Board</h3>
-           <p>Unleash Your Creativity with the Ultimate Minecraft Soundboard Add-On!</p>
-           <p>Release Date: November, 1 2024</p>
-           <p class="rating">Rating: No Data</p>
-       </div>
+        <div class="project">
+            <img src="Assets/msb1.jpg" alt="Sound Board">
+            <h3>Project 1: Sound Board</h3>
+            <p>Unleash Your Creativity with the Ultimate Minecraft Soundboard Add-On!</p>
+            <p>Release Date: November, 1 2024</p>
+            <p class="rating">Rating: No Data</p>
+        </div>
 
-       <div class="project">
-           <img src="Assets/coming-soon.jpg" alt="coming-soon">
-           <h3>Project 2: Coming Soon</h3>
-           <p>Coming Soon</p>
-           <p class="rating">Rating: No Data</p>
-       </div>
+        <div class="project">
+            <img src="Assets/coming-soon.jpg" alt="coming-soon">
+            <h3>Project 2: Coming Soon</h3>
+            <p>Coming Soon</p>
+            <p class="rating">Rating: No Data</p>
+        </div>
 
-       <div class="project">
-           <img src="Assets/coming-soon.jpg" alt="coming-soon">
-           <h3>Project 3: Coming Soon</h3>
-           <p>Coming Soon</p>
-           <p class="rating">Rating: No Data</p>
-       </div>
-   </section>
+        <div class="project">
+            <img src="Assets/coming-soon.jpg" alt="coming-soon">
+            <h3>Project 3: Coming Soon</h3>
+            <p>Coming Soon</p>
+            <p class="rating">Rating: No Data</p>
+        </div>
+    </section>
 
-   <!-- Testimonial Section -->
-   <section id="testimonials">
-       <h2>What Gamers Are Saying</h2>
+    <!-- Testimonial Section -->
+    <section id="testimonials">
+        <h2>What Gamers Are Saying</h2>
 
-       <div class="testimonial">
-           <p>"I love the creativity in Puzzle Masters. It’s challenging yet so much fun!"</p>
-           <p>- Sarah, Casual Gamer</p>
-       </div>
+        <div class="testimonial">
+            <p>"I love the creativity in Puzzle Masters. It’s challenging yet so much fun!"</p>
+            <p>- Sarah, Casual Gamer</p>
+        </div>
 
-       <div class="testimonial">
-           <p>"Space Adventure is a masterpiece. The exploration feels so immersive!"</p>
-           <p>- James, Hardcore Gamer</p>
-       </div>
-   </section>
+        <div class="testimonial">
+            <p>"Space Adventure is a masterpiece. The exploration feels so immersive!"</p>
+            <p>- James, Hardcore Gamer</p>
+        </div>
+    </section>
 
-   <!-- About Section -->
-   <section id="about">
-       <h2>About Us</h2>
-       <p>Game Idiots is a small team of game developers and enthusiasts dedicated to creating fun and innovative games for gamers of all ages.</p>
-   </section>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Game Idiots is a small team of game developers and enthusiasts dedicated to creating fun and innovative games
+            for gamers of all ages.</p>
+    </section>
 
-   <!-- Contact Section -->
-      <section id="contact">
-       <h2>Contact Us</h2>
-       <p>Got any questions or feedback? Drop us a message!</p>
-       <form method="POST" action="https://formsubmit.co/support@coltensus.com" id="contact-form">
-           <label for="name">Name:</label>
-           <input type="text" id="name" name="name" required>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Got any questions or feedback? Drop us a message!</p>
+        <form method="POST" action="https://formsubmit.co/KINCAGRA000@usd232.org" id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-           <label for="email">Email:</label>
-           <input type="email" id="email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-           <label for="message">Message:</label>
-           <textarea id="message" name="message" required></textarea>
-           
-           <button type="submit">Send</button>
-       </form>
-   </section>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
 
+            <input type="hidden" name="_template" value="basic">
 
-   <!-- Footer -->
-   <footer>
-       <p>&copy; 2024 Game Idiots. All rights reserved.</p>
-       <p>Follow us on <a href="#">Facebook</a>, <a href="#">Twitter</a>, and <a href="#">Instagram</a></p>
-       <form action="https://formsubmit.co/support@coltensus.com" method="POST" id="newsletter">
-           <label for="email-newsletter">Subscribe to our newsletter:</label>
-           <input type="email" id="email-newsletter" placeholder="Enter your email">
-           <button type="submit">Subscribe</button>
-       </form>
-   </footer>
+            <button type="submit">Send</button>
+        </form>
+    </section>
 
-   <script>
-       function scrollToSection(sectionId) {
-           document.getElementById(sectionId).scrollIntoView({
-               behavior: 'smooth'
-           });
-       }
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Game Idiots. All rights reserved.</p>
+        <p>Follow us on <a href="#">Facebook</a>, <a href="#">Twitter</a>, and <a href="#">Instagram</a></p>
+        <form action="https://formsubmit.co/support@coltensus.com" method="POST" id="newsletter">
+            <label for="email-newsletter">Subscribe to our newsletter:</label>
+            <input type="email" id="email-newsletter" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+        </form>
+    </footer>
 
-       document.getElementById('contact-form').addEventListener('submit', function(event) {
-           event.preventDefault();
-           alert('Thank you for your message!');
-       });
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
 
-       document.getElementById('theme-toggle').addEventListener('click', function() {
-           document.body.classList.toggle('dark-mode');
-       });
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+        });
 
-       document.getElementById('newsletter').addEventListener('submit', function(event) {
-           event.preventDefault();
-           alert('Thank you for subscribing to our newsletter!');
-       });
-   </script>
+        document.getElementById('newsletter').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+        });
+    </script>
 
 </body>
+
 </html>
