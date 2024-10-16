@@ -134,16 +134,18 @@
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
+    box-sizing: border-box; /* Include padding in width */
+    overflow: hidden; /* Prevent overflow */
 }
 
 footer p {
     margin: 5px 0; /* Margin for spacing */
-    width: 100%; /* Full width for text */
+    width: 90%; /* Make sure it takes less than full width */
     max-width: 600px; /* Constrain maximum width */
 }
 
 footer form {
-    width: 100%; /* Full width for the form */
+    width: 90%; /* Responsive width for form */
     max-width: 600px; /* Constrain maximum width */
     display: flex; /* Use flexbox for form elements */
     flex-direction: column; /* Stack form elements */
@@ -151,13 +153,21 @@ footer form {
 }
 
 footer input[type="email"] {
-    width: 90%; /* Responsive input width */
+    width: 100%; /* Full width for input */
     max-width: 400px; /* Max width for input */
     margin: 10px 0; /* Margin for spacing */
+    padding: 10px; /* Padding for input */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 footer button {
     margin-top: 10px; /* Margin for spacing */
+    padding: 10px 20px; /* Padding for button */
+    background-color: #444; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
 }
         
         /* Dark Mode */
