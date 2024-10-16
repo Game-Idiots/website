@@ -35,6 +35,7 @@ html {
             color: #fff;
             padding: 20px;
             text-align: center;
+            user-select: none;
         }
 
         nav ul {
@@ -45,25 +46,30 @@ html {
             list-style-type: none;
             margin: 0;
             flex-wrap: wrap;
+            user-select: none;
         }
 
         nav ul li {
             margin: 0 15px;
+            user-select: none;
         }
 
         nav ul li a {
             color: #fff;
             text-decoration: none;
             transition: color 0.3s;
+            user-select: none;
         }
 
         nav ul li a:hover {
             color: #f39c12;
+            user-select: none;
         }
 
         section {
             padding: 40px;
             text-align: center;
+            user-select: none;
         }
 
         .project {
@@ -75,10 +81,12 @@ html {
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            user-select: none;
         }
 
         .project:hover {
             transform: scale(1.05);
+            user-select: none;
         }
 
         .project img {
@@ -86,10 +94,12 @@ html {
             height: auto;
             border-radius: 8px;
             margin-bottom: 10px;
+            user-select: none;
         }
 
         .project .rating {
             color: #f39c12;
+            user-select: none;
         }
 
         button {
@@ -101,10 +111,12 @@ html {
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            user-select: none;
         }
 
         button:hover {
             background-color: #555;
+            user-select: none;
         }
 
         /* Testimonial Styles */
@@ -114,6 +126,7 @@ html {
             margin: 10px auto;
             border-radius: 10px;
             max-width: 600px;
+            user-select: none;
         }
 
         /* Contact Form Styles */
@@ -121,6 +134,7 @@ html {
             display: flex;
             flex-direction: column;
             align-items: center;
+            user-select: none;
         }
 
         input,
@@ -131,6 +145,7 @@ html {
             border: 1px solid #ccc;
             border-radius: 4px;
             max-width: 500px;
+            user-select: none;
         }
 
         footer {
@@ -147,12 +162,14 @@ html {
     justify-content: center; /* Center items vertically */
     box-sizing: border-box; /* Include padding in width */
     overflow: hidden; /* Prevent overflow */
+    user-select: none;
 }
 
 footer p {
     margin: 5px 0; /* Margin for spacing */
     width: 90%; /* Make sure it takes less than full width */
     max-width: 600px; /* Constrain maximum width */
+    user-select: none;
 }
 
 footer form {
@@ -161,6 +178,7 @@ footer form {
     display: flex; /* Use flexbox for form elements */
     flex-direction: column; /* Stack form elements */
     align-items: center; /* Center form elements */
+    user-select: none;
 }
 
 footer input[type="email"] {
@@ -169,6 +187,7 @@ footer input[type="email"] {
     margin: 10px 0; /* Margin for spacing */
     padding: 10px; /* Padding for input */
     box-sizing: border-box; /* Include padding in width */
+    user-select: none;
 }
 
 footer button {
@@ -179,30 +198,36 @@ footer button {
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor */
+    user-select: none;
 }
         
         /* Dark Mode */
         .dark-mode {
             background-color: #222;
             color: #ccc;
+            user-select: none;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .project {
                 width: 90%;
+                user-select: none;
             }
 
             section {
                 padding: 20px;
+                user-select: none;
             }
 
             nav ul li {
                 margin: 5px;
+                user-select: none;
             }
 
             nav ul li a {
                 font-size: 16px;
+                user-select: none;
             }
         }
 
@@ -210,10 +235,12 @@ footer button {
         @media (max-width: 1024px) and (orientation: landscape) {
             nav ul li {
                 margin: 0 10px;
+                user-select: none;
             }
 
             nav ul li a {
                 font-size: 30px;
+                user-select: none;
             }
         }
 
@@ -221,14 +248,17 @@ footer button {
         @media (min-width: 1025px) {
             nav ul {
                 padding: 15px;
+                user-select: none;
             }
 
             nav ul li {
                 margin: 0 20px;
+                user-select: none;
             }
 
             nav ul li a {
                 font-size: 20px;
+                user-select: none;
             }
         }
     </style>
