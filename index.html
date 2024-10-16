@@ -33,6 +33,7 @@
             justify-content: center;
             list-style-type: none;
             margin: 0;
+            flex-wrap: wrap;
         }
 
         nav ul li {
@@ -58,7 +59,8 @@
             background-color: #fff;
             margin: 20px auto;
             padding: 20px;
-            width: 80%;
+            width: 100%;
+            max-width: 800px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
@@ -117,6 +119,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            max-width: 500px;
         }
 
         footer {
@@ -145,19 +148,12 @@
                 padding: 20px;
             }
 
-            nav ul {
-                flex-wrap: wrap;
-                /* Ensure the nav items wrap onto the next line if needed */
-            }
-
             nav ul li {
                 margin: 5px;
-                /* Reduce margin for smaller screens */
             }
 
             nav ul li a {
                 font-size: 16px;
-                /* Adjust font size for readability on mobile */
             }
         }
 
@@ -165,30 +161,25 @@
         @media (max-width: 1024px) and (orientation: landscape) {
             nav ul li {
                 margin: 0 10px;
-                /* Reduce margins in landscape mode */
             }
 
             nav ul li a {
                 font-size: 30px;
-                /* Slightly increase font size for landscape mode */
             }
         }
 
-        /* Computer/Desktop adjustments */
+        /* Desktop adjustments */
         @media (min-width: 1025px) {
             nav ul {
                 padding: 15px;
-                /* Increase padding for larger screens */
             }
 
             nav ul li {
                 margin: 0 20px;
-                /* Increase spacing between items */
             }
 
             nav ul li a {
                 font-size: 20px;
-                /* Increase font size for better readability on desktops */
             }
         }
     </style>
@@ -226,7 +217,7 @@
         <h2>Latest Projects</h2>
 
         <div class="project">
-            <img src="Assets/msb1.jpg" alt="Sound Board">
+            <img src="Assets/msb1.jpg" alt="Minecraft Soundboard Project">
             <h3>Project 1: Sound Board</h3>
             <p>Unleash Your Creativity with the Ultimate Minecraft Soundboard Add-On!</p>
             <p>Release Date: November, 1 2024</p>
@@ -234,14 +225,14 @@
         </div>
 
         <div class="project">
-            <img src="Assets/coming-soon.jpg" alt="coming-soon">
+            <img src="Assets/coming-soon.jpg" alt="Coming Soon Project">
             <h3>Project 2: Coming Soon</h3>
             <p>Coming Soon</p>
             <p class="rating">Rating: No Data</p>
         </div>
 
         <div class="project">
-            <img src="Assets/coming-soon.jpg" alt="coming-soon">
+            <img src="Assets/coming-soon.jpg" alt="Coming Soon Project">
             <h3>Project 3: Coming Soon</h3>
             <p>Coming Soon</p>
             <p class="rating">Rating: No Data</p>
@@ -266,15 +257,13 @@
     <!-- About Section -->
     <section id="about">
         <h2>About Us</h2>
-        <p>Game Idiots is a small team of game developers and enthusiasts dedicated to creating fun and innovative games
-            for gamers of all ages.</p>
+        <p>Game Idiots is a small team of game developers and enthusiasts dedicated to creating fun and innovative games for gamers of all ages.</p>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Us</h2>
         <p>Got any questions or feedback? Drop us a message!</p>
-        <p>Please send friendly emails</p>
         <form method="POST" action="https://formsubmit.co/e2daeb85f9102b2575aca12bf8933219" id="contact-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -284,16 +273,6 @@
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
-
-            <input type="hidden" name="_template" value="basic">
-
-            <input type="hidden" name="_blacklist" value="hate, ass, nut, nut's">
-
-            <input type="hidden" name="_subject" value="contact-us-new-submission">
-
-            <input type="hidden" name="_next" value="https://game-idiots.github.io/website/">
-
-            <input type="hidden" name="_autoresponse" value="successively Submitted :)">
 
             <button type="submit">Send</button>
         </form>
@@ -306,15 +285,7 @@
 
         <form action="https://formsubmit.co/e2daeb85f9102b2575aca12bf8933219" method="POST" id="newsletter">
             <label for="email-newsletter">Subscribe to our newsletter:</label>
-
             <input type="email" id="email-newsletter" placeholder="Enter your email">
-
-            <input type="hidden" name="_next" value="https://game-idiots.github.io/website/">
-
-            <input type="hidden" name="_autoresponse" value="sensitively Subscribe">
-
-            <input type="hidden" name="_subject" value="New  Newsletter Submission">
-
             <button type="submit">Subscribe</button>
         </form>
     </footer>
@@ -329,7 +300,6 @@
         document.getElementById('theme-toggle').addEventListener('click', function () {
             document.body.classList.toggle('dark-mode');
         });
-
     </script>
 
 </body>
