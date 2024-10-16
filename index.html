@@ -141,7 +141,8 @@ nav ul li a:hover {
            section {
                padding: 20px;
            }
-           nav ul {
+          
+    nav ul {
         flex-wrap: wrap;   /* Ensure the nav items wrap onto the next line if needed */
     }
 
@@ -152,7 +153,33 @@ nav ul li a:hover {
     nav ul li a {
         font-size: 16px;   /* Adjust font size for readability on mobile */
     }
-       }
+}
+
+/* Landscape mode adjustments */
+@media (max-width: 1024px) and (orientation: landscape) {
+    nav ul li {
+        margin: 0 10px;     /* Reduce margins in landscape mode */
+    }
+
+    nav ul li a {
+        font-size: 18px;    /* Slightly increase font size for landscape mode */
+    }
+}
+
+/* Computer/Desktop adjustments */
+@media (min-width: 1025px) {
+    nav ul {
+        padding: 15px;      /* Increase padding for larger screens */
+    }
+
+    nav ul li {
+        margin: 0 20px;     /* Increase spacing between items */
+    }
+
+    nav ul li a {
+        font-size: 20px;    /* Increase font size for better readability on desktops */
+    }
+}
    </style>
 </head>
 <body>
