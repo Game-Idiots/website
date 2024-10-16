@@ -2,6 +2,6 @@
 
 ## To do list
 
-Email ☑️
+Email ❌
 
 Newsletter ❌
