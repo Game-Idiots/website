@@ -1,182 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Game Idiots | Latest Projects</title>
-        <style>
-      /* General Styles */
-      body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #f4f4f4;
-            color: #1db8db;
-        }
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Game Idiots | Latest Projects</title>
 
-        header {
-            background-color: #444;
-            color: #07b9fa;
-            padding: 20px;
-            text-align: center;
-        }
+   <style>
+       /* General Styles */
+       body {
+           font-family: Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+           background-color: #f4f4f4;
+           color: #333;
+           transition: background-color 0.5s, color 0.5s;
+       }
 
-        nav ul {
-            background-color: #333;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            list-style-type: none;
-        }
+       header {
+           background-color: #444;
+           color: #fff;
+           padding: 20px;
+           text-align: center;
+       }
 
-        nav ul li {
-            margin: 0 15px;
-        }
+       nav ul {
+           background-color: #333;
+           padding: 10px;
+           display: flex;
+           justify-content: center;
+           list-style-type: none;
+       }
 
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
+       nav ul li {
+           margin: 0 15px;
+       }
 
-        section {
-            padding: 20px;
-            text-align: center;
-        }
+       nav ul li a {
+           color: #fff;
+           text-decoration: none;
+           transition: color 0.3s;
+       }
 
-        .project {
-            background-color: #fff;
-            margin: 10px auto;
-            padding: 20px;
-            width: 80%;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+       nav ul li a:hover {
+           color: #f39c12;
+       }
 
-        button {
-            padding: 10px 20px;
-            margin: 20px;
-            background-color: #ffffff;
-            color: #51bedd;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+       section {
+           padding: 40px;
+           text-align: center;
+       }
 
-        button:hover {
-            background-color: rgba(28, 199, 196, 0.5);
-        }
+       .project {
+           background-color: #fff;
+           margin: 20px auto;
+           padding: 20px;
+           width: 80%;
+           border-radius: 8px;
+           box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+           transition: transform 0.3s;
+       }
 
-        /* Contact Form Styles */
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+       .project:hover {
+           transform: scale(1.05);
+       }
 
-        input, textarea {
-            width: 80%;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+       .project img {
+           width: 100%;
+           height: auto;
+           border-radius: 8px;
+           margin-bottom: 10px;
+       }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-</style>
-    </head>
-    <body>
-        <!-- Header -->
-         <header>
-            <h1>Game Idiots</h1>
-            <p>Your hub for the latest gaming projects!</p>
-         </header>
+       .project .rating {
+           color: #f39c12;
+       }
 
-<!--  Navigation -->
-<nav>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contacts</a></li>
-    </ul>
-</nav>
+       button {
+           padding: 10px 20px;
+           margin: 20px;
+           background-color: #444;
+           color: white;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+           transition: background-color 0.3s;
+       }
 
-<!-- Main Section -->
-<section id="home">
-    <h2>Welcome to Game Idiots!</h2>
-    <p>We create fun, unique, and entertaining games. Here you can find all our latest projects and updates.</p>
-    <button onclick="scrollToSection('projects')">Explore Projects</button>
-</section>
+       button:hover {
+           background-color: #555;
+       }
 
-<!-- Latest Projects Section -->
-<section id="projects">
-    <h2>Latest Projects</h2>
-    <div class="project">
-        <h3>Project 1: Space Adventure</h3>
-        <p>A thrilling space exploration game. Experience the unknown!</p>
-    </div>
-    <div class="project">
-        <h3>Project 2: Puzzle Masters</h3>
-        <p>Challenge your mind with these creative puzzles!</p>
-    </div>
-    <div class="project">
-        <h3>Project 3: Racing Mania</h3>
-        <p>Get ready for some high-speed action in this exciting racing game.</p>
-    </div>
-</section>
+       /* Testimonial Styles */
+       .testimonial {
+           background-color: #e2e2e2;
+           padding: 20px;
+           margin: 10px auto;
+           border-radius: 10px;
+           max-width: 600px;
+       }
 
-<!-- About Section -->
-<section id="about">
-    <h2>About Us</h2>
-    <p>Game Idiots is a small team of game developers and enthusiasts dedicated to creating fun and innovative games for gamers of all ages.</p>
-</section>
+       /* Contact Form Styles */
+       form {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
 
-<!-- Contact Section -->
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Got any questions or feedback? Drop us a message!</p>
-    <form id="contact-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        
-        <button type="submit">Send</button>
-    </form>
-</section>
+       input, textarea {
+           width: 80%;
+           margin: 10px;
+           padding: 10px;
+           border: 1px solid #ccc;
+           border-radius: 4px;
+       }
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 Game Idiots. All rights reserved.</p>
-</footer>
+       footer {
+           background-color: #333;
+           color: #fff;
+           text-align: center;
+           padding: 10px;
+           position: relative;
+           bottom: 0;
+           width: 100%;
+       }
 
-<script>
-    function scrollToSection(sectionId) {
-        document.getElementById(sectionId).scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
+       /* Dark Mode */
+       .dark-mode {
+           background-color: #222;
+           color: #ccc;
+       }
 
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Thank you for your message!');
-    });
-</script>
+       /* Responsive Design */
+       @media (max-width: 768px) {
+           .project {
+               width: 90%;
+           }
+           section {
+               padding: 20px;
+           }
+       }
+   </style>
+</head>
+<body>
 
+   <!-- Header -->
+   <header>
+       <h1>Game Idiots</h1>
+       <p>Your hub for the latest gaming projects!</p>
+       <button id="theme-toggle">Toggle Dark Mode</button>
+   </header>
 
-    </body>
+   <!-- Navigation Bar -->
+   <nav>
+       <ul>
+           <li><a href="#home">Home</a></li>
+           <li><a href="#projects">Projects</a></li>
+           <li><a href="#testimonials">Testimonials</a></li>
+           <li><a href="#about">About</a></li>
+           <li><a href="#contact">Contact</a></li>
+       </ul>
+   </nav>
+
+   <!-- Main Section -->
+   <section id="home">
+       <h2>Welcome to Game Idiots!</h2>
+       <p>We create fun, unique, and entertaining games. Here you can find all our latest projects and updates.</p>
+       <button onclick="scrollToSection('projects')">Explore Projects</button>
+   </section>
+
+   <!-- Latest Projects Section -->
+   <section id="projects">
+       <h2>Latest Projects</h2>
+
+       <div class="project">
+           <img src="https://via.placeholder.com/800x400" alt="Space Adventure">
+           <h3>Project 1: Space Adventure</h3>
+           <p>A thrilling space exploration game. Experience the unknown!</p>
+           <p class="rating">Rating: ★★★★☆</p>
+       </div>
+
+       <div class="project">
+           <img src="https://via.placeholder.com/800x400" alt="Puzzle Masters">
+           <h3>Project 2: Puzzle Masters</h3>
+           <p>Challenge your mind with these creative puzzles!</p>
+           <p class="rating">Rating: ★★★★★</p>
+       </div>
+
+       <div class="project">
+           <img src="https://via.placeholder.com/800x400" alt="Racing Mania">
+           <h3>Project 3: Racing Mania</h3>
+           <p>Get ready for some high-speed action in this exciting racing game.</p>
+           <p class="rating">Rating: ★★★☆☆</p>
+       </div>
+   </section>
+
+   <!-- Testimonial Section -->
+   <section id="testimonials">
+       <h2>What Gamers Are Saying</h2>
+
+       <div class="testimonial">
+           <p>"I love the creativity in Puzzle Masters. It’s challenging yet so much fun!"</p>
+           <p>- Sarah, Casual Gamer</p>
+       </div>
+
+       <div class="testimonial">
+           <p>"Space Adventure is a masterpiece. The exploration feels so immersive!"</p>
+           <p>- James, Hardcore Gamer</p>
+       </div>
+   </section>
+
+   <!-- About Section -->
+   <section id="about">
+       <h2>About Us</h2>
+       <p>Game Idiots is a small team of game developers and enthusiasts dedicated to creating fun and innovative games for gamers of all ages.</p>
+   </section>
+
+   <!-- Contact Section -->
+   <section id="contact">
+       <h2>Contact Us</h2>
+       <p>Got any questions or feedback? Drop us a message!</p>
+       <form id="contact-form">
+           <label for="name">Name:</label>
+           <input type="text" id="name" name="name" required>
+
+           <label for="email">Email:</label>
+           <input type="email" id="email" name="email" required>
+
+           <label for="message">Message:</label>
+           <textarea id="message" name="message" required></textarea>
+
+           <button type="submit">Send</button>
+       </form>
+   </section>
+
+   <!-- Footer -->
+   <footer>
+       <p>&copy; 2024 Game Idiots. All rights reserved.</p>
+       <p>Follow us on <a href="#">Facebook</a>, <a href="#">Twitter</a>, and <a href="#">Instagram</a></p>
+       <form id="newsletter">
+           <label for="email-newsletter">Subscribe to our newsletter:</label>
+           <input type="email" id="email-newsletter" placeholder="Enter your email">
+           <button type="submit">Subscribe</button>
+       </form>
+   </footer>
+
+   <script>
+       function scrollToSection(sectionId) {
+           document.getElementById(sectionId).scrollIntoView({
+               behavior: 'smooth'
+           });
+       }
+
+       document.getElementById('contact-form').addEventListener('submit', function(event) {
+           event.preventDefault();
+           alert('Thank you for your message!');
+       });
+
+       document.getElementById('theme-toggle').addEventListener('click', function() {
+           document.body.classList.toggle('dark-mode');
+       });
+
+       document.getElementById('newsletter').addEventListener('submit', function(event) {
+           event.preventDefault();
+           alert('Thank you for subscribing to our newsletter!');
+       });
+   </script>
+
+</body>
 </html>
