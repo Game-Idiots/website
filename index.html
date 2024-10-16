@@ -25,24 +25,34 @@
            text-align: center;
        }
 
-       nav ul {
-           background-color: #333;
-           padding: 10px;
-           display: flex;
-           justify-content: center;
-           list-style-type: none;
-       }
+ /* Nav Styles */
+nav ul {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+}
 
-       nav ul li {
-           margin: 0 15px;
-       }
+/* Ensure the nav links stack vertically on smaller screens */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;  /* Stack links vertically */
+        padding: 0;
+    }
 
-       nav ul li a {
-           color: #fff;
-           text-decoration: none;
-           transition: color 0.3s;
-       }
+    nav ul li {
+        margin: 10px 0;  /* Add spacing between each link */
+    }
 
+    nav ul li a {
+        padding: 10px 0;  /* Make links easier to click on mobile */
+        font-size: 18px;   /* Increase text size on mobile */
+        display: block;    /* Ensure links take full width */
+        text-align: center;
+    }
+}
        nav ul li a:hover {
            color: #f39c12;
        }
