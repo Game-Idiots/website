@@ -10,14 +10,24 @@
     <style>
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #f4f4f4;
-            color: #333;
-            transition: background-color 0.5s, color 0.5s;
-        }
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.5s, color 0.5s;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    user-select: none; /* Disable text selection */
+}
+
+html {
+    overflow-x: hidden; /* Also prevent horizontal scrolling for the html element */
+}
+
+.project, header, footer, section {
+    user-select: none; /* Disable text selection for these specific elements */
+}
 
         header {
             background-color: #444;
