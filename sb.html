@@ -207,29 +207,148 @@
     
             /* Landscape mode adjustments */
             @media (max-width: 1024px) and (orientation: landscape) {
-                nav ul li {
-                    margin: 0 10px;
-                }
-    
-                nav ul li a {
-                    font-size: 30px;
-                }
-            }
-    
-            /* Desktop adjustments */
-            @media (min-width: 1025px) {
-                nav ul {
-                    padding: 15px;
-                }
-    
-                nav ul li {
-                    margin: 0 20px;
-                }
-    
-                nav ul li a {
-                    font-size: 20px;
-                }
-            }
-        </style>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Minecraft Bedrock Mod Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #3b9b3e;
+            padding: 20px;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .mod-description, .mod-features, .mod-installation {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 20px;
+            color: #3b9b3e;
+        }
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .image-gallery img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .video-container {
+            margin: 20px 0;
+        }
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Minecraft Bedrock Mod Showcase</h1>
+        <nav>
+            <a href="#description">Description</a>
+            <a href="#features">Features</a>
+            <a href="#installation">Installation</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#video">Video</a>
+        </nav>
+    </header>
+
+    <section id="description" class="mod-description">
+        <h2>Mod Title</h2>
+        <p>
+            This is a brief description of the mod. Highlight its features, gameplay mechanics, and any special elements that make it unique.
+        </p>
+    </section>
+
+    <section id="features" class="mod-features">
+        <h2>Features</h2>
+        <ul>
+            <li>Feature 1: Brief explanation.</li>
+            <li>Feature 2: Brief explanation.</li>
+            <li>Feature 3: Brief explanation.</li>
+            <li>Feature 4: Brief explanation.</li>
+        </ul>
+    </section>
+
+    <section id="installation" class="mod-installation">
+        <h2>Installation Instructions</h2>
+        <p>
+            To install the mod, follow these steps:
+        </p>
+        <ol>
+            <li>Download the mod file from the provided link.</li>
+            <li>Open the Minecraft Bedrock Edition app.</li>
+            <li>Go to "Settings" > "Storage" and import the mod.</li>
+            <li>Activate the mod in your world settings.</li>
+        </ol>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="image-gallery">
+            <img src="image1.jpg" alt="Screenshot 1">
+            <img src="image2.jpg" alt="Screenshot 2">
+            <img src="image3.jpg" alt="Screenshot 3">
+            <img src="image4.jpg" alt="Screenshot 4">
+        </div>
+    </section>
+
+    <section id="video" class="video-container">
+        <h2>Mod Showcase Video</h2>
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+    </section>
+
+    <footer>
+        <p>© 2024 Minecraft Mod Showcase. All rights reserved.</p>
+    </footer>
+
+</body>
 </html>
+                    
