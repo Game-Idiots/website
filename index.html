@@ -126,28 +126,40 @@
     background-color: #333;
     color: #fff;
     text-align: center; /* Center text */
-    padding: 20px; /* Increase padding for better appearance */
+    padding: 20px; /* Padding for spacing */
     position: relative;
     bottom: 0;
-    width: 100%;
-    display: flex; /* Use flexbox for centering */
+    width: 100%; /* Full width */
+    display: flex; /* Use flexbox */
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
 }
 
-footer p,
-footer form {
-    margin: 5px 0; /* Ensure some margin around text and form */
-    width: 100%; /* Allow elements to take full width */
+footer p {
+    margin: 5px 0; /* Margin for spacing */
+    width: 100%; /* Full width for text */
     max-width: 600px; /* Constrain maximum width */
-    text-align: center; /* Center the text inside the footer */
+}
+
+footer form {
+    width: 100%; /* Full width for the form */
+    max-width: 600px; /* Constrain maximum width */
+    display: flex; /* Use flexbox for form elements */
+    flex-direction: column; /* Stack form elements */
+    align-items: center; /* Center form elements */
 }
 
 footer input[type="email"] {
     width: 90%; /* Responsive input width */
     max-width: 400px; /* Max width for input */
+    margin: 10px 0; /* Margin for spacing */
 }
 
+footer button {
+    margin-top: 10px; /* Margin for spacing */
+}
+        
         /* Dark Mode */
         .dark-mode {
             background-color: #222;
