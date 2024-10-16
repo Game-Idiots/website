@@ -330,60 +330,6 @@
             document.body.classList.toggle('dark-mode');
         });
 
-        <script id="rendered-js">
-    // Select the necessary DOM elements
-    const email_to = document.querySelector('.email');
-    const subject = document.querySelector('.subject');
-    const message = document.querySelector('.message');
-    const submit = document.querySelector('.submit');
-    const mail_data = document.querySelector('.mail-data');
-
-    // Clear previous mail data messages
-    mail_data.innerHTML = '';
-
-    // Event listener for the submit button
-    submit.onclick = () => {
-        // Validate that all fields are filled
-        if (email_to.value.length == 0 || subject.value.length == 0 || message.value.length == 0) {
-            mail_data.innerHTML = 'Please fill in all fields.'; // Show a warning message
-            return; // Stop the execution if validation fails
-        }
-
-        // Disable the submit button to prevent multiple clicks
-        submit.disabled = true;
-
-        // Prepare the data to be sent
-        const mailData = {
-            mail_to: email_to.value,
-            mail_subject: subject.value,
-            mail_message: message.value
-        };
-
-        // Send the data using the Fetch API
-        fetch('https://movers-san-francisco.com/email_sender.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }, // Use JSON format for headers
-            body: JSON.stringify(mailData) // Convert the mailData object to a JSON string
-        })
-        .then(response => response.json()) // Parse the JSON response
-        .then(data => {
-            // Check the result from the server response
-            if (data.result === 'success') {
-                mail_data.innerHTML = `Email was successfully sent to ${data.email_to}<br>` + mail_data.innerHTML;
-                console.log(data); // Log data for debugging
-            } else {
-                mail_data.innerHTML = 'Error sending an email!<br>' + mail_data.innerHTML;
-            }
-        })
-        .catch(error => {
-            mail_data.innerHTML = 'An error occurred: ' + error.message; // Handle errors
-        })
-        .finally(() => {
-            submit.disabled = false; // Re-enable the submit button
-        });
-    };
-</script>
-
     </script>
 
 </body>
