@@ -2,4 +2,6 @@
 
 ## To do list
 
-Email API ☑️
+Email ☑️
+
+Newsletter ❌
