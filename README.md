@@ -5,3 +5,5 @@
 Email ❌
 
 Newsletter ❌
+
+Soundboard Page ❌
