@@ -7,20 +7,23 @@
     <title>Minecraft Bedrock Mod Showcase</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff; /* Light sky blue background */
             color: #333;
             margin: 0;
             padding: 20px;
             text-align: center;
             position: relative;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         header {
-            background-color: #3b9b3e;
+            background-color: #4caf50; /* Softer green */
             padding: 20px;
             color: white;
-            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
 
         header h1 {
@@ -37,24 +40,27 @@
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
         }
 
         nav a:hover {
             text-decoration: underline;
+            color: #dcedc8; /* Light hover effect */
         }
 
         .mod-description, .mod-features, .mod-installation {
             max-width: 600px;
             margin: 20px auto;
             background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
             margin-top: 20px;
-            color: #3b9b3e;
+            color: #4caf50; /* Softer green */
+            font-size: 1.8em;
         }
 
         .image-gallery {
@@ -68,8 +74,13 @@
             width: 200px;
             height: auto;
             margin: 10px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05); /* Scale effect on hover */
         }
 
         .video-container {
@@ -79,7 +90,8 @@
         .video-container video {
             width: 100%;
             max-width: 800px;
-            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         footer {
@@ -89,20 +101,21 @@
         }
 
         #goBackButton {
-            background-color: #3b9b3e;
+            background-color: #4caf50; /* Softer green */
             color: white;
             padding: 10px 20px;
             font-size: 1.1em;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             margin-top: 20px;
         }
 
         #goBackButton:hover {
-            background-color: #2e7d32;
+            background-color: #388e3c; /* Darker green on hover */
+            transform: scale(1.05); /* Slight grow effect */
         }
 
         /* Sparkling Image */
@@ -120,88 +133,41 @@
 
         /* Sparkle Animation */
         @keyframes sparkle {
-            0% {
+            0%, 100% {
                 opacity: 0.8;
             }
             50% {
                 opacity: 1;
             }
-            100% {
-                opacity: 0.8;
-            }
         }
 
-        /* Adding sparkles using pseudo-elements */
-        #imageS::before, #imageS::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            box-shadow:
-                0 0 10px rgba(255, 255, 255, 0.8),
-                0 0 20px rgba(255, 255, 255, 0.6),
-                0 0 30px rgba(255, 255, 255, 0.4);
-            animation: sparkleMovement 2s infinite ease-in-out;
-        }
-
-        #imageS::before {
-            top: 30%;
-            left: 20%;
-            animation-delay: 0.5s;
-        }
-
-        #imageS::after {
-            top: 70%;
-            left: 80%;
-            animation-delay: 1s;
-        }
-
-        /* Movement of sparkles */
-        @keyframes sparkleMovement {
-            0% {
-                transform: scale(1) translate(-50%, -50%);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.5) translate(-50%, -50%);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(1) translate(-50%, -50%);
-                opacity: 1;
-            }
-        }
-
-        /* Extra Sparkles floating around */
-        @keyframes floatSparkle {
-            0% {
-                opacity: 0;
-                transform: translateY(0) scale(0.5);
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(-20px) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(0) scale(0.5);
-            }
-        }
-
+        /* Sparkles styling */
         .sparkle {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
             animation: floatSparkle 3s infinite;
-            z-index: 999;
+            z-index: 999; /* Ensure visibility */
+            opacity: 0; /* Start hidden */
         }
 
-        #content {
-            display: block;
+        /* Sparkle Movement Animation */
+        @keyframes floatSparkle {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-30px) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
         }
 
         /* Positioning additional sparkles randomly */
@@ -282,7 +248,7 @@
         </section>
     </div>
 
-    <!-- Full-Screen Image with Sparkles -->
+    <!-- Full-Screen Image -->
     <img id="imageS" src="https://images-ng.pixai.art/images/orig/8a6181d3-592f-433d-8d06-3455b6606564" alt="imageS" />
 
     <!-- Additional Sparkles -->
@@ -293,7 +259,7 @@
     <div class="sparkle"></div>
 
     <footer>
-        <p>&copy; 2024 Game Idiots. All rights reserved.</p>
+        <p>&copy; 2024 Game Ideas. All rights reserved.</p>
     </footer>
 
     <script>
@@ -313,8 +279,14 @@
         });
         
         document.addEventListener('click', function (event) {
-            // Implement any additional click functionality if needed
+            const imageS = document.getElementById('imageS');
+            imageS.style.display = 'block'; // Show the image
+            document.getElementById('content').style.display = 'none'; // Hide the content
+            document.querySelector('header').style.display = 'none'; // Hide the header
+            document.querySelector('footer').style.display = 'none'; // Hide the footer
+            localStorage.setItem('showImage', 'true'); // Set the flag in local storage
         });
     </script>
+
 </body>
 </html>
