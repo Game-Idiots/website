@@ -1,212 +1,4 @@
-<!DOCTYPE html>
-<html= lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Game Idiots | Sound Board</title>
-    
-        <style>
-            /* General Styles */
-            body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background-color: #f4f4f4;
-        color: #333;
-        transition: background-color 0.5s, color 0.5s;
-        overflow-x: hidden; /* Prevent horizontal scrolling */
-        user-select: none; /* Disable text selection */
-    }
-    
-    html {
-        overflow-x: hidden; /* Also prevent horizontal scrolling for the html element */
-        user-select: none;
-    }
-    
-    .project, header, footer, section {
-        user-select: none; /* Disable text selection for these specific elements */
-    }
-    
-            header {
-                background-color: #444;
-                color: #fff;
-                padding: 20px;
-                text-align: center;
-            }
-    
-            nav ul {
-                background-color: #333;
-                padding: 10px;
-                display: flex;
-                justify-content: center;
-                list-style-type: none;
-                margin: 0;
-                flex-wrap: wrap;
-            }
-    
-            nav ul li {
-                margin: 0 15px;
-            }
-    
-            nav ul li a {
-                color: #fff;
-                text-decoration: none;
-                transition: color 0.3s;
-            }
-    
-            nav ul li a:hover {
-                color: #f39c12;
-            }
-    
-            section {
-                padding: 40px;
-                text-align: center;
-            }
-    
-            .project {
-                background-color: #fff;
-                margin: 20px auto;
-                padding: 20px;
-                width: 100%;
-                max-width: 800px;
-                border-radius: 8px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s;
-            }
-    
-            .project:hover {
-                transform: scale(1.05);
-            }
-    
-            .project img {
-                width: 100%;
-                height: auto;
-                border-radius: 8px;
-                margin-bottom: 10px;
-            }
-    
-            .project .rating {
-                color: #f39c12;
-            }
-    
-            button {
-                padding: 10px 20px;
-                margin: 20px;
-                background-color: #444;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
-    
-            button:hover {
-                background-color: #555;
-            }
-    
-            /* Testimonial Styles */
-            .testimonial {
-                background-color: #e2e2e2;
-                padding: 20px;
-                margin: 10px auto;
-                border-radius: 10px;
-                max-width: 600px;
-            }
-    
-            /* Contact Form Styles */
-            form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-    
-            input,
-            textarea {
-                width: 80%;
-                margin: 10px;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                max-width: 500px;
-            }
-    
-            footer {
-        background-color: #333;
-        color: #fff;
-        text-align: center; /* Center text */
-        padding: 20px; /* Padding for spacing */
-        position: relative;
-        bottom: 0;
-        width: 100%; /* Full width */
-        display: flex; /* Use flexbox */
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center items horizontally */
-        justify-content: center; /* Center items vertically */
-        box-sizing: border-box; /* Include padding in width */
-        overflow: hidden; /* Prevent overflow */
-    }
-    
-    footer p {
-        margin: 5px 0; /* Margin for spacing */
-        width: 90%; /* Make sure it takes less than full width */
-        max-width: 600px; /* Constrain maximum width */
-    }
-    
-    footer form {
-        width: 90%; /* Responsive width for form */
-        max-width: 600px; /* Constrain maximum width */
-        display: flex; /* Use flexbox for form elements */
-        flex-direction: column; /* Stack form elements */
-        align-items: center; /* Center form elements */
-    }
-    
-    footer input[type="email"] {
-        width: 100%; /* Full width for input */
-        max-width: 400px; /* Max width for input */
-        margin: 10px 0; /* Margin for spacing */
-        padding: 10px; /* Padding for input */
-        box-sizing: border-box; /* Include padding in width */
-    }
-    
-    footer button {
-        margin-top: 10px; /* Margin for spacing */
-        padding: 10px 20px; /* Padding for button */
-        background-color: #444; /* Button background color */
-        color: white; /* Button text color */
-        border: none; /* No border */
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Pointer cursor */
-    }
-            
-            /* Dark Mode */
-            .dark-mode {
-                background-color: #222;
-                color: #ccc;
-            }
-    
-            /* Responsive Design */
-            @media (max-width: 768px) {
-                .project {
-                    width: 90%;
-                }
-    
-                section {
-                    padding: 20px;
-                }
-    
-                nav ul li {
-                    margin: 5px;
-                }
-    
-                nav ul li a {
-                    font-size: 16px;
-                }
-            }
-    
-            /* Landscape mode adjustments */
-            @media (max-width: 1024px) and (orientation: landscape) {
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -310,10 +102,14 @@
     <section id="features" class="mod-features">
         <h2>Features</h2>
         <ul>
-            <li>Feature 1: Brief explanation.</li>
-            <li>Feature 2: Brief explanation.</li>
-            <li>Feature 3: Brief explanation.</li>
-            <li>Feature 4: Brief explanation.</li>
+            <li>Feature 1: Admin menu.</li>
+            <li>Feature 2: There is over 90+ sounds.</li>
+            <li>Feature 3: Clean UI.</li>
+            <li>Feature 4: Cross platform.</li>
+            <li>Feature 4: Growing sounds library.</li>
+            <li>Feature 4: Always improvement in new features.</li>
+            <li>Feature 4: Config.</li>
+            <li>Feature 4: Custom kill sounds.</li>
         </ul>
     </section>
 
@@ -323,9 +119,8 @@
             To install the mod, follow these steps:
         </p>
         <ol>
-            <li>Download the mod file from the provided link.</li>
-            <li>Open the Minecraft Bedrock Edition app.</li>
-            <li>Go to "Settings" > "Storage" and import the mod.</li>
+            <li>Download the mod file from the releases tab.</li>
+            <li>Run the soundboard.mcaddon file</li>
             <li>Activate the mod in your world settings.</li>
         </ol>
     </section>
@@ -333,10 +128,10 @@
     <section id="gallery">
         <h2>Gallery</h2>
         <div class="image-gallery">
-            <img src="image1.jpg" alt="Screenshot 1">
-            <img src="image2.jpg" alt="Screenshot 2">
-            <img src="image3.jpg" alt="Screenshot 3">
-            <img src="image4.jpg" alt="Screenshot 4">
+            <img src="sb/image1.jpg" alt="Screenshot 1">
+            <img src="sb/image2.jpg" alt="Screenshot 2">
+            <img src="sb/image3.jpg" alt="Screenshot 3">
+            <img src="sb/image4.jpg" alt="Screenshot 4">
         </div>
     </section>
 
