@@ -223,12 +223,17 @@ footer button {
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow for a better look */
     font-size: 18px; /* Text size */
+    height: 50px; /* Set a fixed height */
 }
 
 #close-alert {
     font-size: 24px; /* Larger close button */
     margin-left: 20px;
     cursor: pointer;
+}
+
+body.alert-active {
+    margin-top: 50px; /* Add margin to avoid overlap (same as alert-box height) */
 }
 
         /* Responsive Design */
@@ -430,11 +435,13 @@ footer button {
         // Check if the user has already closed the alert
         if (!localStorage.getItem('alertClosed')) {
             document.getElementById('alert-box').style.display = 'flex';
+            document.body.classList.add('alert-active'); // Add margin to body when alert is visible
         }
 
         // Close the alert and set the flag in localStorage
         document.getElementById('close-alert').addEventListener('click', function () {
             document.getElementById('alert-box').style.display = 'none';
+            document.body.classList.remove('alert-active'); // Remove margin when alert is closed
             localStorage.setItem('alertClosed', 'true');
         });
     });
