@@ -115,7 +115,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: 1000;
-            animation: sparkle 1.5s infinite; /* Sparkle animation */
+            animation: sparkle 2s infinite; /* Sparkle animation */
         }
 
         /* Sparkle Animation */
@@ -135,8 +135,6 @@
         #imageS::before, #imageS::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
             width: 15px;
             height: 15px;
             background-color: rgba(255, 255, 255, 0.8);
@@ -146,7 +144,6 @@
                 0 0 20px rgba(255, 255, 255, 0.6),
                 0 0 30px rgba(255, 255, 255, 0.4);
             animation: sparkleMovement 2s infinite ease-in-out;
-            z-index: 9999;
         }
 
         #imageS::before {
@@ -177,9 +174,42 @@
             }
         }
 
+        /* Extra Sparkles floating around */
+        @keyframes floatSparkle {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: floatSparkle 3s infinite;
+            z-index: 999;
+        }
+
         #content {
             display: block;
         }
+
+        /* Positioning additional sparkles randomly */
+        .sparkle:nth-child(1) { top: 10%; left: 30%; }
+        .sparkle:nth-child(2) { top: 20%; left: 70%; }
+        .sparkle:nth-child(3) { top: 50%; left: 50%; }
+        .sparkle:nth-child(4) { top: 70%; left: 10%; }
+        .sparkle:nth-child(5) { top: 80%; left: 90%; }
     </style>
 </head>
 <body>
@@ -252,8 +282,15 @@
         </section>
     </div>
 
-    <!-- Full-Screen Image -->
+    <!-- Full-Screen Image with Sparkles -->
     <img id="imageS" src="https://images-ng.pixai.art/images/orig/8a6181d3-592f-433d-8d06-3455b6606564" alt="imageS" />
+
+    <!-- Additional Sparkles -->
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
 
     <footer>
         <p>&copy; 2024 Game Idiots. All rights reserved.</p>
@@ -276,14 +313,8 @@
         });
         
         document.addEventListener('click', function (event) {
-            const imageS = document.getElementById('imageS');
-            imageS.style.display = 'block'; // Show the image
-            document.getElementById('content').style.display = 'none'; // Hide the content
-            document.querySelector('header').style.display = 'none'; // Hide the header
-            document.querySelector('footer').style.display = 'none'; // Hide the footer
-            localStorage.setItem('showImage', 'true'); // Set the flag in local storage
+            // Implement any additional click functionality if needed
         });
     </script>
-
 </body>
 </html>
