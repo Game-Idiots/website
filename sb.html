@@ -62,10 +62,10 @@
         .video-container {
             margin: 20px 0;
         }
-        .video-container iframe {
+        .video-container video {
             width: 100%;
             max-width: 800px;
-            height: 450px;
+            height: auto;
             border: none;
         }
         footer {
@@ -165,7 +165,10 @@
 
 <section id="video" class="video-container">
     <h2>Mod Showcase Video</h2>
-    <iframe src="https://www.youtube.com/embed/VIDEO-ID" allowfullscreen></iframe>
+    <video controls>
+        <source src="Assets/sb/mod-showcase.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </section>
 
 <footer>
