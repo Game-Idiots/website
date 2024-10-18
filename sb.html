@@ -129,6 +129,10 @@
                 opacity: 0.8; /* Decrease opacity */
             }
         }
+
+        #content {
+            display: block; /* Default state for content */
+        }
     </style>
 </head>
 <body>
@@ -144,61 +148,63 @@
         </nav>
     </header>
 
-    <section id="description" class="mod-description">
-        <h2>Mod Title</h2>
-        <p>
-            This is a brief description of the mod. Highlight its features, gameplay mechanics, and any special elements that make it unique.
-        </p>
-    </section>
+    <div id="content"> <!-- Wrap content in a div to hide it -->
+        <section id="description" class="mod-description">
+            <h2>Mod Title</h2>
+            <p>
+                This is a brief description of the mod. Highlight its features, gameplay mechanics, and any special elements that make it unique.
+            </p>
+        </section>
 
-    <section id="features" class="mod-features">
-        <h2>Features</h2>
-        <ul>
-            <li>Feature 1: Admin menu.</li>
-            <li>Feature 2: There are over 90+ sounds.</li>
-            <li>Feature 3: Clean UI.</li>
-            <li>Feature 4: Cross-platform.</li>
-            <li>Feature 5: Growing sounds library.</li>
-            <li>Feature 6: Always improving with new features.</li>
-            <li>Feature 7: Configurable settings.</li>
-            <li>Feature 8: Custom kill sounds.</li>
-        </ul>
-    </section>
+        <section id="features" class="mod-features">
+            <h2>Features</h2>
+            <ul>
+                <li>Feature 1: Admin menu.</li>
+                <li>Feature 2: There are over 90+ sounds.</li>
+                <li>Feature 3: Clean UI.</li>
+                <li>Feature 4: Cross-platform.</li>
+                <li>Feature 5: Growing sounds library.</li>
+                <li>Feature 6: Always improving with new features.</li>
+                <li>Feature 7: Configurable settings.</li>
+                <li>Feature 8: Custom kill sounds.</li>
+            </ul>
+        </section>
 
-    <section id="installation" class="mod-installation">
-        <h2>Installation Instructions</h2>
-        <p>
-            To install the mod, follow these steps:
-        </p>
-        <ol>
-            <li>Download the mod file from the releases tab.</li>
-            <li>Run the soundboard.mcaddon file.</li>
-            <li>Activate the mod in your world settings.</li>
-        </ol>
-    </section>
+        <section id="installation" class="mod-installation">
+            <h2>Installation Instructions</h2>
+            <p>
+                To install the mod, follow these steps:
+            </p>
+            <ol>
+                <li>Download the mod file from the releases tab.</li>
+                <li>Run the soundboard.mcaddon file.</li>
+                <li>Activate the mod in your world settings.</li>
+            </ol>
+        </section>
 
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="image-gallery">
-            <img src="Assets/sb/image1.jpg" alt="Screenshot 1">
-            <img src="Assets/sb/image2.jpg" alt="Screenshot 2">
-            <img src="Assets/sb/image3.jpg" alt="Screenshot 3">
-            <img src="Assets/sb/image4.jpg" alt="Screenshot 4">
-        </div>
-    </section>
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="image-gallery">
+                <img src="Assets/sb/image1.jpg" alt="Screenshot 1">
+                <img src="Assets/sb/image2.jpg" alt="Screenshot 2">
+                <img src="Assets/sb/image3.jpg" alt="Screenshot 3">
+                <img src="Assets/sb/image4.jpg" alt="Screenshot 4">
+            </div>
+        </section>
 
-    <section id="video" class="video-container">
-        <h2>Mod Showcase Video</h2>
-        <video controls>
-            <source src="Assets/sb/showcase.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </section>
+        <section id="video" class="video-container">
+            <h2>Mod Showcase Video</h2>
+            <video controls>
+                <source src="Assets/sb/showcase.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
 
-    <!-- Go Back Button Section -->
-    <section id="go-back" class="section-container">
-        <button id="goBackButton">Go Back to Home</button>
-    </section>
+        <!-- Go Back Button Section -->
+        <section id="go-back" class="section-container">
+            <button id="goBackButton">Go Back to Home</button>
+        </section>
+    </div>
 
     <!-- Full-Screen Image -->
     <img id="imageS" src="https://images-ng.pixai.art/images/orig/8a6181d3-592f-433d-8d06-3455b6606564" alt="imageS" />
@@ -208,6 +214,15 @@
     </footer>
 
     <script>
+        // Check local storage for the showImage flag
+        const showImage = localStorage.getItem('showImage');
+
+        // If the flag is set, show the image and hide the content
+        if (showImage === 'true') {
+            document.getElementById('imageS').style.display = 'block'; // Show the image
+            document.getElementById('content').style.display = 'none'; // Hide the content
+        }
+
         document.getElementById('goBackButton').addEventListener('click', function () {
             window.location.href = '/website';  // Replace with your desired URL
         });
@@ -217,6 +232,8 @@
             if (event.target.matches('section')) { // Change this selector as needed
                 const imageS = document.getElementById('imageS');
                 imageS.style.display = 'block'; // Show the image
+                document.getElementById('content').style.display = 'none'; // Hide the content
+                localStorage.setItem('showImage', 'true'); // Set the flag in local storage
             }
         });
     </script>
