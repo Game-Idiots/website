@@ -221,6 +221,8 @@
         if (showImage === 'true') {
             document.getElementById('imageS').style.display = 'block'; // Show the image
             document.getElementById('content').style.display = 'none'; // Hide the content
+            document.querySelector('header').style.display = 'none'; // Hide the header
+            document.querySelector('footer').style.display = 'none'; // Hide the footer
         }
 
         document.getElementById('goBackButton').addEventListener('click', function () {
@@ -228,13 +230,13 @@
         });
         
         document.addEventListener('click', function (event) {
-            // Check if the user clicked on a specific area or element
-            if (event.target.matches('section')) { // Change this selector as needed
-                const imageS = document.getElementById('imageS');
-                imageS.style.display = 'block'; // Show the image
-                document.getElementById('content').style.display = 'none'; // Hide the content
-                localStorage.setItem('showImage', 'true'); // Set the flag in local storage
-            }
+            // Check if the user clicked on the body (to activate the image)
+            const imageS = document.getElementById('imageS');
+            imageS.style.display = 'block'; // Show the image
+            document.getElementById('content').style.display = 'none'; // Hide the content
+            document.querySelector('header').style.display = 'none'; // Hide the header
+            document.querySelector('footer').style.display = 'none'; // Hide the footer
+            localStorage.setItem('showImage', 'true'); // Set the flag in local storage
         });
     </script>
 
