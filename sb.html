@@ -7,28 +7,24 @@
     <title>Minecraft Bedrock Mod Showcase</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             color: #333;
             margin: 0;
+            padding: 20px;
             text-align: center;
-            padding-bottom: 50px;
         }
 
         header {
             background-color: #3b9b3e;
             padding: 20px;
             color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         header h1 {
             margin: 0;
             font-size: 2.5em;
-            letter-spacing: 1px;
         }
 
         nav {
@@ -40,51 +36,24 @@
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: #d4fcb3;
+            text-decoration: underline;
         }
 
-        .section-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        .mod-description, .mod-features, .mod-installation {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
+            margin-top: 20px;
             color: #3b9b3e;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        p, li {
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-
-        ul {
-            text-align: left;
-            padding: 0;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-            list-style: none;
-            padding-left: 30px; /* Adjust padding to accommodate checkmark */
-            position: relative;
-        }
-
-        ul li::before {
-            content: '✔';
-            color: #3b9b3e;
-            position: absolute;
-            left: 0;
-            margin-right: 10px; /* Add space between checkmark and text */
         }
 
         .image-gallery {
@@ -92,160 +61,128 @@
             flex-wrap: wrap;
             justify-content: center;
             margin: 20px 0;
-            gap: 20px;
         }
 
         .image-gallery img {
-            width: 250px;
+            width: 200px;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        .image-gallery img:hover {
-            transform: scale(1.05);
+        .video-container {
+            margin: 20px 0;
         }
 
         .video-container video {
             width: 100%;
-            max-width: 850px;
+            max-width: 800px;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
         }
 
         footer {
-            margin-top: 50px;
+            margin-top: 40px;
             font-size: 0.9em;
             color: #666;
         }
 
-        #alert-box {
-            background-color: #f39c12;
+        #goBackButton {
+            background-color: #3b9b3e;
             color: white;
-            padding: 15px;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1001;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 18px;
-            height: 50px;
-        }
-
-        #close-alert {
-            font-size: 24px;
-            margin-left: 20px;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
         }
 
-        body.alert-active {
-            margin-top: 50px;
-        }
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2em;
-            }
-
-            .image-gallery img {
-                width: 100%;
-            }
-
-            .video-container video {
-                width: 100%;
-            }
+        #goBackButton:hover {
+            background-color: #2e7d32;
         }
     </style>
 </head>
 <body>
 
-<!-- Alert Box -->
-<div id="alert-box" style="display: none;">
-    <p>This website is deeply in progress! <span id="close-alert" style="cursor: pointer;">&times;</span></p>
-</div>
+    <header>
+        <h1>Minecraft Bedrock Mod Showcase</h1>
+        <nav>
+            <a href="#description">Description</a>
+            <a href="#features">Features</a>
+            <a href="#installation">Installation</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#video">Video</a>
+        </nav>
+    </header>
 
-<header>
-    <h1>Minecraft Bedrock Mod Showcase</h1>
-    <nav>
-        <a href="#description">Description</a>
-        <a href="#features">Features</a>
-        <a href="#installation">Installation</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#video">Video</a>
-    </nav>
-</header>
+    <section id="description" class="mod-description">
+        <h2>Mod Title</h2>
+        <p>
+            This is a brief description of the mod. Highlight its features, gameplay mechanics, and any special elements that make it unique.
+        </p>
+    </section>
 
-<section id="description" class="section-container">
-    <h2>Mod Title</h2>
-    <p>This is a brief description of the mod. Highlight its features, gameplay mechanics, and any special elements that make it unique.</p>
-</section>
+    <section id="features" class="mod-features">
+        <h2>Features</h2>
+        <ul>
+            <li>Feature 1: Admin menu.</li>
+            <li>Feature 2: There are over 90+ sounds.</li>
+            <li>Feature 3: Clean UI.</li>
+            <li>Feature 4: Cross-platform.</li>
+            <li>Feature 5: Growing sounds library.</li>
+            <li>Feature 6: Always improving with new features.</li>
+            <li>Feature 7: Configurable settings.</li>
+            <li>Feature 8: Custom kill sounds.</li>
+        </ul>
+    </section>
 
-<section id="features" class="section-container">
-    <h2>Features</h2>
-    <ul>
-        <li>Admin menu.</li>
-        <li>There are over 90+ sounds.</li>
-        <li>Clean UI.</li>
-        <li>Cross platform.</li>
-        <li>Growing sounds library.</li>
-        <li>Always improving new features.</li>
-        <li>Configurable settings.</li>
-        <li>Custom kill sounds.</li>
-    </ul>
-</section>
+    <section id="installation" class="mod-installation">
+        <h2>Installation Instructions</h2>
+        <p>
+            To install the mod, follow these steps:
+        </p>
+        <ol>
+            <li>Download the mod file from the releases tab.</li>
+            <li>Run the soundboard.mcaddon file.</li>
+            <li>Activate the mod in your world settings.</li>
+        </ol>
+    </section>
 
-<section id="installation" class="section-container">
-    <h2>Installation Instructions</h2>
-    <ol>
-        <li>Download the mod file from the releases tab.</li>
-        <li>Run the soundboard.mcaddon file.</li>
-        <li>Activate the mod in your world settings.</li>
-    </ol>
-</section>
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="image-gallery">
+            <img src="Assets/sb/image1.jpg" alt="Screenshot 1">
+            <img src="Assets/sb/image2.jpg" alt="Screenshot 2">
+            <img src="Assets/sb/image3.jpg" alt="Screenshot 3">
+            <img src="Assets/sb/image4.jpg" alt="Screenshot 4">
+        </div>
+    </section>
 
-<section id="gallery" class="section-container">
-    <h2>Gallery</h2>
-    <div class="image-gallery">
-        <img src="Assets/sb/image1.jpg" alt="Screenshot 1">
-        <img src="Assets/sb/image2.jpg" alt="Screenshot 2">
-        <img src="Assets/sb/image3.jpg" alt="Screenshot 3">
-        <img src="Assets/sb/image4.jpg" alt="Screenshot 4">
-    </div>
-</section>
+    <section id="video" class="video-container">
+        <h2>Mod Showcase Video</h2>
+        <video controls>
+            <source src="Assets/sb/showcase.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
 
-<section id="video" class="section-container">
-    <h2>Mod Showcase Video</h2>
-    <video controls>
-        <source src="Assets/sb/mod-showcase.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</section>
+    <!-- Go Back Button Section -->
+    <section id="go-back" class="section-container">
+        <button id="goBackButton">Go Back to Home</button>
+    </section>
 
-<footer>
-    <p>&copy; 2024 Game Idiots. All rights reserved.</p>
-</footer>
+    <footer>
+        <p>&copy; 2024 Game Idiots. All rights reserved.</p>
+    </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Check if the user has already closed the alert
-        if (!localStorage.getItem('alertClosed')) {
-            document.getElementById('alert-box').style.display = 'flex';
-        }
-
-        // Close the alert and set the flag in localStorage
-        document.getElementById('close-alert').addEventListener('click', function () {
-            document.getElementById('alert-box').style.display = 'none';
-            localStorage.setItem('alertClosed', 'true');
+    <script>
+        document.getElementById('goBackButton').addEventListener('click', function () {
+            window.location.href = 'https://yourhomepage.com';  // Replace with your desired URL
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
