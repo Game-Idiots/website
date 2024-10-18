@@ -12,8 +12,6 @@
             color: #333;
             margin: 0;
             text-align: center;
-            padding: 0;
-            box-sizing: border-box; /* Ensure padding and borders are included in width */
         }
         header {
             background-color: #3b9b3e;
@@ -22,12 +20,12 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%; /* Make sure the header spans the full viewport width */
-            box-sizing: border-box; /* Include padding in the width calculation */
-            z-index: 1000; /* Ensure it's on top of other content */
+            width: 100%; /* Ensures the header spans the full width */
+            z-index: 1000;
+            box-sizing: border-box; /* Includes padding in width */
         }
         body {
-            padding-top: 100px; /* Ensure content starts below the fixed header */
+            padding-top: 120px; /* Adjust to the height of the header */
         }
         header h1 {
             margin: 0;
@@ -86,31 +84,30 @@
         }
 
         #alert-box {
-            background-color: #f39c12; /* Alert background color */
-            color: white; /* Text color */
-            padding: 15px; /* Padding for the alert */
-            text-align: center; /* Center text */
-            position: fixed; /* Stay at the top */
-            top: 0; /* Align to the top */
-            left: 0; /* Full-width from left */
-            right: 0; /* Full-width to right */
-            z-index: 1000; /* Make sure it's on top of other elements */
-            display: flex; /* Flexbox for content alignment */
-            justify-content: space-between; /* Space between text and close button */
+            background-color: #f39c12;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow for a better look */
-            font-size: 18px; /* Text size */
-            height: 50px; /* Set a fixed height */
+            font-size: 18px;
+            height: 50px;
         }
 
         #close-alert {
-            font-size: 24px; /* Larger close button */
+            font-size: 24px;
             margin-left: 20px;
             cursor: pointer;
         }
 
         body.alert-active {
-            margin-top: 50px; /* Add margin to avoid overlap (same as alert-box height) */
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -121,85 +118,83 @@
     <p>This website is deeply in progress! <span id="close-alert" style="cursor: pointer;">&times;</span></p>
 </div>
     
-    <header>
-        <h1>Minecraft Bedrock Mod Showcase</h1>
-        <nav>
-            <a href="#description">Description</a>
-            <a href="#features">Features</a>
-            <a href="#installation">Installation</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#video">Video</a>
-        </nav>
-    </header>
+<header>
+    <h1>Minecraft Bedrock Mod Showcase</h1>
+    <nav>
+        <a href="#description">Description</a>
+        <a href="#features">Features</a>
+        <a href="#installation">Installation</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#video">Video</a>
+    </nav>
+</header>
 
-    <section id="description" class="mod-description">
-        <h2>Mod Title</h2>
-        <p>
-            This is a brief description of the mod. Highlight its features, gameplay mechanics, and any special elements that make it unique.
-        </p>
-    </section>
+<section id="description" class="mod-description">
+    <h2>Mod Title</h2>
+    <p>
+        This is a brief description of the mod. Highlight its features, gameplay mechanics, and any special elements that make it unique.
+    </p>
+</section>
 
-    <section id="features" class="mod-features">
-        <h2>Features</h2>
-        <ul>
-            <li>Feature 1: Admin menu.</li>
-            <li>Feature 2: There is over 90+ sounds.</li>
-            <li>Feature 3: Clean UI.</li>
-            <li>Feature 4: Cross platform.</li>
-            <li>Feature 5: Growing sounds library.</li>
-            <li>Feature 6: Always improvement in new features.</li>
-            <li>Feature 7: Config.</li>
-            <li>Feature 8: Custom kill sounds.</li>
-        </ul>
-    </section>
+<section id="features" class="mod-features">
+    <h2>Features</h2>
+    <ul>
+        <li>Feature 1: Admin menu.</li>
+        <li>Feature 2: There are over 90+ sounds.</li>
+        <li>Feature 3: Clean UI.</li>
+        <li>Feature 4: Cross platform.</li>
+        <li>Feature 5: Growing sounds library.</li>
+        <li>Feature 6: Always improving new features.</li>
+        <li>Feature 7: Config.</li>
+        <li>Feature 8: Custom kill sounds.</li>
+    </ul>
+</section>
 
-    <section id="installation" class="mod-installation">
-        <h2>Installation Instructions</h2>
-        <p>
-            To install the mod, follow these steps:
-        </p>
-        <ol>
-            <li>Download the mod file from the releases tab.</li>
-            <li>Run the soundboard.mcaddon file</li>
-            <li>Activate the mod in your world settings.</li>
-        </ol>
-    </section>
+<section id="installation" class="mod-installation">
+    <h2>Installation Instructions</h2>
+    <p>
+        To install the mod, follow these steps:
+    </p>
+    <ol>
+        <li>Download the mod file from the releases tab.</li>
+        <li>Run the soundboard.mcaddon file</li>
+        <li>Activate the mod in your world settings.</li>
+    </ol>
+</section>
 
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="image-gallery">
-            <img src="Assets/sb/image1.jpg" alt="Screenshot 1">
-            <img src="Assets/sb/image2.jpg" alt="Screenshot 2">
-            <img src="Assets/sb/image3.jpg" alt="Screenshot 3">
-            <img src="Assets/sb/image4.jpg" alt="Screenshot 4">
-        </div>
-    </section>
+<section id="gallery">
+    <h2>Gallery</h2>
+    <div class="image-gallery">
+        <img src="Assets/sb/image1.jpg" alt="Screenshot 1">
+        <img src="Assets/sb/image2.jpg" alt="Screenshot 2">
+        <img src="Assets/sb/image3.jpg" alt="Screenshot 3">
+        <img src="Assets/sb/image4.jpg" alt="Screenshot 4">
+    </div>
+</section>
 
-    <section id="video" class="video-container">
-        <h2>Mod Showcase Video</h2>
-        <iframe src="https://www.youtube.com/embed/VIDEO-ID" allowfullscreen></iframe>
-    </section>
+<section id="video" class="video-container">
+    <h2>Mod Showcase Video</h2>
+    <iframe src="https://www.youtube.com/embed/VIDEO-ID" allowfullscreen></iframe>
+</section>
 
-    <footer>
-        <p>&copy; 2024 Game Idiots. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2024 Game Idiots. All rights reserved.</p>
+</footer>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Check if the user has already closed the alert
         if (!localStorage.getItem('alertClosed')) {
             document.getElementById('alert-box').style.display = 'flex';
-            document.body.classList.add('alert-active'); // Add margin to body when alert is visible
         }
 
         // Close the alert and set the flag in localStorage
         document.getElementById('close-alert').addEventListener('click', function () {
             document.getElementById('alert-box').style.display = 'none';
-            document.body.classList.remove('alert-active'); // Remove margin when alert is closed
             localStorage.setItem('alertClosed', 'true');
         });
     });
 </script>
-    
+
 </body>
 </html>
