@@ -13,6 +13,7 @@
             margin: 0;
             padding: 20px;
             text-align: center;
+            position: relative; /* Added for positioning the secret image */
         }
 
         header {
@@ -103,6 +104,33 @@
         #goBackButton:hover {
             background-color: #2e7d32;
         }
+
+        #imageS {
+            display: none; /* Initially hidden */
+            position: absolute; /* Positioned absolutely */
+            top: 50%; /* Centered vertically */
+            left: 50%; /* Centered horizontally */
+            transform: translate(-50%, -50%); /* Perfectly center */
+            width: 300px; /* Set your desired width */
+            height: auto; /* Maintain aspect ratio */
+            animation: sparkle 1.5s infinite; /* Sparkle animation */
+        }
+
+        /* Sparkle Animation */
+        @keyframes sparkle {
+            0% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.05); /* Slightly increase size */
+            }
+            100% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -174,6 +202,9 @@
         <button id="goBackButton">Go Back to Home</button>
     </section>
 
+    <!-- Secret Hidden Image -->
+    <img id="imageS" src="Assets/sb/sparkling_image.png" alt="ImageS" />
+
     <footer>
         <p>&copy; 2024 Game Idiots. All rights reserved.</p>
     </footer>
@@ -181,6 +212,15 @@
     <script>
         document.getElementById('goBackButton').addEventListener('click', function () {
             window.location.href = '/website';  // Replace with your desired URL
+        });
+
+        // Reveal the secret image on a specific click or event
+        document.addEventListener('click', function (event) {
+            // Check if the user clicked on a specific area or element
+            if (event.target.matches('section')) { // Change this selector as needed
+                const secretImage = document.getElementById('secret-image');
+                secretImage.style.display = 'block'; // Show the image
+            }
         });
     </script>
 
