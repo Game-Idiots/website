@@ -13,7 +13,7 @@
             margin: 0;
             padding: 20px;
             text-align: center;
-            position: relative; /* Added for positioning the image */
+            position: relative;
         }
 
         header {
@@ -105,15 +105,16 @@
             background-color: #2e7d32;
         }
 
+        /* Sparkling Image */
         #imageS {
             display: none; /* Initially hidden */
             position: fixed; /* Fixed position to cover the entire screen */
-            top: 0; /* Start from the top */
-            left: 0; /* Start from the left */
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            object-fit: cover; /* Maintain aspect ratio while covering */
-            z-index: 1000; /* Ensure it appears above other elements */
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1000;
             animation: sparkle 1.5s infinite; /* Sparkle animation */
         }
 
@@ -123,15 +124,61 @@
                 opacity: 0.8;
             }
             50% {
-                opacity: 1; /* Increase opacity */
+                opacity: 1;
             }
             100% {
-                opacity: 0.8; /* Decrease opacity */
+                opacity: 0.8;
+            }
+        }
+
+        /* Adding sparkles using pseudo-elements */
+        #imageS::before, #imageS::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow:
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.6),
+                0 0 30px rgba(255, 255, 255, 0.4);
+            animation: sparkleMovement 2s infinite ease-in-out;
+            z-index: 9999;
+        }
+
+        #imageS::before {
+            top: 30%;
+            left: 20%;
+            animation-delay: 0.5s;
+        }
+
+        #imageS::after {
+            top: 70%;
+            left: 80%;
+            animation-delay: 1s;
+        }
+
+        /* Movement of sparkles */
+        @keyframes sparkleMovement {
+            0% {
+                transform: scale(1) translate(-50%, -50%);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5) translate(-50%, -50%);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1) translate(-50%, -50%);
+                opacity: 1;
             }
         }
 
         #content {
-            display: block; /* Default state for content */
+            display: block;
         }
     </style>
 </head>
@@ -148,7 +195,7 @@
         </nav>
     </header>
 
-    <div id="content"> <!-- Wrap content in a div to hide it -->
+    <div id="content">
         <section id="description" class="mod-description">
             <h2>Mod Title</h2>
             <p>
@@ -200,7 +247,6 @@
             </video>
         </section>
 
-        <!-- Go Back Button Section -->
         <section id="go-back" class="section-container">
             <button id="goBackButton">Go Back to Home</button>
         </section>
@@ -230,7 +276,6 @@
         });
         
         document.addEventListener('click', function (event) {
-            // Check if the user clicked on the body (to activate the image)
             const imageS = document.getElementById('imageS');
             imageS.style.display = 'block'; // Show the image
             document.getElementById('content').style.display = 'none'; // Hide the content
