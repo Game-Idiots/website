@@ -202,8 +202,8 @@
         <button id="goBackButton">Go Back to Home</button>
     </section>
 
-    <!-- Secret Hidden Image -->
-    <img id="imageS" src="Assets/sb/sparkling_image.png" alt="ImageS" />
+   
+    <img id="imageS" class="imageS" src="Assets/sb/sparkling_image.png" alt="imageS" />
 
     <footer>
         <p>&copy; 2024 Game Idiots. All rights reserved.</p>
@@ -213,8 +213,7 @@
         document.getElementById('goBackButton').addEventListener('click', function () {
             window.location.href = '/website';  // Replace with your desired URL
         });
-
-        // Reveal the secret image on a specific click or event
+        
         document.addEventListener('click', function (event) {
             // Check if the user clicked on a specific area or element
             if (event.target.matches('section')) { // Change this selector as needed
