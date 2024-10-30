@@ -213,7 +213,42 @@ footer a:hover {
     margin-left: 20px;
     cursor: pointer;
 }
+        
+#alpha-warning {
+    display: none; /* Initially hidden */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    z-index: 1000;
+}
 
+#alpha-warning-text {
+    animation: flash 1s infinite alternate; /* Flashing effect */
+}
+
+@keyframes flash {
+    0% { color: red; }
+    100% { color: white; }
+}
+
+#alpha-warning button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+#alpha-warning button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+        
 /* Responsive Design */
 @media (max-width: 768px) {
     .project {
@@ -338,7 +373,13 @@ footer a:hover {
             <button type="submit">Send</button>
         </form>
     </section>
-
+    
+<div id="alpha-warning">
+    <h1 class="alpha-warning-text">Website is in Alpha</h1>
+    <p>Are you sure you want to continue?</p>
+    <button onclick="acceptWarning()">Continue</button>
+</div>
+    
     <!-- Footer -->
 <footer>
     <p>&copy; 2024 Game Idiots. All rights reserved.</p>
@@ -388,72 +429,6 @@ footer a:hover {
     });
 </script>
 
-</body>
-
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alpha Warning</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh; /* Full height */
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            background-color: #f0f0f0; /* Light background */
-        }
-
-        #alpha-warning {
-            display: none; /* Initially hidden */
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px; /* Rounded corners */
-            z-index: 1000;
-        }
-
-        h1 {
-            animation: flash 1s infinite alternate; /* Flashing effect */
-        }
-
-        @keyframes flash {
-            0% { color: red; }
-            100% { color: white; }
-        }
-
-        #alpha-warning button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #007bff; /* Blue button */
-            color: white;
-            transition: background-color 0.3s;
-        }
-
-        #alpha-warning button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-        }
-    </style>
-</head>
-<body>
-
-<div id="alpha-warning">
-    <h1>Website is in Alpha</h1>
-    <p>Are you sure you want to continue?</p>
-    <button onclick="acceptWarning()">Continue</button>
-</div>
-
 <script>
     function acceptWarning() {
         // Save in local storage
@@ -467,6 +442,7 @@ footer a:hover {
         document.getElementById('alpha-warning').style.display = 'block';
     }
 </script>
-
+    
 </body>
+
 </html>
