@@ -1,6 +1,6 @@
-# website
+# Website
 
-## To do list
+## To Do List
 
 Email ❌
 
