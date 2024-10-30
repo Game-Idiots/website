@@ -214,7 +214,7 @@ footer a:hover {
     cursor: pointer;
 }
         
-        /* Full-page overlay for the warning */
+/* Hide the overlay initially to prevent flash */
         #alpha-warning {
             display: none; /* Hidden by default */
             position: fixed; /* Full viewport coverage */
@@ -224,20 +224,30 @@ footer a:hover {
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            text-align: center;
-            padding: 20px;
             z-index: 10000; /* Ensure it overlays all other content */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Full viewport height */
-            width: 100vw; /* Full viewport width */
-            overflow: hidden; /* Disable internal scrolling */
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        /* Centered warning content with styling */
+        .alpha-warning-content {
+            text-align: center;
+            max-width: 80%;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
         /* Flashing animation for the warning text */
         .alpha-warning-text {
             animation: flash 1s infinite alternate;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
 
         @keyframes flash {
@@ -447,7 +457,7 @@ footer a:hover {
 </script>
 
 <script>
-    // Function to hide the warning and enable scrolling
+// Function to hide the warning and enable scrolling
     function hideWarning() {
         document.getElementById('alpha-warning').style.display = 'none';
         document.body.classList.remove('no-scroll');
@@ -463,10 +473,9 @@ footer a:hover {
     (function checkWarningStatus() {
         if (localStorage.getItem('alphaWarningAccepted') === 'true') {
             hideWarning();
-            console.log("Warning already accepted: localStorage value =", localStorage.getItem('alphaWarningAccepted'));
         } else {
-            console.log("Showing warning: localStorage value =", localStorage.getItem('alphaWarningAccepted'));
             document.getElementById('alpha-warning').style.display = 'flex';
+            document.body.classList.add('no-scroll');
         }
     })();
 
