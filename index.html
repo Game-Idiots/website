@@ -425,12 +425,16 @@ body.no-scroll {
             });
         }
         
-    function toggleMode() {
-        document.getElementById("theme-toggle").addEventListener("click", function() {
-        document.body.classList.toggle("dark-mode");
+    document.addEventListener("DOMContentLoaded", function() {
+    // Set light mode by default
+    document.body.classList.add("light-mode");
+
+    // Toggle between light mode and dark mode on button click
+    document.getElementById("theme-toggle").addEventListener("click", function() {
         document.body.classList.toggle("light-mode");
+        document.body.classList.toggle("dark-mode");
+    });
 });
-    }
     </script>
 
     <script>
