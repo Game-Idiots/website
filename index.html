@@ -285,15 +285,14 @@ body.light-mode textarea {
     align-items: center; /* Center horizontally */
     height: 100vh; /* Ensure it takes full viewport height */
     width: 100vw; /* Ensure it takes full viewport width */
-    opacity: 1; /* Start fully visible */
-    transition: opacity 0.2s ease; /* Transition for fade-out */
 }
 
-alpha-warning-text-h1 {
+#alpha-warning-text-h1 {
     margin-bottom: 10px; /* Add spacing between title and paragraph */
+    color: red; /* Flash effect removed */
 }
 
-alpha-warning-text-p {
+#alpha-warning-text-p {
     margin-bottom: 20px; /* Add spacing between paragraph and button */
 }
 
@@ -523,26 +522,32 @@ themeToggle.addEventListener('click', toggleTheme);
 </script>
 
 <script>
-function acceptWarning() {
-        // Save a flag in local storage indicating the user has accepted
-        localStorage.setItem('alphaWarningAccepted', 'true');
-        // Hide the warning quickly
-        document.getElementById('alpha-warning').style.opacity = '0'; // Fade out effect
-        setTimeout(() => {
-            document.getElementById('alpha-warning').style.display = 'none';
-        }, 200); // Delay to allow the fade-out to complete
+// Function to hide the warning and enable scrolling
+    function hideWarning() {
+        document.getElementById('alpha-warning').style.display = 'none';
+        document.body.classList.remove('no-scroll');
     }
 
-    // Check if the user has accepted the warning before
-    if (localStorage.getItem('alphaWarningAccepted') !== 'true') {
-        // Show the warning if it hasn't been accepted
-        document.getElementById('alpha-warning').style.display = 'flex';
-    } else {
-        // Hide the warning immediately if accepted before
-        document.getElementById('alpha-warning').style.opacity = '0';
-        setTimeout(() => {
-            document.getElementById('alpha-warning').style.display = 'none';
-        }, 0); // No delay for immediate hide
+    // Function to handle the "Continue" button click
+    function acceptWarning() {
+        localStorage.setItem('alphaWarningAccepted', 'true'); // Set flag in localStorage
+        hideWarning();
+    }
+
+    // Check localStorage and show/hide warning on load
+    (function checkWarningStatus() {
+        if (localStorage.getItem('alphaWarningAccepted') === 'true') {
+            hideWarning();
+        } else {
+            document.getElementById('alpha-warning').style.display = 'flex';
+            document.body.classList.add('no-scroll');
+        }
+    })();
+
+    // Attach the click event after DOM is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('continueButton').addEventListener("click", acceptWarning);
+    });
 </script>
     
 </body>
