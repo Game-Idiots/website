@@ -399,23 +399,50 @@ footer a:hover {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpha Warning</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full height */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            background-color: #f0f0f0; /* Light background */
+        }
+
         #alpha-warning {
             display: none; /* Initially hidden */
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
             padding: 20px;
+            border-radius: 10px; /* Rounded corners */
             z-index: 1000;
         }
+
+        h1 {
+            animation: flash 1s infinite alternate; /* Flashing effect */
+        }
+
+        @keyframes flash {
+            0% { color: red; }
+            100% { color: white; }
+        }
+
         #alpha-warning button {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff; /* Blue button */
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        #alpha-warning button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
         }
     </style>
 </head>
