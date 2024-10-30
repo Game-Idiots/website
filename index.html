@@ -185,9 +185,17 @@ footer a:hover {
     color: #ff007f;
 }
 
+/* Light Mode (default) */
 .light-mode {
-    background-color: #fff;
-    color: #fff;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #101010;
+    color: #cfcfcf;
 }
         
 /* Alert Box */
@@ -419,10 +427,13 @@ body.no-scroll {
                 behavior: 'smooth'
             });
         }
-
-        document.getElementById('theme-toggle').addEventListener('click', function () {
-            document.body.classList.toggle('light-mode');
-        });
+        
+    function toggleMode() {
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+        document.body.classList.toggle("dark-mode");
+        document.body.classList.toggle("light-mode");
+});
+    }
     </script>
 
     <script>
