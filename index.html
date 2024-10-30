@@ -185,14 +185,49 @@ footer a:hover {
     color: #ff007f;
 }
 
+/* Light Mode */
 body.light-mode {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f4f4f4; /* Light background */
+    color: #333; /* Dark text color */
 }
 
-body.dark-mode {
-    background-color: #101010;
-    color: #cfcfcf;
+body.light-mode header {
+    background-color: #ffffff; /* Light header */
+    color: #333; /* Dark text color */
+}
+
+body.light-mode nav ul {
+    background-color: #eaeaea; /* Light nav background */
+}
+
+body.light-mode nav ul li a {
+    color: #333; /* Dark link color */
+}
+
+body.light-mode section {
+    background: linear-gradient(145deg, #ffffff, #e0e0e0); /* Light section background */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .project {
+    background-color: #ffffff; /* Light project background */
+    color: #333; /* Dark text color */
+}
+
+body.light-mode .project .rating {
+    color: #ffbf00; /* Bright gold for stars */
+}
+
+body.light-mode footer {
+    background-color: #eaeaea; /* Light footer background */
+    color: #333; /* Dark text color */
+}
+
+body.light-mode input, 
+body.light-mode textarea {
+    background-color: #ffffff; /* Light input background */
+    color: #333; /* Dark text color */
+    border: 1px solid #333; /* Dark border */
 }
         
 /* Alert Box */
@@ -425,15 +460,20 @@ body.no-scroll {
             });
         }
         
-    document.addEventListener("DOMContentLoaded", function() {
-    // Set light mode by default
-    document.body.classList.add("light-mode");
+    // Get the theme toggle button
+const themeToggleButton = document.getElementById('theme-toggle');
 
-    // Toggle between light mode and dark mode on button click
-    document.getElementById("theme-toggle").addEventListener("click", function() {
-        document.body.classList.toggle("light-mode");
-        document.body.classList.toggle("dark-mode");
-    });
+// Add click event listener to the button
+themeToggleButton.addEventListener('click', () => {
+    // Toggle the light mode class on the body
+    document.body.classList.toggle('light-mode');
+
+    // Change button text based on current theme
+    if (document.body.classList.contains('light-mode')) {
+        themeToggleButton.textContent = 'Switch to Dark Mode'; // Change to dark mode
+    } else {
+        themeToggleButton.textContent = 'Switch to Light Mode'; // Change to light mode
+    }
 });
     </script>
 
