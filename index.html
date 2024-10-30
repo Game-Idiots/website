@@ -440,13 +440,13 @@ footer a:hover {
 
 <script>
     function acceptWarning() {
-        // Save a flag in local storage indicating the user has accepted
+        // Set a flag in localStorage to mark the warning as accepted
         localStorage.setItem('alphaWarningAccepted', 'true');
         // Hide the warning
         document.getElementById('alpha-warning').style.display = 'none';
     }
 
-    // Check if the user has accepted the warning before
+    // Check if the warning has been accepted before
     if (localStorage.getItem('alphaWarningAccepted') !== 'true') {
         // Show the warning if it hasn't been accepted
         document.getElementById('alpha-warning').style.display = 'flex';
