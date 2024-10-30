@@ -284,7 +284,7 @@ footer a:hover {
     </style>
 </head>
 
-<body>
+<body class="no-scroll">
     
     <!-- Alert Box -->
     <div id="alert-box" style="display: none;">
@@ -447,25 +447,32 @@ footer a:hover {
 </script>
 
 <script>
+    // Function to hide the warning and enable scrolling
+    function hideWarning() {
+        document.getElementById('alpha-warning').style.display = 'none';
+        document.body.classList.remove('no-scroll');
+    }
+
+    // Function to handle the "Continue" button click
+    function acceptWarning() {
+        localStorage.setItem('alphaWarningAccepted', 'true'); // Set flag in localStorage
+        hideWarning();
+    }
+
+    // Check localStorage and show/hide warning on load
+    (function checkWarningStatus() {
+        if (localStorage.getItem('alphaWarningAccepted') === 'true') {
+            hideWarning();
+            console.log("Warning already accepted: localStorage value =", localStorage.getItem('alphaWarningAccepted'));
+        } else {
+            console.log("Showing warning: localStorage value =", localStorage.getItem('alphaWarningAccepted'));
+            document.getElementById('alpha-warning').style.display = 'flex';
+        }
+    })();
+
+    // Attach the click event after DOM is loaded
     document.addEventListener("DOMContentLoaded", function () {
-        const warningDiv = document.getElementById('alpha-warning');
-        const continueButton = document.getElementById('continueButton');
-
-        // Function to handle the "Continue" button click
-        function acceptWarning() {
-            localStorage.setItem('alphaWarningAccepted', 'true'); // Mark as accepted
-            warningDiv.style.display = 'none'; // Hide the warning
-            document.body.classList.remove('no-scroll'); // Re-enable scrolling
-        }
-
-        // Show the warning if not accepted, and prevent scrolling
-        if (localStorage.getItem('alphaWarningAccepted') !== 'true') {
-            warningDiv.style.display = 'flex'; // Show warning
-            document.body.classList.add('no-scroll'); // Disable scrolling
-        }
-
-        // Add click event listener to the "Continue" button
-        continueButton.addEventListener("click", acceptWarning);
+        document.getElementById('continueButton').addEventListener("click", acceptWarning);
     });
 </script>
     
