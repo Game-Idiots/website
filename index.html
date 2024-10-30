@@ -214,49 +214,57 @@ footer a:hover {
     cursor: pointer;
 }
         
-#alpha-warning {
-    display: none; /* Initially hidden */
-    position: absolute; /* Use absolute positioning */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    padding: 20px;
-    z-index: 1000;
-    display: flex; /* Use flexbox to center content */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Ensure it takes full viewport height */
-    width: 100vw; /* Ensure it takes full viewport width */
-}
+        /* Full-page overlay for the warning */
+        #alpha-warning {
+            display: none; /* Hidden by default */
+            position: fixed; /* Full viewport coverage */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            z-index: 10000; /* Ensure it overlays all other content */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
+            overflow: hidden; /* Disable internal scrolling */
+        }
 
-#alpha-warning-text{
-    animation: flash 1s infinite alternate; /* Flashing effect */
-}
+        /* Flashing animation for the warning text */
+        .alpha-warning-text {
+            animation: flash 1s infinite alternate;
+        }
 
-@keyframes flash {
-    0% { color: red; }
-    100% { color: white; }
-}
+        @keyframes flash {
+            0% { color: red; }
+            100% { color: white; }
+        }
 
-#alpha-warning button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff; /* Blue button */
-    color: white;
-    transition: background-color 0.3s;
-}
+        #alpha-warning button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
 
-#alpha-warning button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
+        #alpha-warning button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Disable page scrolling when warning is active */
+        body.no-scroll {
+            overflow: hidden;
+        }
         
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -445,14 +453,15 @@ footer a:hover {
 
         // Function to handle the "Continue" button click
         function acceptWarning() {
-            localStorage.setItem('alphaWarningAccepted', 'true');
-            warningDiv.style.display = 'none';
+            localStorage.setItem('alphaWarningAccepted', 'true'); // Mark as accepted
+            warningDiv.style.display = 'none'; // Hide the warning
+            document.body.classList.remove('no-scroll'); // Re-enable scrolling
         }
 
-        // Check if the warning has been accepted before
+        // Show the warning if not accepted, and prevent scrolling
         if (localStorage.getItem('alphaWarningAccepted') !== 'true') {
-            // Show the warning if it hasn't been accepted
-            warningDiv.style.display = 'flex';
+            warningDiv.style.display = 'flex'; // Show warning
+            document.body.classList.add('no-scroll'); // Disable scrolling
         }
 
         // Add click event listener to the "Continue" button
