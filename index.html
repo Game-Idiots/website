@@ -216,15 +216,24 @@ footer a:hover {
         
 #alpha-warning {
     display: none; /* Initially hidden */
+    position: absolute; /* Use absolute positioning */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     text-align: center;
     padding: 20px;
-    border-radius: 10px; /* Rounded corners */
     z-index: 1000;
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Ensure it takes full viewport height */
+    width: 100vw; /* Ensure it takes full viewport width */
 }
 
-#alpha-warning-text {
+#alpha-warning-text{
     animation: flash 1s infinite alternate; /* Flashing effect */
 }
 
