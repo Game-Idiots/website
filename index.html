@@ -386,7 +386,7 @@ footer a:hover {
 <div id="alpha-warning">
     <h1 class="alpha-warning-text">Website is in Alpha</h1>
     <p>Are you sure you want to continue?</p>
-    <button onclick="acceptWarning()">Continue</button>
+    <button id="continueButton">Continue</button>
 </div>
     
     <!-- Footer -->
@@ -439,18 +439,25 @@ footer a:hover {
 </script>
 
 <script>
-    function acceptWarning() {
-        // Set a flag in localStorage to mark the warning as accepted
-        localStorage.setItem('alphaWarningAccepted', 'true');
-        // Hide the warning
-        document.getElementById('alpha-warning').style.display = 'none';
-    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const warningDiv = document.getElementById('alpha-warning');
+        const continueButton = document.getElementById('continueButton');
 
-    // Check if the warning has been accepted before
-    if (localStorage.getItem('alphaWarningAccepted') !== 'true') {
-        // Show the warning if it hasn't been accepted
-        document.getElementById('alpha-warning').style.display = 'flex';
-    }
+        // Function to handle the "Continue" button click
+        function acceptWarning() {
+            localStorage.setItem('alphaWarningAccepted', 'true');
+            warningDiv.style.display = 'none';
+        }
+
+        // Check if the warning has been accepted before
+        if (localStorage.getItem('alphaWarningAccepted') !== 'true') {
+            // Show the warning if it hasn't been accepted
+            warningDiv.style.display = 'flex';
+        }
+
+        // Add click event listener to the "Continue" button
+        continueButton.addEventListener("click", acceptWarning);
+    });
 </script>
     
 </body>
