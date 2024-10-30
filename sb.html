@@ -132,61 +132,47 @@
             margin-top: 50px; /* Add margin to avoid overlap (same as alert-box height) */
         }
 
-        /* Hide the overlay initially to prevent flash */
         #alpha-warning {
-            display: none; /* Hidden by default */
-            position: fixed; /* Full viewport coverage */
+            display: none; /* Initially hidden */
+            position: fixed; /* Full-screen coverage */
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            z-index: 10000; /* Ensure it overlays all other content */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        /* Centered warning content with styling */
-        .alpha-warning-content {
             text-align: center;
-            max-width: 80%;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            height: 100vh; /* Ensure it takes full viewport height */
+            width: 100vw; /* Ensure it takes full viewport width */
         }
 
-        /* Flashing animation for the warning text */
-        .alpha-warning-text {
-            animation: flash 1s infinite alternate;
-            font-size: 2em;
-            margin-bottom: 10px;
+        #alpha-warning-text-h1 {
+            margin-bottom: 10px; /* Add spacing between title and paragraph */
+            color: red; /* Flash effect removed */
         }
 
-        @keyframes flash {
-            0% { color: red; }
-            100% { color: white; }
+        #alpha-warning-text-p {
+            margin-bottom: 20px; /* Add spacing between paragraph and button */
         }
 
         #alpha-warning button {
-            margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color: #007bff;
+            background-color: #007bff; /* Blue button */
             color: white;
             transition: background-color 0.3s;
         }
 
         #alpha-warning button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue on hover */
         }
 
         /* Disable page scrolling when warning is active */
@@ -199,8 +185,8 @@
 
 <div id="alpha-warning">
     <div class="alpha-warning-content">
-        <h1 class="alpha-warning-text">Website is in Alpha</h1>
-        <p>Are you sure you want to continue?</p>
+        <h1 class="alpha-warning-text-h1">Website is in Alpha</h1>
+        <p class="alpha-warning-text-p">Are you sure you want to continue?</p>
         <button id="continueButton">Continue</button>
     </div>
 </div>
