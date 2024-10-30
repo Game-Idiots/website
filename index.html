@@ -391,3 +391,55 @@ footer a:hover {
 </body>
 
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Warning</title>
+    <style>
+        #alpha-warning {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+        #alpha-warning button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="alpha-warning">
+    <h1>Website is in Alpha</h1>
+    <p>Are you sure you want to continue?</p>
+    <button onclick="acceptWarning()">Continue</button>
+</div>
+
+<script>
+    function acceptWarning() {
+        // Save in local storage
+        localStorage.setItem('alphaWarningAccepted', 'true');
+        // Hide the warning
+        document.getElementById('alpha-warning').style.display = 'none';
+    }
+
+    // Check if the warning has been accepted before
+    if (!localStorage.getItem('alphaWarningAccepted')) {
+        document.getElementById('alpha-warning').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
