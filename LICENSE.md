@@ -28,3 +28,5 @@ Prohibitions
 	•	Warranty: The Software is provided without any warranty of any kind.
 	•	Illegal Use: The software may not be used for any activities that violate applicable laws or ethical guidelines.
 	•	Malware Distribution: You may not distribute this software or any of its modifications with malicious code, malware, or other harmful software.
+	•	High-Risk Environments: The software may not be used in high-risk environments, including but not limited to medical devices, life-support systems, or critical infrastructure, without explicit prior written consent from the authors.
+ 
