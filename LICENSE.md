@@ -26,3 +26,5 @@ Prohibitions
 	•	Patent Use: This License does not grant any rights to use any patents that may be associated with the Software.
 	•	Liability: The authors are not liable for any damages arising from the use of this Software.
 	•	Warranty: The Software is provided without any warranty of any kind.
+	•	Illegal Use: The software may not be used for any activities that violate applicable laws or ethical guidelines.
+	•	Malware Distribution: You may not distribute this software or any of its modifications with malicious code, malware, or other harmful software.
