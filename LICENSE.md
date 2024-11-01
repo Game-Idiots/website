@@ -22,7 +22,7 @@ The Software is provided “as is”, without warranty of any kind, express or i
 Prohibitions
 
 	•	Trademark Use: You may not use any trademarks associated with this software without prior written permission.
-	•	Private Use Condition: Private use of the Software is permitted only if it is not publicly distributed, published, or made accessible to any third parties. Any private modifications must remain confidential and cannot be shared, posted, or distributed outside of private use.
+	•	Private Use: Private use of the Software is permitted only if it is not publicly distributed, published, or made accessible to any third parties. Any private modifications must remain confidential and cannot be shared, posted, or distributed outside of private use.
 	•	Patent Use: This License does not grant any rights to use any patents that may be associated with the Software.
 	•	Liability: The authors are not liable for any damages arising from the use of this Software.
 	•	Warranty: The Software is provided without any warranty of any kind.
