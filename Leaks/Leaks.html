@@ -34,6 +34,8 @@
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
             max-width: 90%;
             margin: 0 auto;
+            opacity: 1;
+            transition: opacity 1s ease;
         }
         .error-code {
             font-size: 10vw;
@@ -55,12 +57,23 @@
     </style>
 </head>
 <body>
-    <div class="error-container">
+    <div class="error-container" id="errorContainer">
         <h1>Leak Failure</h1>
         <p class="error-code">HTTP Error 404</p>
         <p>Total failed to get 11</p>
         <p class="suggestion">Warning: Possible file leak detected!</p>
         <p>Please try again later!</p>
     </div>
+
+    <script>
+        // Set a timer to fade out the message and redirect after 5 seconds
+        setTimeout(function() {
+            var container = document.getElementById('errorContainer');
+            container.style.opacity = 0; // Start fading out
+            setTimeout(function() {
+                window.location.href = 'https://www.example.com'; // Replace with your URL
+            }, 1000); // Wait for the fade-out transition to complete
+        }, 5000); // Wait 5 seconds before starting the fade-out
+    </script>
 </body>
 </html>
