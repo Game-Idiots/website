@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Rock%20Salt&display=swap" rel="stylesheet">
     <title>Game Idiots</title>
 
     <style>
-        /* General Styles */
+       /* General Styles */
 body {
-    font-family: 'Orbitron', Arial, sans-serif; /* Add a futuristic font */
+    font-family: 'Rock Salt', cursive; /* Spooky font */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #121212; /* Dark background */
-    color: #00ffcc; /* Neon text color */
+    background-color: #2b0e0e; /* Dark background for Halloween */
+    color: #fff; /* White text for contrast */
     transition: background-color 0.5s, color 0.5s;
     overflow-x: hidden;
     user-select: none;
@@ -26,31 +27,27 @@ html {
     user-select: none;
 }
 
-.project, header, footer, section {
-    user-select: none;
-}
-
 /* Header */
 header {
-    background-color: #1b1b1b;
-    color: #00ffcc;
+    background-color: #3f0a0a; /* Dark red background */
+    color: #ffcc00; /* Yellow text for visibility */
     padding: 20px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
-    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.5);
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.5);
 }
 
 /* Navigation Bar */
 nav ul {
-    background-color: #222;
+    background-color: #5e1a1a; /* Darker red */
     padding: 10px;
     display: flex;
     justify-content: center;
     list-style-type: none;
     margin: 0;
     flex-wrap: wrap;
-    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
 }
 
 nav ul li {
@@ -58,14 +55,14 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #00ffcc;
+    color: #ffcc00; /* Yellow links */
     text-decoration: none;
     font-size: 1.2em;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #ff007f;
+    color: #ff5500; /* Orange on hover */
     transform: scale(1.1);
 }
 
@@ -73,25 +70,25 @@ nav ul li a:hover {
 section {
     padding: 40px;
     text-align: center;
-    background: linear-gradient(145deg, #1e1e1e, #2b2b2b);
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+    background: linear-gradient(145deg, #3b0d0d, #4a1f1f);
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
 }
 
 /* Project Cards */
 .project {
-    background-color: #1f1f1f;
+    background-color: #3f0a0a; /* Dark red */
     margin: 20px auto;
     padding: 20px;
     width: 100%;
     max-width: 800px;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.5);
+    box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.5);
 }
 
 .project:hover {
     transform: scale(1.05);
-    box-shadow: 0px 0px 20px rgba(0, 255, 204, 0.7);
+    box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.7);
 }
 
 .project img {
@@ -114,28 +111,28 @@ section {
 button {
     padding: 10px 20px;
     margin: 20px;
-    background: linear-gradient(45deg, #00ffcc, #ff007f);
+    background: linear-gradient(45deg, #ffcc00, #ff5500);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0px 4px 10px rgba(255, 0, 127, 0.6), 0px 0px 5px #00ffcc;
+    box-shadow: 0px 4px 10px rgba(255, 0, 127, 0.6), 0px 0px 5px #ffcc00;
 }
 
 button:hover {
-    background: linear-gradient(45deg, #ff007f, #00ffcc);
+    background: linear-gradient(45deg, #ff5500, #ffcc00);
     transform: scale(1.05);
 }
 
 /* Testimonial */
 .testimonial {
-    background-color: #222;
+    background-color: #5e1a1a; /* Darker red */
     padding: 20px;
     margin: 10px auto;
     border-radius: 10px;
     max-width: 600px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
 }
 
 /* Contact Form */
@@ -149,104 +146,45 @@ input, textarea {
     width: 80%;
     margin: 10px;
     padding: 10px;
-    border: 1px solid #00ffcc;
+    border: 1px solid #ffcc00; /* Yellow border */
     border-radius: 5px;
     max-width: 500px;
-    background-color: #1e1e1e;
-    color: #e0e0e0;
+    background-color: #4a1f1f; /* Darker background for inputs */
+    color: #fff; /* White text */
     transition: box-shadow 0.3s ease;
 }
 
 input:focus, textarea:focus {
     outline: none;
-    box-shadow: 0 0 10px #00ffcc;
+    box-shadow: 0 0 10px #ffcc00; /* Yellow glow */
 }
 
 /* Footer */
 footer {
-    background-color: #222;
-    color: #00ffcc;
+    background-color: #5e1a1a; /* Dark red */
+    color: #ffcc00; /* Yellow text */
     text-align: center;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 -4px 15px rgba(0, 255, 204, 0.3);
+    box-shadow: 0 -4px 15px rgba(255, 204, 0, 0.3);
 }
 
 footer p, footer a {
-    color: #00ffcc;
+    color: #ffcc00; /* Yellow text */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: #ff007f;
+    color: #ff5500; /* Orange on hover */
 }
 
-/* Light Mode */
-body.light-mode {
-    background-color: #f4f4f4; /* Light background */
-    color: #333; /* Dark text color */
-}
-
-body.light-mode header {
-    background-color: #ffffff; /* Light header */
-    color: #333; /* Dark text color */
-}
-
-body.light-mode nav ul {
-    background-color: #eaeaea; /* Light nav background */
-}
-
-body.light-mode nav ul li a {
-    color: #333; /* Dark link color */
-}
-
-body.light-mode section {
-    background: linear-gradient(145deg, #ffffff, #e0e0e0); /* Light section background */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-body.light-mode .project {
-    background-color: #ffffff; /* Light project background */
-    color: #333; /* Dark text color */
-}
-
-body.light-mode .project .rating {
-    color: #ffbf00; /* Bright gold for stars */
-}
-
-body.light-mode footer {
-    background-color: #eaeaea; /* Light footer background */
-    color: #333; /* Dark text color */
-}
-
-body.light-mode footer p, 
-body.light-mode footer a {
-    color: #333; /* Dark text color for footer in light mode */
-}
-
-body.light-mode .testimonial {
-    background-color: #ffffff; /* Light testimonial background */
-    color: #333; /* Dark text color for testimonials in light mode */
-}
-
-body.light-mode .testimonial p {
-    color: #333; /* Dark text color for testimonial content */
-}
-
-body.light-mode input, 
-body.light-mode textarea {
-    background-color: #ffffff; /* Light input background */
-    color: #333; /* Dark text color */
-    border: 1px solid #333; /* Dark border */
-}
-        
 /* Alert Box */
 #alert-box {
-    background-color: #ff007f;
+    background-color: #ff5500; /* Bright orange */
     color: #fff;
     padding: 15px;
     text-align: center;
@@ -267,7 +205,7 @@ body.light-mode textarea {
     margin-left: 20px;
     cursor: pointer;
 }
-        
+
 #alpha-warning {
     display: none; /* Initially hidden */
     position: fixed; /* Full-screen coverage */
@@ -302,13 +240,13 @@ body.light-mode textarea {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #007bff; /* Blue button */
+    background-color: #ffcc00; /* Yellow button */
     color: white;
     transition: background-color 0.3s;
 }
 
 #alpha-warning button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #ff5500; /* Darker orange on hover */
 }
 
 /* Disable page scrolling when warning is active */
@@ -338,14 +276,13 @@ body.no-scroll {
     
     <!-- Alert Box -->
     <div id="alert-box" style="display: none;">
-        <p>This website is deeply in progress! <span id="close-alert" style="cursor: pointer;">&times;</span></p>
+        <p>This website uses LocalStorage! <span id="close-alert" style="cursor: pointer;">&times;</span></p>
     </div>
     
     <!-- Header -->
     <header>
         <h1>Game Idiots</h1>
         <p>Your hub for the latest gaming projects!</p>
-        <button id="theme-toggle">Light Mode</button>
     </header>
 
     <!-- Navigation Bar -->
@@ -473,35 +410,6 @@ body.no-scroll {
                 behavior: 'smooth'
             });
         }
-        
-  // Get the button element
-const themeToggle = document.getElementById('theme-toggle');
-
-// Check for saved theme in local storage
-if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light-mode');
-    themeToggle.textContent = 'Dark Mode'; // Set button text to Dark Mode
-} else {
-    themeToggle.textContent = 'Light Mode'; // Set button text to Light Mode
-}
-
-// Function to toggle between light and dark mode
-function toggleTheme() {
-    if (document.body.classList.contains('light-mode')) {
-        // Switch to dark mode
-        document.body.classList.remove('light-mode');
-        localStorage.removeItem('theme'); // Remove theme from local storage
-        themeToggle.textContent = 'Light Mode'; // Update button text
-    } else {
-        // Switch to light mode
-        document.body.classList.add('light-mode');
-        localStorage.setItem('theme', 'light'); // Save theme in local storage
-        themeToggle.textContent = 'Dark Mode'; // Update button text
-    }
-}
-
-// Add event listener to the button
-themeToggle.addEventListener('click', toggleTheme);
     </script>
 
     <script>
