@@ -14,6 +14,6 @@ Colten Sus: Hey guys i found something with a number on it, it says 739__ oh wai
 
 # Logs
 
-[Failed]: "Logs/Logs.html at Line:404"
+[Failed]: "Logs/Logs.html/atLine:404"
 
 Colten Sus: Hey user! There seems to be a problem with the "Logs" section on "README.md"! So um user could you edit or copy the "README.md" and fix it?
