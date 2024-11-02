@@ -4,7 +4,7 @@ Version 1.1
 
 Copyright (c) 2024 Game Idiots
 
-Approved by: Colten Sus ("6e(6-9c&,.bb!d3?-2388a4;;a.(5$:d:e960e8“.076’05’@&(9e516bc!a,1a9,b?6ff);(163c8;@0:8b?.,&’e:-,0,.“-0“3(1/6e7b;’&!75!7)):da;“!0-(0")
+Approved by: Colten Sus {6e(6-9c&,.bb!d3?-2388a4;;a.(5$:d:e960e8“.076’05’@&(9e516bc!a,1a9,b?6ff);(163c8;@0:8b?.,&’e:-,0,.“-0“3(1/6e7b;’&!75!7)):da;“!0-(0}
 
 Permission
 
