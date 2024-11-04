@@ -63,20 +63,21 @@
             max-height: 300px;
         }
     </style>
-    <!-- Prism.js for Syntax Highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-c.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-cpp.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-php.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-sql.min.js"></script>
-    <!-- Pyodide for Python Execution -->
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
-    <!-- TypeScript Compiler -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/4.5.2/typescript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Syntax Highlighting and Language Support -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-cpp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-php.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-sql.min.js"></script>
+
+<!-- Pyodide for Python Execution -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+
+<!-- TypeScript Compiler -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/4.5.2/typescript.min.js"></script>
 </head>
 <body>
     <h2>Multi-Language Code Playground</h2>
@@ -99,14 +100,17 @@
         <div class="editor">
             <label for="html">HTML</label>
             <textarea id="html" placeholder="Write HTML here..."></textarea>
+            <button onclick="updateOutput()">Run HTML</button>
         </div>
         <div class="editor">
             <label for="css">CSS</label>
             <textarea id="css" placeholder="Write CSS here..."></textarea>
+            <button onclick="updateOutput()">Run CSS</button>
         </div>
         <div class="editor">
             <label for="js">JavaScript</label>
             <textarea id="js" placeholder="Write JavaScript here..."></textarea>
+            <button onclick="updateOutput()">Run JavaScript</button>
         </div>
         <div class="editor">
             <label for="typescript">TypeScript</label>
@@ -122,7 +126,7 @@
         </div>
     </div>
     <iframe id="output"></iframe>
-    <iframe id="groupedOutput" style="display:none;"></iframe> <!-- For grouped file output -->
+    <iframe id="groupedOutput" style="display:none;"></iframe>
 
     <script>
         const htmlEditor = document.getElementById('html');
@@ -245,7 +249,6 @@
         }
 
         function groupFiles() {
-            // Generate output based on HTML, CSS, and JS from grouped files
             const html = htmlEditor.value;
             const css = `<style>${cssEditor.value}</style>`;
             const js = `<script>${jsEditor.value}<\/script>`;
