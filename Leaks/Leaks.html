@@ -96,7 +96,7 @@
         // Array of status messages with status details
         const messages = [
             { text: "Attempting leaking files", detail: "success" },
-            { text: "Files found", detail: "success" },
+            { text: "Files found" },  // No success/failure detail for this message
             { text: "Now uploading to user", detail: "failed" },
             { text: "CRITICAL ER-ER-ER-ERR-ERROR!", detail: "", isError: true },
             { text: "A unknown error has occurred with leaking the files…", detail: "", isError: true },
@@ -126,7 +126,7 @@
                     }
                     
                     setTimeout(() => {
-                        // Show the detail message (success/failure) after main message
+                        // Show the detail message (success/failure) after main message if present
                         if (messages[i].detail) {
                             statusDetailContainer.textContent = `| ${messages[i].detail}`;
                             statusDetailContainer.className = `status-detail ${messages[i].detail === "success" ? "success" : ""}`;
