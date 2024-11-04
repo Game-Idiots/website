@@ -162,13 +162,24 @@
         }
 
         function loadExample() {
-            htmlEditor.value = "<h1>Hello, World!</h1>\n<script src='script.js'></script>";
-            cssEditor.value = "h1 { color: blue; text-align: center; }";
-            jsEditor.value = "console.log('Hello from JavaScript!')";
-            tsEditor.value = "let message: string = 'Hello from TypeScript!'; console.log(message);";
-            pythonEditor.value = "print('Hello from Python')";
-            updateOutput();
-        }
+    // Set HTML example
+    htmlEditor.value = "<h1>Hello, World!</h1>\n<script src='script.js'></script>";
+    
+    // Set CSS example
+    cssEditor.value = "h1 { color: blue; text-align: center; }";
+    
+    // Set JavaScript example
+    jsEditor.value = "console.log('Hello from JavaScript!');";
+    
+    // Set TypeScript example
+    tsEditor.value = "let message: string = 'Hello from TypeScript!'; console.log(message);";
+    
+    // Set Python example
+    pythonEditor.value = "print('Hello from Python')";
+    
+    // Update output display
+    updateOutput();
+}
 
         async function runPython() {
             if (!pyodideReady) {
