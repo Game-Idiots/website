@@ -6,17 +6,45 @@
     <title>Nyaa~ Error!</title>
     <style>
         body {
-            background-color: #ffe6f2;
-            color: #ff66b2;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #000;
+            color: #33ff33;
+            font-family: 'Courier New', Courier, monospace;
             text-align: center;
             padding: 20px;
             margin: 0;
             overflow: hidden;
+            transition: background-color 1s ease;
+        }
+        .status-message, .status-detail {
+            font-size: 5vw;
+            margin: 10px 0;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+        .status-detail {
+            color: #ff0000; /* Different color for status details */
+        }
+        .success {
+            color: #33ff33; /* Green color for success */
+        }
+        .error-message {
+            color: #ff3333; /* Red color for critical and unknown error */
+            font-weight: bold;
+        }
+        .error-container {
+            display: none;
+            border: 3px solid #ff99cc;
+            border-radius: 20px;
+            padding: 30px;
+            background-color: #ffe6f2;
+            box-shadow: 0 0 20px rgba(255, 102, 178, 0.5);
+            max-width: 90%;
+            margin: 0 auto;
+            color: #ff66b2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
         }
         h1 {
             font-size: 10vw;
-            margin-bottom: 10px;
             color: #ff66b2;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
@@ -24,31 +52,19 @@
             font-size: 5vw;
             margin: 10px 0;
         }
-        .error-container {
-            border: 3px solid #ff99cc;
-            border-radius: 20px;
-            padding: 30px;
-            background-color: #ffe6f2;
-            display: inline-block;
-            box-shadow: 0 0 20px rgba(255, 102, 178, 0.5);
-            max-width: 90%;
-            margin: 0 auto;
-            opacity: 1;
-            transition: opacity 1s ease;
-        }
         .error-code {
             font-size: 8vw;
             font-weight: bold;
-            color: #ff66b2;
             position: relative;
             display: inline-block;
+            color: #ff66b2;
         }
         .error-code::after {
             content: '🐾';
-            font-size: 3vw; /* Increase paw size */
+            font-size: 3vw;
             position: absolute;
             top: -10px;
-            right: -40px; /* Adjust position to make it more visible */
+            right: -40px;
         }
         .suggestion {
             color: #333333;
@@ -61,14 +77,13 @@
         .suggestion::after {
             content: " ~uwu~";
         }
-        /* Fade-Out Animation */
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
     </style>
 </head>
 <body>
+    <div id="statusMessages" class="status-message"></div>
+    <div id="statusDetail" class="status-detail"></div>
+    
+    <!-- Furry/Neko styled error message -->
     <div class="error-container" id="errorContainer">
         <h1>Oopsie! Nyaa~</h1>
         <p class="error-code">Error 404</p>
@@ -78,15 +93,60 @@
     </div>
 
     <script>
-        // Set a timer to fade out the message and redirect after 5 seconds
-        setTimeout(function() {
-            var container = document.getElementById('errorContainer');
-            container.style.opacity = 0; // Start fading out
-            setTimeout(function() {
-                window.location.href = '/website'; // Replace with your URL
-            }, 1000); // Wait for the fade-out transition to complete
-        }, 5000); // Wait 5 seconds before starting the fade-out
+        // Array of status messages with status details
+        const messages = [
+            { text: "Attempting leaking files", detail: "success" },
+            { text: "Files found", detail: "success" },
+            { text: "Now uploading to user", detail: "failed" },
+            { text: "CRITICAL ER-ER-ER-ERR-ERROR!", detail: "", isError: true },
+            { text: "A unknown error has occurred with leaking the files…", detail: "", isError: true },
+            { text: "Now attempting to get styles to console", detail: "failed" },
+            { text: "Now doing backup styles to console", detail: "success" },
+            { text: "Now showing status", detail: "success" }
+        ];
+        
+        // Display status messages one by one with status details appearing on delay
+        const statusContainer = document.getElementById('statusMessages');
+        const statusDetailContainer = document.getElementById('statusDetail');
+        const errorContainer = document.getElementById('errorContainer');
+        
+        function showMessages() {
+            let i = 0;
+            function showNextMessage() {
+                if (i < messages.length) {
+                    // Display main message
+                    statusContainer.textContent = messages[i].text;
+                    statusDetailContainer.textContent = ""; // Clear previous detail message
+                    
+                    // Add "error-message" class if it's a critical or unknown error message
+                    if (messages[i].isError) {
+                        statusContainer.classList.add("error-message");
+                    } else {
+                        statusContainer.classList.remove("error-message");
+                    }
+                    
+                    setTimeout(() => {
+                        // Show the detail message (success/failure) after main message
+                        if (messages[i].detail) {
+                            statusDetailContainer.textContent = `| ${messages[i].detail}`;
+                            statusDetailContainer.className = `status-detail ${messages[i].detail === "success" ? "success" : ""}`;
+                        }
+                        i++;
+                        setTimeout(showNextMessage, 2000); // Delay before showing next main message
+                    }, 1000); // Delay for detail message to appear after main message
+                } else {
+                    // Hide console-style messages and transition to furry/neko style
+                    document.body.style.backgroundColor = '#ffe6f2'; // Change background color
+                    statusContainer.style.display = 'none';
+                    statusDetailContainer.style.display = 'none';
+                    errorContainer.style.display = 'block';
+                }
+            }
+            showNextMessage();
+        }
+        
+        // Start displaying messages on page load
+        window.onload = showMessages;
     </script>
-    
 </body>
 </html>
