@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Playground</title>
+    <title>Multi-Language Code Playground</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -71,11 +71,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-cpp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-php.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-sql.min.js"></script>
+    <!-- Pyodide for Python Execution -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
     <!-- TypeScript Compiler -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/4.4.3/typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/4.5.2/typescript.min.js"></script>
 </head>
 <body>
-    <h1>Advanced Code Playground</h1>
+    <h1>Multi-Language Code Playground</h1>
 
     <div class="toolbar">
         <button onclick="resetEditors()">Reset All</button>
@@ -89,33 +91,32 @@
     <div class="file-explorer">
         <h3>File Explorer</h3>
         <div id="fileList"></div>
-        <div class="media-preview" id="mediaPreview"></div>
     </div>
 
     <div class="editor-container">
         <div class="editor">
             <label for="html">HTML</label>
-            <div class="editor-actions">
-                <button onclick="resetSingle('html')">Reset</button>
-                <button onclick="copySingle('html')">Copy</button>
-            </div>
             <textarea id="html" placeholder="Write HTML here..."></textarea>
         </div>
         <div class="editor">
             <label for="css">CSS</label>
-            <div class="editor-actions">
-                <button onclick="resetSingle('css')">Reset</button>
-                <button onclick="copySingle('css')">Copy</button>
-            </div>
             <textarea id="css" placeholder="Write CSS here..."></textarea>
         </div>
         <div class="editor">
             <label for="js">JavaScript</label>
-            <div class="editor-actions">
-                <button onclick="resetSingle('js')">Reset</button>
-                <button onclick="copySingle('js')">Copy</button>
-            </div>
             <textarea id="js" placeholder="Write JavaScript here..."></textarea>
+        </div>
+        <div class="editor">
+            <label for="typescript">TypeScript</label>
+            <textarea id="typescript" placeholder="Write TypeScript here..."></textarea>
+            <button onclick="runTypeScript()">Run TypeScript</button>
+            <pre id="tsOutput"></pre>
+        </div>
+        <div class="editor">
+            <label for="python">Python</label>
+            <textarea id="python" placeholder="Write Python here..."></textarea>
+            <button onclick="runPython()">Run Python</button>
+            <pre id="pythonOutput"></pre>
         </div>
     </div>
     <iframe id="output"></iframe>
@@ -124,10 +125,17 @@
         const htmlEditor = document.getElementById('html');
         const cssEditor = document.getElementById('css');
         const jsEditor = document.getElementById('js');
+        const tsEditor = document.getElementById('typescript');
+        const pythonEditor = document.getElementById('python');
         const outputFrame = document.getElementById('output');
-        const fileList = document.getElementById('fileList');
-        const mediaPreview = document.getElementById('mediaPreview');
+        let pyodideReady = false;
         let files = {};
+
+        async function loadPyodideAndPackages() {
+            self.pyodide = await loadPyodide();
+            pyodideReady = true;
+        }
+        loadPyodideAndPackages();
 
         function updateOutput() {
             const html = htmlEditor.value;
@@ -138,20 +146,14 @@
             outputDoc.open();
             outputDoc.write(content);
             outputDoc.close();
-            localStorage.setItem('html', html);
-            localStorage.setItem('css', cssEditor.value);
-            localStorage.setItem('js', jsEditor.value);
         }
 
         function resetEditors() {
             htmlEditor.value = '';
             cssEditor.value = '';
             jsEditor.value = '';
-            updateOutput();
-        }
-
-        function resetSingle(editorId) {
-            document.getElementById(editorId).value = '';
+            tsEditor.value = '';
+            pythonEditor.value = '';
             updateOutput();
         }
 
@@ -159,73 +161,134 @@
             htmlEditor.value = "<h1>Hello, World!</h1>";
             cssEditor.value = "h1 { color: blue; text-align: center; }";
             jsEditor.value = "console.log('Hello from JavaScript!')";
+            tsEditor.value = "let message: string = 'Hello from TypeScript!'; console.log(message);";
+            pythonEditor.value = "print('Hello from Python')";
             updateOutput();
         }
 
-        function createNewFile() {
-            const fileName = prompt("Enter the new file name with extension:");
-            if (fileName && !files[fileName]) {
-                files[fileName] = "";
-                renderFileList();
-            } else {
-                alert("File already exists or invalid name!");
+        async function runPython() {
+            if (!pyodideReady) {
+                alert("Pyodide is still loading. Please try again shortly.");
+                return;
+            }
+            try {
+                const output = await pyodide.runPythonAsync(pythonEditor.value);
+                document.getElementById("pythonOutput").textContent = output || "Execution successful.";
+            } catch (error) {
+                document.getElementById("pythonOutput").textContent = "Error: " + error;
+            }
+        }
+
+        function runTypeScript() {
+            const tsCode = tsEditor.value;
+            const jsCode = ts.transpileModule(tsCode, { compilerOptions: { module: ts.ModuleKind.None }}).outputText;
+            jsEditor.value = jsCode; // Display transpiled JavaScript in JS editor
+            updateOutput(); // Update output to reflect changes
+            try {
+                eval(jsCode); // Execute transpiled JavaScript
+            } catch (error) {
+                document.getElementById("tsOutput").textContent = "Error: " + error;
             }
         }
 
         function handleFileUpload(event) {
-            const uploadedFiles = event.target.files;
-            for (let file of uploadedFiles) {
+            const filesList = event.target.files;
+            for (let i = 0; i < filesList.length; i++) {
+                const file = filesList[i];
                 const reader = new FileReader();
-                reader.onload = (e) => {
-                    files[file.name] = e.target.result;
-                    renderFileList();
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    if (file.name.endsWith('.html')) {
+                        htmlEditor.value = content;
+                    } else if (file.name.endsWith('.css')) {
+                        cssEditor.value = content;
+                    } else if (file.name.endsWith('.js')) {
+                        jsEditor.value = content;
+                    } else if (file.name.endsWith('.ts')) {
+                        tsEditor.value = content;
+                    } else if (file.name.endsWith('.py')) {
+                        pythonEditor.value = content;
+                    }
+                    files[file.name] = content; // Store file content
+                    updateFileList();
+                    updateOutput();
                 };
                 reader.readAsText(file);
             }
         }
 
-        function renderFileList() {
-            fileList.innerHTML = "";
-            Object.keys(files).forEach(fileName => {
-                const fileEntry = document.createElement("div");
-                fileEntry.innerHTML = `${fileName} <button onclick="openFile('${fileName}')">Open</button> <button onclick="deleteFile('${fileName}')">Delete</button>`;
-                fileList.appendChild(fileEntry);
-            });
-        }
-
-        function openFile(fileName) {
-            const fileContent = files[fileName];
-            const extension = fileName.split('.').pop();
-            if (["html", "css", "js", "ts"].includes(extension)) {
-                document.getElementById(extension).value = fileContent;
-            } else {
-                mediaPreview.innerHTML = `<pre><code class="language-${getLanguageClass(fileName)}">${fileContent}</code></pre>`;
-                Prism.highlightAll();
+        function createNewFile() {
+            const fileName = prompt("Enter file name (with extension, e.g., file.js):");
+            if (fileName) {
+                files[fileName] = ''; // Create a new file with empty content
+                updateFileList();
             }
-            updateOutput();
         }
 
-        function deleteFile(fileName) {
-            delete files[fileName];
-            renderFileList();
-        }
-
-        function getLanguageClass(filename) {
-            const extension = filename.split('.').pop();
-            const languageMap = {
-                'html': 'markup', 'css': 'css', 'js': 'javascript', 'ts': 'typescript',
-                'py': 'python', 'java': 'java', 'c': 'c', 'cpp': 'cpp', 'php': 'php',
-                'sql': 'sql', 'rb': 'ruby', 'swift': 'swift', 'go': 'go', 'pl': 'perl'
-            };
-            return languageMap[extension] || 'plaintext';
+        function updateFileList() {
+            const fileListDiv = document.getElementById('fileList');
+            fileListDiv.innerHTML = '';
+            for (const fileName in files) {
+                const fileDiv = document.createElement('div');
+                fileDiv.textContent = fileName;
+                fileDiv.onclick = function() {
+                    const content = files[fileName];
+                    if (fileName.endsWith('.html')) {
+                        htmlEditor.value = content;
+                    } else if (fileName.endsWith('.css')) {
+                        cssEditor.value = content;
+                    } else if (fileName.endsWith('.js')) {
+                        jsEditor.value = content;
+                    } else if (fileName.endsWith('.ts')) {
+                        tsEditor.value = content;
+                    } else if (fileName.endsWith('.py')) {
+                        pythonEditor.value = content;
+                    }
+                    updateOutput();
+                };
+                fileListDiv.appendChild(fileDiv);
+            }
         }
 
         function downloadCode() {
-            const blob = new Blob([htmlEditor.value, cssEditor.value, jsEditor.value], { type: 'text/plain' });
+            const zip = new JSZip();
+            for (const [fileName, content] of Object.entries(files)) {
+                zip.file(fileName, content);
+            }
+            zip.generateAsync({ type: "blob" }).then(function(content) {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(content);
+                link.download = 'code.zip';
+                link.click();
+            });
+        }
+
+        function copyAll() {
+            const allCode = `
+HTML:
+${htmlEditor.value}
+
+CSS:
+${cssEditor.value}
+
+JavaScript:
+${jsEditor.value}
+
+TypeScript:
+${tsEditor.value}
+
+Python:
+${pythonEditor.value}
+            `;
+            navigator.clipboard.writeText(allCode).then(() => {
+                alert('All code copied to clipboard!');
+            }, (err) => {
+                console.error('Error copying text: ', err);
+            });
         }
 
         updateOutput();
-
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </body>
 </html>
