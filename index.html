@@ -620,8 +620,8 @@ themeToggle.addEventListener('click', toggleTheme);
 <script>
     // Function to enable lockdown mode
 function enableLockdown() {
-    // Check if the lockdown has already been acknowledged
-    if (!localStorage.getItem("lockdownAcknowledged")) {
+    // Check if lockdown mode has been previously disabled
+    if (!localStorage.getItem('lockdownDisabled')) {
         document.getElementById("lockdown-overlay").style.display = "flex";
         document.body.style.overflow = "hidden"; // Prevent scrolling
     }
@@ -629,18 +629,16 @@ function enableLockdown() {
 
 // Function to disable lockdown mode
 function disableLockdown() {
-    localStorage.setItem("lockdownAcknowledged", "true"); // Set local storage to acknowledge lockdown
-    document.getElementById("lockdown-overlay").style.display = "none"; // Hide overlay
+    document.getElementById("lockdown-overlay").style.display = "none";
     document.body.style.overflow = ""; // Re-enable scrolling
+    localStorage.setItem('lockdownDisabled', 'true'); // Store the state in LocalStorage
 }
 
 // Overwrite button event listener
 document.getElementById("overwrite-button").addEventListener("click", disableLockdown);
 
 // Initial lockdown activation (for testing, call this on page load)
-document.addEventListener("DOMContentLoaded", function () {
-    enableLockdown();
-});
+window.onload = enableLockdown;
 </script>
     
 </body>
