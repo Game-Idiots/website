@@ -351,7 +351,7 @@ body.no-scroll {
     margin-bottom: 30px;
 }
 
-#retry-button {
+#overwrite-button {
     padding: 10px 20px;
     font-size: 1.2em;
     background: linear-gradient(45deg, #00ffcc, #ff007f); /* Futuristic button gradient */
@@ -502,7 +502,7 @@ body.no-scroll {
     <div class="lockdown-content">
         <h1>🚨 Lockdown Mode</h1>
         <p>Access Restricted. Please Retry.</p>
-        <button id="retry-button">Retry</button>
+        <button id="overwrite-button">Overwrite</button>
     </div>
 </div>
     
@@ -623,7 +623,7 @@ function disableLockdown() {
 }
 
 // Retry button event listener
-document.getElementById("retry-button").addEventListener("click", disableLockdown);
+document.getElementById("overwrite-button").addEventListener("click", disableLockdown);
 
 // Initial lockdown activation (for testing, call this on page load)
 enableLockdown();
