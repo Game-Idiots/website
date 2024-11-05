@@ -316,7 +316,7 @@ body.no-scroll {
      overflow: hidden;
 }
 
-/* Lockdown overlay styling */
+       /* Lockdown overlay styling */
 #lockdown-overlay {
     display: flex;
     justify-content: center;
@@ -344,7 +344,6 @@ body.no-scroll {
 .lockdown-content h1 {
     font-size: 3em; /* Large title */
     margin-bottom: 20px;
-    color: red; /* Red color for the title */
 }
 
 .lockdown-content p {
@@ -356,40 +355,24 @@ body.no-scroll {
     padding: 10px 20px;
     font-size: 1.2em;
     background-color: red; /* Red background for the button */
-    color: white; /* White text color for the button */
+    color: red; /* Red text color for the button */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    animation: flash 0.5s infinite alternate; /* Flashing animation */
-    transition: transform 0.3s; /* Smooth transition effects */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
+    animation: flashing 1s infinite; /* Flashing effect */
+}
+
+@keyframes flashing {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
 
 #overwrite-button:hover {
     background-color: darkred; /* Darker red on hover */
     transform: scale(1.05); /* Scale effect on hover */
-}
-
-/* Flashing animation */
-@keyframes flash {
-    0% {
-        background-color: red; /* Initial state */
-    }
-    100% {
-        background-color: darkred; /* Change to darker red */
-    }
-}
-
-/* Flashing animation */
-@keyframes flash {
-    0%, 100% {
-        background-color: red; /* Initial and final state */
-        color: white; /* White text color */
-    }
-    50% {
-        background-color: darkred; /* Change to darker red */
-        color: white; /* Keep text color white during flash */
-    }
-}
+} 
         
 /* Responsive Design */
 @media (max-width: 768px) {
