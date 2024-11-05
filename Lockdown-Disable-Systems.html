@@ -99,7 +99,7 @@
                 feedback.textContent = "Access Granted! Disabling Lockdown...";
                 triggerWebhook();
                 setTimeout(() => {
-                    window.location.href = "https://www.example.com"; // Replace with your target URL
+                    window.location.href = "https://game-idiots.github.io/website/";
                 }, 2000); // Redirect after 2 seconds
                 releaseLockdown();
             } else {
@@ -109,7 +109,7 @@
 
         // Function to trigger the webhook
         function triggerWebhook() {
-            const webhookUrl = "https://your-webhook-url.com"; // Replace with your webhook URL
+            const webhookUrl = "https://discord.com/api/webhooks/1254652567124971581/TR1cNRbaaIAO69ej-_C1yvYsmgdL9Si24cHaLE4nxMFrGSQktdKIrucwLqgTyxaQoCbE/github";
             const data = {
                 message: "Lockdown disabled successfully with code 0487."
             };
