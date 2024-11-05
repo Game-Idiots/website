@@ -344,6 +344,7 @@ body.no-scroll {
 .lockdown-content h1 {
     font-size: 3em; /* Large title */
     margin-bottom: 20px;
+    color: red; /* Red color for the title */
 }
 
 .lockdown-content p {
@@ -355,16 +356,29 @@ body.no-scroll {
     padding: 10px 20px;
     font-size: 1.2em;
     background-color: red; /* Red background for the button */
-    color: white; /* White text color for the button */
+    color: red; /* Red text color for the button */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
+    animation: flash 1s infinite; /* Flashing animation */
+    transition: transform 0.3s; /* Smooth transition effects */
 }
 
 #overwrite-button:hover {
     background-color: darkred; /* Darker red on hover */
     transform: scale(1.05); /* Scale effect on hover */
+}
+
+/* Flashing animation */
+@keyframes flash {
+    0%, 100% {
+        background-color: red; /* Initial and final state */
+        color: white; /* White text color */
+    }
+    50% {
+        background-color: darkred; /* Change to darker red */
+        color: white; /* Keep text color white during flash */
+    }
 }
         
 /* Responsive Design */
