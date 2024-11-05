@@ -19,7 +19,7 @@
             margin-top: 20px;
             color: #555;
         }
-        .toolbar, .editor-actions, .file-explorer {
+        .toolbar, .file-explorer {
             display: flex;
             gap: 10px;
             margin: 10px;
@@ -78,6 +78,7 @@
     <div class="toolbar">
         <button onclick="resetEditors()">Reset All</button>
         <button onclick="createNewFile()">Create New File</button>
+        <button onclick="createNewFolder()">Create New Folder</button>
         <input type="file" id="fileUpload" multiple onchange="handleFileUpload(event)">
         <button onclick="downloadCode()">Download All</button>
         <button onclick="copyAll()">Copy All</button>
@@ -89,7 +90,7 @@
         <div id="fileList"></div>
     </div>
 
-    <div class="editor-container">
+    <div class="editor-container" id="editorContainer">
         <div class="editor">
             <label for="html">HTML</label>
             <textarea id="html" placeholder="Write HTML here..."></textarea>
@@ -131,6 +132,7 @@
         const groupedOutputFrame = document.getElementById('groupedOutput');
         let pyodideReady = false;
         let files = {};
+        let groupedFiles = [];
 
         async function loadPyodideAndPackages() {
             self.pyodide = await loadPyodide();
@@ -190,18 +192,7 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const content = e.target.result;
-                    files[file.name] = content; // Store file content
-                    if (file.name.endsWith('.html')) {
-                        htmlEditor.value = content;
-                    } else if (file.name.endsWith('.css')) {
-                        cssEditor.value = content;
-                    } else if (file.name.endsWith('.js')) {
-                        jsEditor.value = content;
-                    } else if (file.name.endsWith('.ts')) {
-                        tsEditor.value = content;
-                    } else if (file.name.endsWith('.py')) {
-                        pythonEditor.value = content;
-                    }
+                    files[file.name] = content;
                     updateFileList();
                 };
                 reader.readAsText(file);
@@ -211,9 +202,22 @@
         function createNewFile() {
             const fileName = prompt("Enter file name (e.g., script.js):");
             if (fileName) {
-                files[fileName] = ""; // Create an empty file
+                files[fileName] = "";
                 updateFileList();
             }
+        }
+
+        function createNewFolder() {
+            const folderName = prompt("Enter folder name:");
+            if (folderName) {
+                files[folderName] = {};
+                updateFileList();
+            }
+        }
+
+        function deleteFile(fileName) {
+            delete files[fileName];
+            updateFileList();
         }
 
         function updateFileList() {
@@ -224,34 +228,31 @@
                 fileDiv.textContent = fileName;
                 fileDiv.onclick = function() {
                     const content = files[fileName];
-                    if (fileName.endsWith('.html')) {
-                        htmlEditor.value = content;
-                    } else if (fileName.endsWith('.css')) {
-                        cssEditor.value = content;
-                    } else if (fileName.endsWith('.js')) {
-                        jsEditor.value = content;
-                    } else if (fileName.endsWith('.ts')) {
-                        tsEditor.value = content;
-                    } else if (fileName.endsWith('.py')) {
-                        pythonEditor.value = content;
+                    if (typeof content === 'string') {
+                        if (fileName.endsWith('.html')) {
+                            htmlEditor.value = content;
+                        } else if (fileName.endsWith('.css')) {
+                            cssEditor.value = content;
+                        } else if (fileName.endsWith('.js')) {
+                            jsEditor.value = content;
+                        } else if (fileName.endsWith('.ts')) {
+                            tsEditor.value = content;
+                        } else if (fileName.endsWith('.py')) {
+                            pythonEditor.value = content;
+                        }
+                        updateOutput();
                     }
-                    updateOutput();
                 };
+                fileDiv.ondblclick = () => deleteFile(fileName);  // Double-click to delete
                 fileListDiv.appendChild(fileDiv);
             }
         }
 
         function groupFiles() {
-            const html = htmlEditor.value;
-            const css = `<style>${cssEditor.value}</style>`;
-            const js = `<script>${jsEditor.value}<\/script>`;
-            const ts = `<script>${ts.transpileModule(tsEditor.value, { compilerOptions: { module: ts.ModuleKind.None }}).outputText}<\/script>`;
-            const combinedOutput = `${html}${css}${js}${ts}`;
-            const outputDoc = groupedOutputFrame.contentDocument || groupedOutputFrame.contentWindow.document;
-            outputDoc.open();
-            outputDoc.write(combinedOutput);
-            outputDoc.close();
-            groupedOutputFrame.style.display = 'block'; // Show grouped output
+            groupedFiles = Object.keys(files); // Group all files
+            const output = groupedFiles.map(fileName => files[fileName]).join("\n\n");
+            groupedOutputFrame.contentDocument.body.innerText = output;
+            groupedOutputFrame.style.display = 'block';
         }
 
         function downloadCode() {
@@ -268,22 +269,7 @@
         }
 
         function copyAll() {
-            const allCode = `
-HTML:
-${htmlEditor.value}
-
-CSS:
-${cssEditor.value}
-
-JavaScript:
-${jsEditor.value}
-
-TypeScript:
-${tsEditor.value}
-
-Python:
-${pythonEditor.value}
-            `;
+            const allCode = Object.entries(files).map(([fileName, content]) => `${fileName}:\n${content}`).join('\n\n');
             navigator.clipboard.writeText(allCode).then(() => {
                 alert('All code copied to clipboard!');
             }, (err) => {
