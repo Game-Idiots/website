@@ -316,7 +316,7 @@ body.no-scroll {
      overflow: hidden;
 }
 
-       /* Lockdown overlay styling */
+/* Lockdown overlay styling */
 #lockdown-overlay {
     display: flex;
     justify-content: center;
@@ -355,12 +355,13 @@ body.no-scroll {
     padding: 10px 20px;
     font-size: 1.2em;
     background-color: red; /* Red background for the button */
-    color: white; /* Light text color for better visibility */
+    color: #ffcccc; /* Light red color for the text to ensure readability */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
     animation: flashing 1s infinite; /* Flashing effect */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Light shadow for better readability */
 }
 
 @keyframes flashing {
