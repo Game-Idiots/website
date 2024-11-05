@@ -70,14 +70,14 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the Lockdown Disable Systems</h1>
+    <h1>Welcome to Lockdown Disable Systems</h1>
     <div id="lockdownMessage">System Lockdown Initiated</div>
     <div id="lockdownOverlay">
         <div id="lockdownContent">
             <h1>Access Restricted</h1>
-            <p>The system is currently under lockdown. Please enter the code to unlock:</p>
+            <p>The system is currently under lockdown. Please enter the code to disable lockdown:</p>
             <input type="text" id="codeInput" placeholder="Enter code">
-            <button class="button" onclick="checkCode()">Unlock</button>
+            <button class="button" onclick="checkCode()">Disable Lockdown</button>
             <div id="feedback" style="margin-top: 20px; font-size: 1.2em;"></div>
         </div>
     </div>
@@ -96,11 +96,41 @@
             const feedback = document.getElementById('feedback');
 
             if (inputCode === '0487') {
-                feedback.textContent = "Access Granted!";
+                feedback.textContent = "Access Granted! Disabling Lockdown...";
+                triggerWebhook();
+                setTimeout(() => {
+                    window.location.href = "https://www.example.com"; // Replace with your target URL
+                }, 2000); // Redirect after 2 seconds
                 releaseLockdown();
             } else {
                 feedback.textContent = "Access Denied! Incorrect code.";
             }
+        }
+
+        // Function to trigger the webhook
+        function triggerWebhook() {
+            const webhookUrl = "https://your-webhook-url.com"; // Replace with your webhook URL
+            const data = {
+                message: "Lockdown disabled successfully with code 0487."
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Webhook triggered successfully");
+                } else {
+                    console.error("Failed to trigger webhook");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
         }
 
         // Function to release lockdown
@@ -108,8 +138,6 @@
             document.body.style.backgroundColor = '#121212';
             document.getElementById('lockdownMessage').style.opacity = 0;
             document.getElementById('lockdownOverlay').style.display = 'none';
-            alert("Failure the API is not setted up right now!");
-            window.open("https://game-idiots.github.io/website","_self")
         }
 
         // Automatically initiate lockdown after a few seconds
