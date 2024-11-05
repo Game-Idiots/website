@@ -315,65 +315,6 @@ body.light-mode textarea {
 body.no-scroll {
      overflow: hidden;
 }
-
-/* Lockdown overlay styling */
-#lockdown-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.85); /* Dark overlay with less opacity */
-    color: #00ffcc; /* Neon text color */
-    font-family: 'Orbitron', Arial, sans-serif; /* Futuristic font */
-    z-index: 10000; /* High z-index to overlay everything */
-    overflow: hidden; /* Prevent scrolling */
-}
-
-.lockdown-content {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px; /* Rounded corners for a more futuristic look */
-    background: rgba(30, 30, 30, 0.8); /* Slightly transparent dark background for the content */
-    box-shadow: 0 0 30px rgba(0, 255, 204, 0.5); /* Futuristic glow effect */
-}
-
-.lockdown-content h1 {
-    font-size: 3em; /* Large title */
-    margin-bottom: 20px;
-}
-
-.lockdown-content p {
-    font-size: 1.5em; /* Size for the message */
-    margin-bottom: 30px;
-}
-
-#overwrite-button {
-    padding: 10px 20px;
-    font-size: 1.5em; /* Larger font size for visibility */
-    background-color: red; /* Red background for the button */
-    color: white; /* White text color for high contrast */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
-    animation: flashing 1s infinite; /* Flashing effect */
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8); /* Light shadow for better readability */
-}
-
-@keyframes flashing {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-#overwrite-button:hover {
-    background-color: darkred; /* Darker red on hover */
-    transform: scale(1.05); /* Scale effect on hover */
-}
         
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -505,14 +446,6 @@ body.no-scroll {
     <p class="alpha-warning-text-p">Are you sure you want to continue?</p>
     <button id="continueButton">Continue</button>
 </div>
-
-    <div id="lockdown-overlay">
-    <div class="lockdown-content">
-        <h1>🚨 Lockdown Mode</h1>
-        <p>Access Restricted. Please Retry.</p>
-        <button id="overwrite-button">Overwrite</button>
-    </div>
-</div>
     
     <!-- Footer -->
 <footer>
@@ -615,34 +548,6 @@ themeToggle.addEventListener('click', toggleTheme);
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('continueButton').addEventListener("click", acceptWarning);
     });
-</script>
-
-<script>
-    // Function to enable lockdown mode
-function enableLockdown() {
-    // Check if lockdown mode has been previously disabled
-    if (!localStorage.getItem('lockdownDisabled')) {
-        document.getElementById("lockdown-overlay").style.display = "flex";
-        document.body.style.overflow = "hidden"; // Prevent scrolling
-    } else {
-        // If lockdown is disabled, hide the overlay
-        document.getElementById("lockdown-overlay").style.display = "none";
-        document.body.style.overflow = ""; // Re-enable scrolling
-    }
-}
-
-// Function to disable lockdown mode
-function disableLockdown() {
-    document.getElementById("lockdown-overlay").style.display = "none"; // Hide overlay
-    document.body.style.overflow = ""; // Re-enable scrolling
-    localStorage.setItem('lockdownDisabled', 'true'); // Store the state in LocalStorage
-}
-
-// Overwrite button event listener
-document.getElementById("overwrite-button").addEventListener("click", disableLockdown);
-
-// Initial lockdown activation on page load
-window.onload = enableLockdown;
 </script>
     
 </body>
