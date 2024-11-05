@@ -354,16 +354,16 @@ body.no-scroll {
 #overwrite-button {
     padding: 10px 20px;
     font-size: 1.2em;
-    background: linear-gradient(45deg, #00ffcc, #ff007f); /* Futuristic button gradient */
-    color: #ffffff; /* Text color for the button */
+    background-color: red; /* Red background for the button */
+    color: white; /* White text color for the button */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
 }
 
-#retry-button:hover {
-    background: linear-gradient(45deg, #ff007f, #00ffcc); /* Button hover gradient */
+#overwrite-button:hover {
+    background-color: darkred; /* Darker red on hover */
     transform: scale(1.05); /* Scale effect on hover */
 }
         
@@ -613,16 +613,16 @@ themeToggle.addEventListener('click', toggleTheme);
     // Function to enable lockdown mode
 function enableLockdown() {
     document.getElementById("lockdown-overlay").style.display = "flex";
-    document.body.classList.add("no-scroll");
+    document.body.style.overflow = "hidden"; // Prevent scrolling
 }
 
 // Function to disable lockdown mode
 function disableLockdown() {
     document.getElementById("lockdown-overlay").style.display = "none";
-    document.body.classList.remove("no-scroll");
+    document.body.style.overflow = ""; // Re-enable scrolling
 }
 
-// Retry button event listener
+// Overwrite button event listener
 document.getElementById("overwrite-button").addEventListener("click", disableLockdown);
 
 // Initial lockdown activation (for testing, call this on page load)
