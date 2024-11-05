@@ -624,12 +624,16 @@ function enableLockdown() {
     if (!localStorage.getItem('lockdownDisabled')) {
         document.getElementById("lockdown-overlay").style.display = "flex";
         document.body.style.overflow = "hidden"; // Prevent scrolling
+    } else {
+        // If lockdown is disabled, hide the overlay
+        document.getElementById("lockdown-overlay").style.display = "none";
+        document.body.style.overflow = ""; // Re-enable scrolling
     }
 }
 
 // Function to disable lockdown mode
 function disableLockdown() {
-    document.getElementById("lockdown-overlay").style.display = "none";
+    document.getElementById("lockdown-overlay").style.display = "none"; // Hide overlay
     document.body.style.overflow = ""; // Re-enable scrolling
     localStorage.setItem('lockdownDisabled', 'true'); // Store the state in LocalStorage
 }
@@ -637,7 +641,7 @@ function disableLockdown() {
 // Overwrite button event listener
 document.getElementById("overwrite-button").addEventListener("click", disableLockdown);
 
-// Initial lockdown activation (for testing, call this on page load)
+// Initial lockdown activation on page load
 window.onload = enableLockdown;
 </script>
     
