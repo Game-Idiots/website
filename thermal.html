@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Terminal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .terminal-container {
+            width: 80%;
+            max-width: 700px;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .terminal-header select {
+            background-color: #444;
+            color: #d4d4d4;
+            border: none;
+            padding: 5px;
+            font-size: 1rem;
+            border-radius: 3px;
+        }
+
+        .terminal-header button {
+            background-color: #d74d4d;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            font-size: 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .terminal-content {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 3px;
+            height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .input-area {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .input-area input {
+            flex: 1;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            padding: 5px;
+            font-size: 1rem;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <select id="languageSelect">
+                <option value="normal">Normal</option>
+                <option value="js">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="node">Node.js</option>
+                <option value="shell">Shell</option>
+                <option value="powershell">PowerShell</option>
+                <option value="cmd">Command Prompt</option>
+                <option value="c">C</option>
+                <option value="csharp">C#</option>
+                <option value="cpp">C++</option>
+            </select>
+            <button onclick="clearTerminal()">Clear</button>
+        </div>
+        <div id="terminalContent" class="terminal-content"></div>
+        <div class="input-area">
+            <input type="text" id="terminalInput" placeholder="Type your command..." onkeydown="handleCommand(event)">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-cpp.min.js"></script>
+
+    <script>
+        function clearTerminal() {
+            document.getElementById("terminalContent").innerHTML = "";
+        }
+
+        function handleCommand(event) {
+            if (event.key === "Enter") {
+                const input = document.getElementById("terminalInput");
+                const language = document.getElementById("languageSelect").value;
+                const content = document.getElementById("terminalContent");
+                
+                const command = input.value;
+                input.value = "";
+
+                // Display command in terminal
+                const commandOutput = document.createElement("div");
+                commandOutput.textContent = `$ ${command}`;
+                content.appendChild(commandOutput);
+
+                // Syntax highlighting with Prism.js
+                const codeBlock = document.createElement("pre");
+                const codeElement = document.createElement("code");
+                codeElement.className = `language-${language === 'js' ? 'javascript' : language}`;
+                codeElement.textContent = command;
+                codeBlock.appendChild(codeElement);
+                content.appendChild(codeBlock);
+                Prism.highlightElement(codeElement);
+
+                // Execute JavaScript code only
+                if (language === 'js') {
+                    try {
+                        const result = eval(command);  // Be cautious with eval
+                        const resultOutput = document.createElement("div");
+                        resultOutput.textContent = `> ${result}`;
+                        resultOutput.style.color = "#6a9955";
+                        content.appendChild(resultOutput);
+                    } catch (error) {
+                        const errorOutput = document.createElement("div");
+                        errorOutput.textContent = `Error: ${error.message}`;
+                        errorOutput.style.color = "#d74d4d";
+                        content.appendChild(errorOutput);
+                    }
+                }
+
+                // Scroll to bottom of terminal
+                content.scrollTop = content.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
