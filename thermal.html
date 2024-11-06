@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Web Terminal</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/4.5.4/typescript.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,13 +84,13 @@
     <div class="terminal-container">
         <div class="terminal-header">
             <select id="languageSelect">
-                <option value="normal">Normal</option>
+                <option value="cmd">cmd.exe</option>
                 <option value="js">JavaScript</option>
                 <option value="python">Python</option>
+                <option value="typescript">TypeScript</option>
                 <option value="node">Node.js</option>
                 <option value="shell">Shell</option>
                 <option value="powershell">PowerShell</option>
-                <option value="cmd">Command Prompt</option>
                 <option value="c">C</option>
                 <option value="csharp">C#</option>
                 <option value="cpp">C++</option>
@@ -104,22 +106,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-typescript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-bash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-c.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-csharp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-cpp.min.js"></script>
 
     <script>
-        function clearTerminal() {
+        let pyodideReadyPromise = loadPyodide();
+
+        async function clearTerminal() {
             document.getElementById("terminalContent").innerHTML = "";
         }
 
-        function handleCommand(event) {
+        async function handleCommand(event) {
             if (event.key === "Enter") {
                 const input = document.getElementById("terminalInput");
                 const language = document.getElementById("languageSelect").value;
                 const content = document.getElementById("terminalContent");
-                
+
                 const command = input.value;
                 input.value = "";
 
@@ -131,31 +136,60 @@
                 // Syntax highlighting with Prism.js
                 const codeBlock = document.createElement("pre");
                 const codeElement = document.createElement("code");
-                codeElement.className = `language-${language === 'js' ? 'javascript' : language}`;
+                codeElement.className = `language-${language === 'cmd' ? 'bash' : language}`;
                 codeElement.textContent = command;
                 codeBlock.appendChild(codeElement);
                 content.appendChild(codeBlock);
                 Prism.highlightElement(codeElement);
 
-                // Execute JavaScript code only
+                // Execute JavaScript, Python, or TypeScript
                 if (language === 'js') {
                     try {
-                        const result = eval(command);  // Be cautious with eval
-                        const resultOutput = document.createElement("div");
-                        resultOutput.textContent = `> ${result}`;
-                        resultOutput.style.color = "#6a9955";
-                        content.appendChild(resultOutput);
+                        const result = eval(command);  // Caution with eval
+                        displayResult(result, content);
                     } catch (error) {
-                        const errorOutput = document.createElement("div");
-                        errorOutput.textContent = `Error: ${error.message}`;
-                        errorOutput.style.color = "#d74d4d";
-                        content.appendChild(errorOutput);
+                        displayError(error, content);
                     }
+                } else if (language === 'python') {
+                    try {
+                        await pyodideReadyPromise;
+                        const result = await pyodide.runPythonAsync(command);
+                        displayResult(result, content);
+                    } catch (error) {
+                        displayError(error, content);
+                    }
+                } else if (language === 'typescript') {
+                    try {
+                        const jsCode = ts.transpile(command);
+                        const result = eval(jsCode);  // Execute transpiled JavaScript
+                        displayResult(result, content);
+                    } catch (error) {
+                        displayError(error, content);
+                    }
+                } else {
+                    const placeholderOutput = document.createElement("div");
+                    placeholderOutput.textContent = `[${language}] Execution simulated - requires server backend for real execution.`;
+                    placeholderOutput.style.color = "#d4d4d4";
+                    content.appendChild(placeholderOutput);
                 }
 
                 // Scroll to bottom of terminal
                 content.scrollTop = content.scrollHeight;
             }
+        }
+
+        function displayResult(result, content) {
+            const resultOutput = document.createElement("div");
+            resultOutput.textContent = `> ${result}`;
+            resultOutput.style.color = "#6a9955";
+            content.appendChild(resultOutput);
+        }
+
+        function displayError(error, content) {
+            const errorOutput = document.createElement("div");
+            errorOutput.textContent = `Error: ${error.message}`;
+            errorOutput.style.color = "#d74d4d";
+            content.appendChild(errorOutput);
         }
     </script>
 </body>
