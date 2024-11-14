@@ -246,26 +246,33 @@ body.light-mode textarea {
         
 /* Alert Box */
 #alert-box {
-    background-color: #ff007f;
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    font-size: 18px;
+    justify-content: space-between;
+    background-color: #2b2b2b; /* Darker background for better contrast */
+    color: #ffffff; /* Lighter text color for improved readability */
+    border: 2px solid #00ffbf; /* High-contrast border */
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0, 255, 191, 0.3);
+    margin: 20px auto;
+    max-width: 600px;
+    transition: all 0.3s ease-in-out;
 }
 
+/* Alert Close Button */
 #close-alert {
-    font-size: 24px;
-    margin-left: 20px;
+    background-color: transparent;
+    border: none;
+    color: #ff4081; /* High-contrast color for better visibility */
+    font-size: 1.2em;
     cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#close-alert:hover {
+    color: #ff0066; /* Highlight on hover */
 }
         
 #alpha-warning {
