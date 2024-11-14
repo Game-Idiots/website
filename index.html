@@ -45,17 +45,14 @@ header {
 /* Navigation Bar */
 nav ul {
     background-color: #222;
-    padding: 10px;
+    padding: 15px; /* Increased padding */
     display: flex;
     justify-content: center;
     list-style-type: none;
     margin: 0;
     flex-wrap: wrap;
+    gap: 20px; /* Added gap between navigation items */
     box-shadow: 0 4px 15px rgba(0, 230, 184, 0.3);
-}
-
-nav ul li {
-    margin: 0 15px;
 }
 
 nav ul li a {
@@ -63,10 +60,13 @@ nav ul li a {
     text-decoration: none;
     font-size: 1.2em;
     transition: color 0.3s ease, transform 0.3s ease;
+    padding: 10px 15px; /* Added padding for clickable area */
+    line-height: 1.4; /* Increased line height for readability */
 }
 
 nav ul li a:hover {
     color: #ff007f;
+    transform: scale(1.05);
 }
 
 /* Sections */
