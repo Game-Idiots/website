@@ -7,25 +7,6 @@
     <meta name="description" content="We create fun, unique, and entertaining games. Here you can find all our latest projects and updates.">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-    <script src="https://cdn.jsdelivr.net/npm/source-map@0.7.3/dist/source-map.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/terser/dist/bundle.min.js"></script>
-    <script>
-    window.onload = async function () {
-      const scriptTags = document.querySelectorAll('script:not([src])'); // Only inline scripts
-      for (const script of scriptTags) {
-        const originalCode = script.innerHTML; // Get the inline script content
-        try {
-          const minified = await Terser.minify(originalCode); // Minify the code
-          if (minified.code) {
-            script.innerHTML = minified.code; // Replace with minified code
-            console.log('Minified script:', minified.code); // Debug log
-          }
-        } catch (err) {
-          console.error('Error minifying script:', err);
-        }
-      }
-    };
-  </script>
     <title>Game Idiots</title>
 
     <style>
