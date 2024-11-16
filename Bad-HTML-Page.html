@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An example of bad practices for education">
+    <title>Bad Practices Example</title>
+    <style>
+        /* Unnecessary inline CSS and large styles */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            font-size: 50px; /* Excessively large font */
+            animation: shake 0.2s infinite; /* Distracting animations */
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            100% { transform: translate(-1px, -1px) rotate(-1deg); }
+        }
+    </style>
+    <script>
+        // Adding heavy, blocking scripts to delay rendering
+        for (let i = 0; i < 1e6; i++) {
+            console.log("Filling the console log with unnecessary data");
+        }
+
+        // Dynamically adding large images with no alt text
+        window.onload = function() {
+            for (let i = 0; i < 50; i++) {
+                const img = document.createElement('img');
+                img.src = `https://via.placeholder.com/2000x2000?text=Large+Image+${i}`;
+                document.body.appendChild(img);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1 class="content">Bad Practices Example</h1>
+    <p>This page demonstrates behaviors that harm performance, accessibility, and SEO.</p>
+    <button onclick="triggerBadUX()">Click Me (Bad UX)</button>
+    <script>
+        function triggerBadUX() {
+            // Create an infinite alert loop to block interactions
+            while (true) {
+                alert("This is a bad UX example. Close the browser!");
+            }
+        }
+    </script>
+</body>
+</html>
