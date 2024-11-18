@@ -17,3 +17,15 @@ Colten Sus: Hey guys i found something with a number on it, it says 739__ oh wai
 [Failed]: "Logs/Logs.html/atLine:404"
 
 Colten Sus: Hey user! There seems to be a problem with the "Logs" section on "README.md"! So um user could you edit or copy the "README.md" and fix it?
+
+Website Cellular That Are Supported:
+- 5G+
+- 5G
+- 5Ge (4G/LTE)
+- 4G/LTE
+- 3G
+- 2G
+
+Website Cellular That Are Not Supported:
+- 1G
+- 0G
