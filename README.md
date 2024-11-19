@@ -21,7 +21,7 @@ Colten Sus: Hey user! There seems to be a problem with the "Logs" section on "RE
 Website Cellular That Are Supported:
 - 5G+
 - 5G
-- 5Ge (4G/LTE)
+- 5GE (4G/LTE)
 - 4G/LTE
 - 3G
 - 2G
