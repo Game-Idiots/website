@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Abandoned Website</title>
-    <!-- Inline large CSS -->
+    <title>Worst Website Ever</title>
+    
+    <!-- Massive inline CSS to increase page size -->
     <style>
         body {
             background-color: #FFFFFF;
@@ -14,115 +15,96 @@
             font-size: 10px;
             margin: 0;
             padding: 0;
+            height: 100%;
         }
         h1 {
             color: #ffffff;
             font-size: 40px;
+            margin-top: 50px;
         }
-        .low-contrast-text {
-            color: #f1f1f1; /* Low contrast text on light background */
+        .large-image {
+            width: 8000px; /* Unnecessarily large image size */
+            height: 8000px; /* Super large image, taking forever to load */
         }
-        img {
-            width: 8000px; /* Extremely large image size */
-            height: 8000px; /* Huge image causing performance issues */
-        }
-        table {
-            border-collapse: collapse;
-        }
-        td {
-            border: 1px solid black;
-            padding: 10px;
-        }
-        button, a {
-            cursor: not-allowed; /* Broken buttons/links */
-        }
-        .broken-image {
+        .dynamic-content {
+            background-color: yellow;
+            position: relative;
+            height: 500px;
             width: 100%;
-            height: 100%;
+            transition: all 5s ease;
+        }
+        .dynamic-content:hover {
+            background-color: red; /* Will shift layout when hovered */
+        }
+        .layout-shifting-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: black;
+            opacity: 0;
+            transition: opacity 5s ease;
         }
     </style>
-    <!-- No responsive CSS for mobile -->
+    
+    <!-- Massive inline script to block loading -->
     <script>
-        // Large blocking synchronous script
+        // Simulate long TTFB by blocking the thread for 5 seconds
         var start = Date.now();
         while (Date.now() - start < 5000) {
-            // Block the thread for 5 seconds
+            // Blocking the browser thread for 5 seconds (simulate TTFB delay)
         }
     </script>
+    
+    <!-- Broken external script (slow request) -->
+    <script src="http://example.com/slow-script.js"></script>
 </head>
 <body>
-    <h1>Abandoned Server</h1>
-    
-    <!-- Broken Image -->
-    <img class="broken-image" src="missing-image.jpg" alt="">
-    
-    <!-- Invisible text -->
-    <p class="low-contrast-text">This text is barely readable.</p>
 
-    <!-- Empty Button (No action) -->
-    <button>Submit</button>
-    
-    <!-- Empty Link (Broken) -->
-    <a href="#">Click Here</a>
-    
-    <!-- Non-Responsive Table -->
-    <table>
-        <tr>
-            <td>Column 1</td>
-            <td>Column 2</td>
-        </tr>
-        <tr>
-            <td>Column 1</td>
-            <td>Column 2</td>
-        </tr>
-    </table>
+    <h1>Welcome to the Worst Website</h1>
 
-    <!-- Broken Input (No label or accessibility features) -->
-    <input type="text" name="broken-input">
+    <!-- Large image without size specified, will cause layout shift -->
+    <img class="large-image" src="https://via.placeholder.com/8000x8000" alt="Huge Image">
 
-    <!-- Synchronous JavaScript -->
+    <!-- Text with poor contrast and layout shift -->
+    <p class="layout-shifting-text">I will appear slowly, causing shifts!</p>
+    
+    <div class="dynamic-content">
+        Hover over me to see more chaos!
+    </div>
+
+    <!-- Fake broken form -->
+    <form action="https://example.com/submit">
+        <input type="text" placeholder="Type here">
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Large inline script that blocks page rendering -->
     <script>
         var x = 0;
         while (x < 1000000000) { x++ } // Heavy CPU task blocking the thread
     </script>
 
-    <!-- Missing alt attributes for more images -->
-    <img src="http://example.com/large-image.jpg">
-    <img src="http://example.com/another-broken-image.jpg">
-    <img src="http://example.com/yet-another-broken-image.jpg">
+    <!-- Broken image with no alt attribute -->
+    <img src="http://example.com/nonexistent.jpg" alt="">
     
-    <!-- Unoptimized Inline JavaScript -->
+    <!-- Unnecessary and oversized background image -->
+    <div style="width: 100%; height: 100%; background-image: url('https://via.placeholder.com/8000x8000');">
+        Huge background image for no reason.
+    </div>
+    
+    <!-- Slow JavaScript loading external resources -->
+    <script src="http://example.com/slow-resource.js"></script>
+
     <script>
-        document.write("This is a blocking inline script.");
-    </script>
-    
-    <!-- Unnecessary unused links -->
-    <a href="https://example.com" id="dead-link" aria-label="Broken link"></a> <!-- Empty link with no destination -->
-
-    <!-- Broken form -->
-    <form action="https://example.com/submit">
-        <input type="text">
-        <input type="submit" value="Submit">
-    </form>
-    
-    <!-- Outdated viewport configuration -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-    <!-- Broken external resources -->
-    <script src="http://example.com/nonexistent.js"></script> <!-- Non-secure, broken link -->
-    
-    <!-- Blocked CSS that is large and loaded inline -->
-    <style>
-        .huge {
-            width: 9999px;
-            height: 9999px;
+        // Additional blocking operation to delay loading
+        var delay = 10000; // 10 seconds
+        var end = Date.now() + delay;
+        while (Date.now() < end) {
+            // Simulate loading delay
         }
-    </style>
-    
-    <!-- Additional blocking inline script -->
-    <script>
-        var now = new Date().getTime();
-        while(new Date().getTime() - now < 2000) {} // CPU blocking
     </script>
+
 </body>
 </html>
