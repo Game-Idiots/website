@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abandoned Web Server</title>
+    <title>Abandoned Server</title>
     <style>
-        /* Outdated aesthetic with glitch effects */
         body {
             font-family: "Courier New", Courier, monospace;
             background-color: #000;
@@ -13,14 +12,17 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            cursor: url('https://cur.cursors-4u.net/user/use-2/use123.cur'), auto;
         }
+
         h1 {
             text-align: center;
-            text-transform: uppercase;
             margin-top: 50px;
+            text-transform: uppercase;
             text-shadow: 0 0 10px #0f0;
-            animation: flicker 2s infinite;
+            animation: flicker 3s infinite alternate, distort 1s infinite;
         }
+
         p, a {
             text-align: center;
             display: block;
@@ -28,33 +30,32 @@
             width: 80%;
             text-shadow: 0 0 5px #0f0;
         }
+
         a {
             color: #f00;
             text-decoration: underline;
             cursor: pointer;
         }
+
         a:hover {
             color: #ff0;
         }
+
         .container {
             width: 90%;
             margin: auto;
             padding: 20px;
             border: 1px dashed #0f0;
+            animation: distort 1.5s infinite alternate;
         }
-        .glitch-text {
+
+        .corrupted-text {
             position: relative;
-            animation: glitch 1.5s infinite;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: glitch-text 3s steps(10, end) infinite;
         }
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.4; }
-        }
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px #f00, -2px -2px #0f0; }
-            50% { text-shadow: -2px -2px #f00, 2px 2px #0f0; }
-            100% { text-shadow: 1px -1px #f00, -1px 1px #0f0; }
-        }
+
         #static {
             position: absolute;
             width: 100%;
@@ -62,9 +63,42 @@
             top: 0;
             left: 0;
             background: url('https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif') repeat;
-            opacity: 0.1;
+            opacity: 0.03;
             pointer-events: none;
         }
+
+        #console {
+            font-size: 14px;
+            line-height: 1.5;
+            height: 300px;
+            overflow-y: hidden;
+            margin: 20px auto;
+            border: 1px solid #0f0;
+            padding: 10px;
+            background-color: #000;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.5; }
+        }
+
+        @keyframes distort {
+            0% { transform: skewX(0deg); }
+            50% { transform: skewX(5deg); }
+            100% { transform: skewX(0deg); }
+        }
+
+        @keyframes glitch-text {
+            0% { clip-path: inset(0 0 95% 0); }
+            20% { clip-path: inset(10% 0 85% 0); }
+            40% { clip-path: inset(30% 0 55% 0); }
+            60% { clip-path: inset(60% 0 35% 0); }
+            80% { clip-path: inset(80% 0 10% 0); }
+            100% { clip-path: inset(0 0 95% 0); }
+        }
+
+        /* Loading Bar */
         .loading-bar {
             display: block;
             width: 80%;
@@ -74,56 +108,90 @@
             height: 10px;
             overflow: hidden;
         }
+
         .loading-bar span {
             display: block;
             height: 100%;
             width: 0;
             background: #0f0;
-            animation: loading 30s linear infinite;
+            animation: loading 20s linear infinite;
         }
+
         @keyframes loading {
             0% { width: 0%; }
-            50% { width: 90%; }
+            50% { width: 70%; }
             100% { width: 0%; }
         }
-        #overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            animation: flicker 5s infinite alternate;
-        }
+
     </style>
 </head>
 <body>
     <div id="static"></div>
-    <h1 class="glitch-text">ERROR 503 - Server Unreachable</h1>
+    <h1 class="corrupted-text">SERVER CONNECTION LOST</h1>
     <div class="container">
-        <p><strong>Last updated:</strong> <span id="last-update">unknown</span></p>
-        <p><em>Attempting to load data...</em></p>
+        <p><strong>Last Known Activity:</strong> <span id="last-update">Loading...</span></p>
+        <p>Attempting recovery...</p>
         <div class="loading-bar"><span></span></div>
-        <p>Broken Links:</p>
-        <p><a href="javascript:void(0);">Visit Archive</a> | <a href="javascript:void(0);">Retry Connection</a></p>
-        <img id="corrupt-image" src="https://via.placeholder.com/500x300?text=Corrupt+Image" alt="Corrupt" style="width: 100%; opacity: 0.2; filter: grayscale(100%);">
+        <div id="console"></div>
+        <p><a href="javascript:void(0);">Retry Connection</a> | <a href="javascript:void(0);">View Logs</a></p>
     </div>
-
-    <!-- Background sound -->
+    
+        <!-- Background audio effect -->
     <audio autoplay loop>
         <source src="https://www.soundjay.com/button/beep-09.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
 
     <script>
-        // Update last active time dynamically
-        const yearsSinceAbandonment = new Date().getFullYear() - 2005;
-        document.getElementById('last-update').textContent = yearsSinceAbandonment + " years ago";
+        // Simulate last activity date
+        const abandonedYears = new Date().getFullYear() - 2005;
+        setTimeout(() => {
+            document.getElementById("last-update").textContent = abandonedYears + " years ago";
+        }, 3000);
 
-        // Simulate perpetual loading
-        const corruptImage = document.getElementById('corrupt-image');
-        setInterval(() => {
-            corruptImage.style.filter = "grayscale(" + Math.random() * 100 + "%)";
-        }, 1000);
+        // Fake console output
+        const consoleEl = document.getElementById("console");
+        const fakeLogs = [
+            "[SYSTEM ERROR] Unable to retrieve data...",
+            "[WARNING] Network timeout detected.",
+            "[ATTEMPT] Reconnecting to server...",
+            "[FAILURE] System integrity compromised.",
+            "[LOG] Retrieving partial logs...",
+            "[CORRUPT] ###@! Data stream failed.",
+            "[SYSTEM ERROR] Hard drive not responding.",
+            "[ALERT] Unknown signal detected.",
+            "[HIDDEN MESSAGE] They are watching."
+        ];
+
+        let logIndex = 0;
+        function addLog() {
+            if (logIndex < fakeLogs.length) {
+                const newLog = document.createElement("p");
+                newLog.textContent = fakeLogs[logIndex++];
+                consoleEl.appendChild(newLog);
+                consoleEl.scrollTop = consoleEl.scrollHeight; // Auto-scroll
+                setTimeout(addLog, 2500);
+            } else {
+                const finalLog = document.createElement("p");
+                finalLog.textContent = "[END] Data retrieval failed.";
+                consoleEl.appendChild(finalLog);
+            }
+        }
+        setTimeout(addLog, 2000);
+
+        // Corrupt random text
+        function corruptText() {
+            const elements = document.querySelectorAll(".corrupted-text");
+            elements.forEach((element) => {
+                let originalText = element.textContent;
+                element.textContent = originalText
+                    .split("")
+                    .map((char) => (Math.random() > 0.8 ? String.fromCharCode(Math.random() * 128) : char))
+                    .join("");
+                setTimeout(() => (element.textContent = originalText), 500);
+            });
+        }
+        setInterval(corruptText, 2000);
     </script>
 </body>
 </html>
