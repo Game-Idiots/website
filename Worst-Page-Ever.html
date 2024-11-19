@@ -1,64 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Untitled Page</title>
-    <!-- Missing meta description -->
     <meta charset="UTF-8">
-    <!-- Deprecated viewport tag -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Abandoned Website</title>
+    <!-- Inline large CSS -->
     <style>
         body {
-            font-size: 12px;
-            color: #333333; /* Low contrast on white background */
-            background-color: #ffffff;
+            background-color: #FFFFFF;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            font-size: 10px;
             margin: 0;
+            padding: 0;
         }
-
         h1 {
-            font-size: 50px;
-            color: #eeeeee; /* Extremely low contrast text */
+            color: #ffffff;
+            font-size: 40px;
         }
-
-        .invisible-text {
-            color: white; /* Completely invisible on a white background */
+        .low-contrast-text {
+            color: #f1f1f1; /* Low contrast text on light background */
         }
-
-        button {
-            background: transparent;
-            border: none;
-            cursor: pointer;
+        img {
+            width: 8000px; /* Extremely large image size */
+            height: 8000px; /* Huge image causing performance issues */
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        button, a {
+            cursor: not-allowed; /* Broken buttons/links */
+        }
+        .broken-image {
+            width: 100%;
+            height: 100%;
         }
     </style>
+    <!-- No responsive CSS for mobile -->
+    <script>
+        // Large blocking synchronous script
+        var start = Date.now();
+        while (Date.now() - start < 5000) {
+            // Block the thread for 5 seconds
+        }
+    </script>
 </head>
 <body>
-    <h1>Welcome to Nothing</h1>
-    <a href="">Click Here</a> <!-- Empty link -->
-    <p class="invisible-text">Invisible text for no reason</p>
-    <h4>Skipped heading levels</h4>
-    <img src="broken-image.jpg"> <!-- Missing alt attribute -->
-    <button>Submit</button> <!-- No form or label -->
+    <h1>Abandoned Server</h1>
+    
+    <!-- Broken Image -->
+    <img class="broken-image" src="missing-image.jpg" alt="">
+    
+    <!-- Invisible text -->
+    <p class="low-contrast-text">This text is barely readable.</p>
 
-    <!-- 100% inline styles -->
-    <div style="width: 100px; height: 100px; background: red;"></div>
-
-    <!-- Unsecured resources -->
-    <script src="http://example.com/nonexistent.js"></script>
-    <script>
-        console.log("This script will log but does nothing useful.");
-    </script>
-
-    <!-- Fake form -->
-    <form action="http://example.com" method="post">
-        <input type="text">
-        <input type="submit">
-    </form>
-
-    <!-- Non-responsive table -->
-    <table border="1" width="1000">
+    <!-- Empty Button (No action) -->
+    <button>Submit</button>
+    
+    <!-- Empty Link (Broken) -->
+    <a href="#">Click Here</a>
+    
+    <!-- Non-Responsive Table -->
+    <table>
         <tr>
-            <td>Non-responsive</td>
-            <td>Table Content</td>
+            <td>Column 1</td>
+            <td>Column 2</td>
+        </tr>
+        <tr>
+            <td>Column 1</td>
+            <td>Column 2</td>
         </tr>
     </table>
+
+    <!-- Broken Input (No label or accessibility features) -->
+    <input type="text" name="broken-input">
+
+    <!-- Synchronous JavaScript -->
+    <script>
+        var x = 0;
+        while (x < 1000000000) { x++ } // Heavy CPU task blocking the thread
+    </script>
+
+    <!-- Missing alt attributes for more images -->
+    <img src="http://example.com/large-image.jpg">
+    <img src="http://example.com/another-broken-image.jpg">
+    <img src="http://example.com/yet-another-broken-image.jpg">
+    
+    <!-- Unoptimized Inline JavaScript -->
+    <script>
+        document.write("This is a blocking inline script.");
+    </script>
+    
+    <!-- Unnecessary unused links -->
+    <a href="https://example.com" id="dead-link" aria-label="Broken link"></a> <!-- Empty link with no destination -->
+
+    <!-- Broken form -->
+    <form action="https://example.com/submit">
+        <input type="text">
+        <input type="submit" value="Submit">
+    </form>
+    
+    <!-- Outdated viewport configuration -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Broken external resources -->
+    <script src="http://example.com/nonexistent.js"></script> <!-- Non-secure, broken link -->
+    
+    <!-- Blocked CSS that is large and loaded inline -->
+    <style>
+        .huge {
+            width: 9999px;
+            height: 9999px;
+        }
+    </style>
+    
+    <!-- Additional blocking inline script -->
+    <script>
+        var now = new Date().getTime();
+        while(new Date().getTime() - now < 2000) {} // CPU blocking
+    </script>
 </body>
 </html>
