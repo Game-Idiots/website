@@ -531,29 +531,6 @@ themeToggle.addEventListener('click', toggleTheme);
         document.getElementById('continueButton').addEventListener("click", acceptWarning);
     });
 </script>
-
-<script>
-
-  <script>
-  // Run the connection check immediately
-    (function() {
-      function checkConnection() {
-        if ('connection' in navigator) {
-          const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-          const connectionType = connection.effectiveType; // Get the network connection type (2g, 3g, 4g, 5g, wifi)
-          
-          if (connectionType === '5g' || connectionType === '0g') {
-            // Redirect if the connection is 1G or 0G
-            window.location.href = 'https://example.com/low-speed-page';
-          }
-        }
-      }
-
-      // Run the connection check as soon as the page starts loading
-      checkConnection();
-    })();
-  </script>
-</script>
     
 </body>
 
