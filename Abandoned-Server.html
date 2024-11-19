@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abandoned Server</title>
+    <style>
+        /* Retro, outdated design */
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #000;
+            color: #0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 50px;
+            text-shadow: 0 0 10px #0f0;
+        }
+        p {
+            margin: 20px auto;
+            text-align: center;
+        }
+        a {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            border: 1px dashed #0f0;
+            padding: 20px;
+        }
+        .glitch {
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #0f0, -2px -2px #ff0000; }
+            50% { text-shadow: -2px -2px #0f0, 2px 2px #ff0000; }
+            100% { text-shadow: 1px -1px #ff0000, -1px 1px #0f0; }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="glitch">404 - Web Server Timeout</h1>
+    <div class="container">
+        <p><strong>Warning:</strong> This server has been offline for <span id="years">unknown</span> years...</p>
+        <p>Loading... please wait. If you're lucky, this might work.</p>
+        <p><a href="brokenlink.html">Broken Link</a> | <a href="javascript:void(0);">Dead End</a></p>
+        <img id="slow-image" src="large-file.jpg" alt="Corrupt Image" style="width: 100%; opacity: 0;">
+    </div>
+
+    <script>
+        // Simulate slow image loading
+        setTimeout(() => {
+            const img = document.getElementById('slow-image');
+            img.style.opacity = 1;
+            img.src = 'https://via.placeholder.com/1000x500?text=Image+Loading...';
+        }, 10000); // 10-second delay for "slow loading"
+
+        // Simulate time since abandonment
+        const yearsAbandoned = new Date().getFullYear() - 1998;
+        document.getElementById('years').textContent = yearsAbandoned;
+    </script>
+</body>
+</html>
