@@ -3,66 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abandoned Server</title>
+    <title>Abandoned Web Server</title>
     <style>
-        /* Retro, outdated design */
+        /* Outdated aesthetic with glitch effects */
         body {
             font-family: "Courier New", Courier, monospace;
             background-color: #000;
             color: #0f0;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
         h1 {
             text-align: center;
             text-transform: uppercase;
             margin-top: 50px;
             text-shadow: 0 0 10px #0f0;
+            animation: flicker 2s infinite;
         }
-        p {
-            margin: 20px auto;
+        p, a {
             text-align: center;
+            display: block;
+            margin: 20px auto;
+            width: 80%;
+            text-shadow: 0 0 5px #0f0;
         }
         a {
-            color: #ff0000;
+            color: #f00;
             text-decoration: underline;
+            cursor: pointer;
+        }
+        a:hover {
+            color: #ff0;
         }
         .container {
-            width: 80%;
+            width: 90%;
             margin: auto;
-            border: 1px dashed #0f0;
             padding: 20px;
+            border: 1px dashed #0f0;
         }
-        .glitch {
-            animation: glitch 1s infinite;
+        .glitch-text {
+            position: relative;
+            animation: glitch 1.5s infinite;
+        }
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.4; }
         }
         @keyframes glitch {
-            0% { text-shadow: 2px 2px #0f0, -2px -2px #ff0000; }
-            50% { text-shadow: -2px -2px #0f0, 2px 2px #ff0000; }
-            100% { text-shadow: 1px -1px #ff0000, -1px 1px #0f0; }
+            0% { text-shadow: 2px 2px #f00, -2px -2px #0f0; }
+            50% { text-shadow: -2px -2px #f00, 2px 2px #0f0; }
+            100% { text-shadow: 1px -1px #f00, -1px 1px #0f0; }
+        }
+        #static {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url('https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif') repeat;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .loading-bar {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            background: #111;
+            border: 1px solid #0f0;
+            height: 10px;
+            overflow: hidden;
+        }
+        .loading-bar span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: #0f0;
+            animation: loading 30s linear infinite;
+        }
+        @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 90%; }
+            100% { width: 0%; }
+        }
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            animation: flicker 5s infinite alternate;
         }
     </style>
 </head>
 <body>
-    <h1 class="glitch">404 - Web Server Timeout</h1>
+    <div id="static"></div>
+    <h1 class="glitch-text">ERROR 503 - Server Unreachable</h1>
     <div class="container">
-        <p><strong>Warning:</strong> This server has been offline for <span id="years">unknown</span> years...</p>
-        <p>Loading... please wait. If you're lucky, this might work.</p>
-        <p><a href="brokenlink.html">Broken Link</a> | <a href="javascript:void(0);">Dead End</a></p>
-        <img id="slow-image" src="large-file.jpg" alt="Corrupt Image" style="width: 100%; opacity: 0;">
+        <p><strong>Last updated:</strong> <span id="last-update">unknown</span></p>
+        <p><em>Attempting to load data...</em></p>
+        <div class="loading-bar"><span></span></div>
+        <p>Broken Links:</p>
+        <p><a href="javascript:void(0);">Visit Archive</a> | <a href="javascript:void(0);">Retry Connection</a></p>
+        <img id="corrupt-image" src="https://via.placeholder.com/500x300?text=Corrupt+Image" alt="Corrupt" style="width: 100%; opacity: 0.2; filter: grayscale(100%);">
     </div>
 
-    <script>
-        // Simulate slow image loading
-        setTimeout(() => {
-            const img = document.getElementById('slow-image');
-            img.style.opacity = 1;
-            img.src = 'https://via.placeholder.com/1000x500?text=Image+Loading...';
-        }, 10000); // 10-second delay for "slow loading"
+    <!-- Background sound -->
+    <audio autoplay loop>
+        <source src="https://www.soundjay.com/button/beep-09.mp3" type="audio/mpeg">
+    </audio>
 
-        // Simulate time since abandonment
-        const yearsAbandoned = new Date().getFullYear() - 1998;
-        document.getElementById('years').textContent = yearsAbandoned;
+    <script>
+        // Update last active time dynamically
+        const yearsSinceAbandonment = new Date().getFullYear() - 2005;
+        document.getElementById('last-update').textContent = yearsSinceAbandonment + " years ago";
+
+        // Simulate perpetual loading
+        const corruptImage = document.getElementById('corrupt-image');
+        setInterval(() => {
+            corruptImage.style.filter = "grayscale(" + Math.random() * 100 + "%)";
+        }, 1000);
     </script>
 </body>
 </html>
