@@ -535,12 +535,12 @@ themeToggle.addEventListener('click', toggleTheme);
 <script>
 
   <script>
-    // Run the connection check immediately as soon as possible
+  // Run the connection check immediately
     (function() {
       function checkConnection() {
         if ('connection' in navigator) {
           const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-          const connectionType = connection.effectiveType; // Get the network connection type (2g, 3g, 4g, wifi)
+          const connectionType = connection.effectiveType; // Get the network connection type (2g, 3g, 4g, 5g, wifi)
           
           if (connectionType === '5g' || connectionType === '0g') {
             // Redirect if the connection is 1G or 0G
