@@ -27,11 +27,25 @@
             padding: 10px 20px;
             font-size: 16px;
             margin-top: 20px;
-            cursor: pointer;
-            background-color: #ff5252;
+            cursor: not-allowed;
+            background-color: #cccccc;
             color: white;
             border: none;
             border-radius: 5px;
+        }
+        input[type="text"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #ffffff;
+            color: #121212;
+            border: 2px solid #cccccc;
+            border-radius: 5px;
+        }
+        input[type="text"]:disabled {
+            cursor: not-allowed;
+            background-color: #eeeeee;
         }
         input[type="button"]:hover {
             background-color: #ff0000;
@@ -46,7 +60,9 @@
 <body>
     <h1>WHO DO WE EVEN HAVE THIS?</h1>
     <p class="code">Self Destruct Code is: 7395729</p>
-    <input type="button" value="Self Destruct" onclick="handleClick()">
+    <input type="button" value="Self Destruct" disabled>
+    <br><br>
+    <input type="text" value="Click me to Self Destruct" onclick="handleClick()" disabled>
     <p class="footer">Maybe if we go to the past we could enable it!</p>
 
     <script>
