@@ -34,9 +34,9 @@ Colten Sus: Hey user! There seems to be a problem with the "Logs" section on "RE
 
 # Supported Devices:
 
-iPhone 4 - iPhone 16 Pro Max
-Unknown - Android
-Windows 7 - Windows 11
+- iPhone 4 - iPhone 16 Pro Max (CONFIRMED)
+- Unknown - Android
+- Windows 7 - Windows 11
 Maybe:
-Windows XP
-Windows Vista
+- Windows XP
+- Windows Vista
