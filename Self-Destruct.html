@@ -5,81 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Self Destruct</title>
     <style>
+        /* General page styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e;
+            color: #f1f1f1;
             text-align: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
+
         h1 {
-            margin-top: 50px;
-            color: #ff5252;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #e74c3c;
             text-transform: uppercase;
         }
+
         .code {
-            margin: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #00ff00;
+            font-size: 1.25em;
+            color: #2ecc71;
+            margin-bottom: 30px;
         }
-        input[type="button"] {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 20px;
+
+        /* Styling for the non-editable text input */
+        input[type="text"] {
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #ffffff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            color: #333;
+            width: 250px;
+            text-align: center;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Disabled input styling */
+        input[type="text"]:disabled {
+            background-color: #f2f2f2;
             cursor: not-allowed;
-            background-color: #cccccc;
+            color: #777;
+        }
+
+        input[type="text"]:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Disabled button styling */
+        input[type="button"] {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ccc;
             color: white;
             border: none;
-            border-radius: 5px;
-        }
-        input[type="text"] {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 20px;
-            cursor: pointer;
-            background-color: #ffffff;
-            color: #121212;
-            border: 2px solid #cccccc;
-            border-radius: 5px;
-        }
-        input[type="text"]:disabled {
+            border-radius: 10px;
             cursor: not-allowed;
-            background-color: #eeeeee;
+            width: 250px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
+
         input[type="button"]:hover {
-            background-color: #ff0000;
+            background-color: #999;
         }
+
+        /* Footer text styling */
         .footer {
-            margin-top: 50px;
-            font-size: 14px;
-            color: #cccccc;
+            font-size: 1em;
+            color: #bdc3c7;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
+
     <h1>WHO DO WE EVEN HAVE THIS?</h1>
     <p class="code">Self Destruct Code is: 7395729</p>
+
+    <!-- Text input initially says "Input Code", non-editable -->
+    <input type="text" value="Input Code" onclick="handleClick()" disabled>
     
-    <!-- Text input initially says "Input Code" -->
-    <input type="text" value="Input Code" onclick="handleClick()">
     <br><br>
-    
-    <!-- Disabled self destruct button -->
+
+    <!-- Disabled Self Destruct button -->
     <input type="button" value="Self Destruct" disabled>
-    
+
     <p class="footer">Maybe if we go to the past we could enable it!</p>
 
     <script>
         function handleClick() {
             // Change text to "How about no!"
-            document.querySelector('input[type="text"]').value = "How about no!";
+            const inputField = document.querySelector('input[type="text"]');
+            inputField.value = "How about no!";
             
             // After 1 second, reset text back to "Input Code"
             setTimeout(function() {
-                document.querySelector('input[type="text"]').value = "Input Code";
-            }, 1000); // 1000 milliseconds = 1 seconds
+                inputField.value = "Input Code";
+            }, 1000); // 1000 milliseconds = 1 second
         }
     </script>
+
 </body>
 </html>
