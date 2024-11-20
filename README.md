@@ -37,6 +37,6 @@ Colten Sus: Hey user! There seems to be a problem with the "Logs" section on "RE
 - iPhone 4 - iPhone 16 Pro Max (CONFIRMED)
 - Unknown - Android
 - Windows 7 - Windows 11
-Maybe:
+# Maybe:
 - Windows XP
 - Windows Vista
