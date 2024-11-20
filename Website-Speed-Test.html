@@ -66,7 +66,7 @@
 
     <div class="container">
         <h1>URL Load Speed Test</h1>
-        <input type="text" id="urlInput" placeholder="Enter a URL (e.g., https://www.example.com)" />
+        <input type="text" id="urlInput" placeholder="Enter a URL (e.g., /page.html)" />
         <button onclick="testUrlLoadSpeed()">Test URL Load Speed</button>
         <div class="result" id="result"></div>
     </div>
@@ -74,45 +74,44 @@
     <script>
         function testUrlLoadSpeed() {
             const url = document.getElementById("urlInput").value;
-
+            
+            // Check if URL is provided
             if (!url) {
                 alert("Please enter a URL to test.");
                 return;
             }
 
-            // Start the timer
-            let startTime = Date.now();
+            // Start the timer using Performance API
+            const startTime = performance.now();
 
-            // Perform a fetch request to the provided URL
-            fetch(url)
-                .then(response => {
-                    let endTime = Date.now();
-                    let loadTime = (endTime - startTime) / 1000; // Convert to seconds
+            // Create a new Image object to load the URL
+            const img = new Image();
+            img.onload = function() {
+                const endTime = performance.now();
+                const loadTime = (endTime - startTime) / 1000; // Convert to seconds
 
-                    // Categorize load time
-                    let resultMessage = '';
-                    let resultClass = '';
+                // Categorize load time
+                let resultMessage = '';
+                let resultClass = '';
 
-                    if (loadTime < 2) {
-                        resultMessage = `Page Load: Fast (${loadTime.toFixed(2)}s)`;
-                        resultClass = 'fast';
-                    } else if (loadTime < 5) {
-                        resultMessage = `Page Load: Medium (${loadTime.toFixed(2)}s)`;
-                        resultClass = 'medium';
-                    } else {
-                        resultMessage = `Page Load: Slow (${loadTime.toFixed(2)}s)`;
-                        resultClass = 'slow';
-                    }
+                if (loadTime < 2) {
+                    resultMessage = `Page Load: Fast (${loadTime.toFixed(2)}s)`;
+                    resultClass = 'fast';
+                } else if (loadTime < 5) {
+                    resultMessage = `Page Load: Medium (${loadTime.toFixed(2)}s)`;
+                    resultClass = 'medium';
+                } else {
+                    resultMessage = `Page Load: Slow (${loadTime.toFixed(2)}s)`;
+                    resultClass = 'slow';
+                }
 
-                    // Display the result with color-coding
-                    document.getElementById("result").innerHTML = resultMessage;
-                    document.getElementById("result").className = `result ${resultClass}`;
-                })
-                .catch(error => {
-                    // Handle errors such as invalid URL or network issues
-                    document.getElementById("result").innerHTML = `Error: Could not load the URL. Please check the URL and try again.`;
-                    document.getElementById("result").className = 'result';
-                });
+                // Display the result with color-coding
+                document.getElementById("result").innerHTML = resultMessage;
+                document.getElementById("result").className = `result ${resultClass}`;
+            };
+
+            // Set the source of the image to trigger the load event
+            img.src = url;
         }
     </script>
 
