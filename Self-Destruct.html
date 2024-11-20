@@ -89,8 +89,8 @@
     <h1>WHO DO WE EVEN HAVE THIS?</h1>
     <p class="code">Self Destruct Code is: 7395729</p>
 
-    <!-- Text input initially says "Input Code", non-editable -->
-    <input type="text" value="Input Code" onclick="handleClick()" disabled>
+    <!-- Text input initially says "Text Input", non-editable -->
+    <input type="text" value="Text Input" onclick="handleClick()" disabled>
     
     <br><br>
 
@@ -104,10 +104,10 @@
             // Change text to "How about no!"
             const inputField = document.querySelector('input[type="text"]');
             inputField.value = "How about no!";
-            
-            // After 1 second, reset text back to "Input Code"
+
+            // After 1 second, reset text back to "Text Input"
             setTimeout(function() {
-                inputField.value = "Input Code";
+                inputField.value = "Text Input";
             }, 1000); // 1000 milliseconds = 1 second
         }
     </script>
