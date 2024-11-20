@@ -60,14 +60,25 @@
 <body>
     <h1>WHO DO WE EVEN HAVE THIS?</h1>
     <p class="code">Self Destruct Code is: 7395729</p>
-    <input type="button" value="Self Destruct" disabled>
+    
+    <!-- Text input initially says "Input Code" -->
+    <input type="text" value="Input Code" onclick="handleClick()">
     <br><br>
-    <input type="text" value="Click me to Self Destruct" onclick="handleClick()" disabled>
+    
+    <!-- Disabled self destruct button -->
+    <input type="button" value="Self Destruct" disabled>
+    
     <p class="footer">Maybe if we go to the past we could enable it!</p>
 
     <script>
         function handleClick() {
-            alert("How about no!");
+            // Change text to "How about no!"
+            document.querySelector('input[type="text"]').value = "How about no!";
+            
+            // After 1 second, reset text back to "Input Code"
+            setTimeout(function() {
+                document.querySelector('input[type="text"]').value = "Input Code";
+            }, 1000); // 1000 milliseconds = 1 seconds
         }
     </script>
 </body>
