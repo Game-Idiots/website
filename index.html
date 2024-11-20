@@ -363,6 +363,7 @@ body.no-scroll {
         alt="Sound Board"
         width="1024"
         height="1024"
+        loading="lazy"
         class="lazy-load"
     />
         <h3 class="project-title">Project 1: Sound Board</h3>
@@ -380,6 +381,7 @@ body.no-scroll {
             alt="Coming Soon Project"
             width="2048"
             height="2048"
+            loading="lazy"
             class="lazy-load"
         />
             <h3 class="project-title">Project 2: Coming Soon</h3>
@@ -395,6 +397,7 @@ body.no-scroll {
             alt="Coming Soon Project"
             width="2048"
             height="2048"
+            loading="lazy"
             class="lazy-load"
         />
             <h3 class="project-title">Project 3: Coming Soon</h3>
@@ -559,24 +562,26 @@ themeToggle.addEventListener('click', toggleTheme);
 </script>
 
 <script>
-  function applyLazyLoad() {
+  function toggleLazyLoad() {
     const images = document.querySelectorAll('.lazy-load');
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     images.forEach(img => {
       if (isMobile) {
+        // Add lazy loading for mobile
         img.setAttribute('loading', 'lazy');
       } else {
+        // Remove lazy loading for desktop
         img.removeAttribute('loading');
       }
     });
   }
 
   // Run on page load
-  document.addEventListener("DOMContentLoaded", applyLazyLoad);
+  document.addEventListener("DOMContentLoaded", toggleLazyLoad);
 
   // Re-run when the window is resized
-  window.addEventListener("resize", applyLazyLoad);
+  window.addEventListener("resize", toggleLazyLoad);
 </script>
     
 </body>
