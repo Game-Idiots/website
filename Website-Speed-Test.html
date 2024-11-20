@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Load Speed Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .result.fast {
+            color: green;
+        }
+        .result.medium {
+            color: orange;
+        }
+        .result.slow {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Website Load Speed Test</h1>
+        <button onclick="testPageSpeed()">Test Page Load Speed</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function testPageSpeed() {
+            let startTime = Date.now();
+
+            // Trigger a simple load of the page (measuring the document load time)
+            window.onload = function () {
+                let endTime = Date.now();
+                let loadTime = (endTime - startTime) / 1000; // Time in seconds
+
+                // Categorize load time
+                let resultMessage = '';
+                let resultClass = '';
+
+                if (loadTime < 2) {
+                    resultMessage = `Page Load: Fast (${loadTime.toFixed(2)}s)`;
+                    resultClass = 'fast';
+                } else if (loadTime < 5) {
+                    resultMessage = `Page Load: Medium (${loadTime.toFixed(2)}s)`;
+                    resultClass = 'medium';
+                } else {
+                    resultMessage = `Page Load: Slow (${loadTime.toFixed(2)}s)`;
+                    resultClass = 'slow';
+                }
+
+                // Display the result with color-coding
+                document.getElementById("result").innerHTML = resultMessage;
+                document.getElementById("result").className = `result ${resultClass}`;
+            };
+        }
+    </script>
+
+</body>
+</html>
