@@ -18,7 +18,8 @@ Colten Sus: Hey guys i found something with a number on it, it says 739__ oh wai
 
 Colten Sus: Hey user! There seems to be a problem with the "Logs" section on "README.md"! So um user could you edit or copy the "README.md" and fix it?
 
-Website Cellular That Are Supported:
+# Website Cellular That Are Supported:
+
 - 5G+
 - 5G
 - 5GE (4G/LTE)
@@ -26,6 +27,16 @@ Website Cellular That Are Supported:
 - 3G
 - 2G
 
-Website Cellular That Are Not Supported:
+# Website Cellular That Are Not Supported:
+
 - 1G
 - 0G
+
+# Supported Devices:
+
+iPhone 4 - iPhone 16 Pro Max
+Unknown - Android
+Windows 7 - Windows 11
+Maybe:
+Windows XP
+Windows Vista
