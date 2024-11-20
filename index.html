@@ -306,7 +306,9 @@ body.no-scroll {
     section {
         padding: 20px
     }
-}
+    
+    .lazy-load {
+    } 
 
 @media (min-width:1025px) {
     nav ul {
@@ -361,7 +363,7 @@ body.no-scroll {
         alt="Sound Board"
         width="1024"
         height="1024"
-        loading="lazy"
+        class="lazy-load"
     />
         <h3 class="project-title">Project 1: Sound Board</h3>
         <p>Unleash Your Creativity with the Ultimate Minecraft Soundboard Add-On!</p>
@@ -378,7 +380,7 @@ body.no-scroll {
             alt="Coming Soon Project"
             width="2048"
             height="2048"
-            loading="lazy"
+            class="lazy-load"
         />
             <h3 class="project-title">Project 2: Coming Soon</h3>
             <p>Coming Soon</p>
@@ -393,7 +395,7 @@ body.no-scroll {
             alt="Coming Soon Project"
             width="2048"
             height="2048"
-            loading="lazy"
+            class="lazy-load"
         />
             <h3 class="project-title">Project 3: Coming Soon</h3>
             <p>Coming Soon</p>
@@ -554,6 +556,27 @@ themeToggle.addEventListener('click', toggleTheme);
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('continueButton').addEventListener("click", acceptWarning);
     });
+</script>
+
+<script>
+  function applyLazyLoad() {
+    const images = document.querySelectorAll('.lazy-load');
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    images.forEach(img => {
+      if (isMobile) {
+        img.setAttribute('loading', 'lazy');
+      } else {
+        img.removeAttribute('loading');
+      }
+    });
+  }
+
+  // Run on page load
+  document.addEventListener("DOMContentLoaded", applyLazyLoad);
+
+  // Re-run when the window is resized
+  window.addEventListener("resize", applyLazyLoad);
 </script>
     
 </body>
