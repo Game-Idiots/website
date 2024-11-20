@@ -33,8 +33,8 @@
             margin-bottom: 30px;
         }
 
-        /* Styling for the non-editable text input */
-        input[type="text"] {
+        /* Styling for the button */
+        button {
             padding: 12px 20px;
             font-size: 18px;
             background-color: #ffffff;
@@ -48,14 +48,13 @@
             transition: all 0.3s ease;
         }
 
-        /* Disabled input styling */
-        input[type="text"]:disabled {
+        button:disabled {
             background-color: #f2f2f2;
             cursor: not-allowed;
             color: #777;
         }
 
-        input[type="text"]:hover {
+        button:hover {
             background-color: #f9f9f9;
         }
 
@@ -90,8 +89,8 @@
     <h1>WHO DO WE EVEN HAVE THIS?</h1>
     <p class="code">Self Destruct Code is: 7395729</p>
 
-    <!-- Text input initially says "Text Input", non-editable -->
-    <input type="text" value="Text Input" onclick="handleClick()" disabled>
+    <!-- Button initially says "Text Input" -->
+    <button onclick="handleClick()">Input Code</button>
     
     <br><br>
 
@@ -102,13 +101,12 @@
 
     <script>
         function handleClick() {
-            // Change text to "How about no!"
-            const inputField = document.querySelector('input[type="text"]');
-            inputField.value = "How about no!";
-
+            const button = document.querySelector('button');
+            button.textContent = "How about no!"; // Change text to "How about no!"
+            
             // After 1 second, reset text back to "Text Input"
             setTimeout(function() {
-                inputField.value = "Text Input";
+                button.textContent = "Input Code";
             }, 1000); // 1000 milliseconds = 1 second
         }
     </script>
