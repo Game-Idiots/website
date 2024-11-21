@@ -83,11 +83,32 @@
             color: #bdc3c7;
             margin-top: 40px;
         }
+
+        /* Black screen styling */
+        #blackout {
+            display: none;
+            background-color: black;
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+        }
+
+        #shutdownText {
+            font-size: 3em;
+            color: #f39c12;
+        }
     </style>
 </head>
 <body>
 
-    <h1>WHY DO WE EVEN HAVE THIS?</h1>
+    <h1>Self Destruct</h1>
     <p class="code">Self Destruct Code is: 7395729</p>
 
     <!-- Input field for the code -->
@@ -106,9 +127,12 @@
         const codeInput = document.getElementById('codeInput');
         const selfDestructButton = document.getElementById('selfDestructButton');
         const countdownDisplay = document.getElementById('countdown');
+        const blackoutScreen = document.getElementById('blackout');
+        const shutdownText = document.getElementById('shutdownText');
 
         let countdownTimer;
         let timeLeft = 120; // Start countdown at 120 seconds
+        let slowingDown = false;
 
         // Listen for input changes
         codeInput.addEventListener('input', () => {
@@ -137,23 +161,26 @@
                 countdownDisplay.textContent = `Self Destruct in: ${timeLeft}s`;
 
                 // Flash red if countdown is active
-                if (timeLeft <= 120 && timeLeft > 100) {
+                if (timeLeft <= 120 && timeLeft > 100 && !slowingDown) {
                     countdownDisplay.style.color = 'red';
                 }
 
-                // Slow countdown before hitting 100 seconds
-                if (timeLeft === 100) {
-                    countdownDisplay.style.animation = 'none'; // Stop flashing
-                    countdownDisplay.textContent = 'NOOO WAITTTT!';
+                // Gradually slow down before hitting 100 seconds
+                if (timeLeft <= 100 && !slowingDown) {
+                    slowingDown = true;
+                    countdownDisplay.textContent = "NOOO WAITTTT!";
+                    setTimeout(() => {
+                        countdownDisplay.textContent = `Self Destruct in: ${timeLeft}s`; // Reset countdown text
+                    }, 1000);
                 }
 
-                // Gradually slow down before 100 seconds
+                // Slow countdown before 100 seconds
                 if (timeLeft < 100 && timeLeft > 90) {
                     countdownDisplay.style.animation = 'none'; // Stop flashing
-                    countdownDisplay.textContent = `Slow down: ${timeLeft}s`;
+                    countdownDisplay.textContent = `Slowing down: ${timeLeft}s`;
                 }
 
-                // At zero seconds, finish countdown
+                // When countdown hits zero, show "Shutdown Success!" and blackout screen
                 if (timeLeft === 0) {
                     clearInterval(countdownTimer);
                     countdownDisplay.textContent = 'Shutdown Success!';
@@ -173,7 +200,7 @@
                         blackoutDiv.style.fontSize = '3em';
                         blackoutDiv.textContent = 'Coming Soon!';
                         document.body.appendChild(blackoutDiv); // Append the blackout div to the body
-                    }, 2000); // Delay for 2 seconds before showing "Coming Soon!"
+                    }, 1000); // Delay for 1 second before showing "Coming Soon!"
                 }
 
                 timeLeft--; // Decrease time
