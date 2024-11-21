@@ -118,7 +118,7 @@
     <input type="button" id="selfDestructButton" value="Self Destruct" disabled>
 
     <!-- Placeholder for countdown -->
-    <p id="countdown"></p>
+    <p id="countdown" style="display: none;"></p>
 
     <!-- Placeholder for blackout screen and "Coming Soon!" message (hidden by default) -->
     <div id="blackout">
@@ -151,17 +151,17 @@
 
         // Handle button click
         selfDestructButton.addEventListener('click', () => {
-            selfDestructButton.disabled = true;
-            selfDestructButton.value = "Self Destructing...";
-            
+            selfDestructButton.style.display = 'none';  // Hide the self-destruct button
+            codeInput.style.display = 'none';  // Hide the code input field
             countdownDisplay.style.display = 'block'; // Show countdown
+
+            countdownDisplay.textContent = `Self Destruct in: ${timeLeft}s`;
             startCountdown(); // Start the countdown timer
         });
 
         // Function to start the countdown
         function startCountdown() {
             countdownTimer = setInterval(() => {
-                // Update countdown display
                 countdownDisplay.textContent = `Self Destruct in: ${timeLeft}s`;
 
                 // Flash red if countdown is active
@@ -169,10 +169,16 @@
                     countdownDisplay.style.color = 'red';
                 }
 
-                // If we hit 100 seconds, change behavior
+                // Slow countdown before hitting 100 seconds
                 if (timeLeft === 100) {
                     countdownDisplay.style.animation = 'none'; // Stop flashing
                     countdownDisplay.textContent = 'NOOO WAITTTT!';
+                }
+
+                // Gradually slow down before 100 seconds
+                if (timeLeft < 100 && timeLeft > 90) {
+                    countdownDisplay.style.animation = 'none'; // Stop flashing
+                    countdownDisplay.textContent = `Slow down: ${timeLeft}s`;
                 }
 
                 // At zero seconds, finish countdown
