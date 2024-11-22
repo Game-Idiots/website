@@ -55,6 +55,20 @@
             color: #777;
         }
 
+        /* Flashing background effect for the button */
+        .flashing-background {
+            animation: background-flash 1s infinite;
+        }
+
+        @keyframes background-flash {
+            0%, 100% {
+                background-color: #ff0000; /* Flash red */
+            }
+            50% {
+                background-color: #770000; /* Darker red */
+            }
+        }
+
         /* Flashing text effect for countdown */
         .flashing-text {
             animation: text-flash 1s infinite;
@@ -66,20 +80,6 @@
             }
             50% {
                 color: #770000; /* Darker red */
-            }
-        }
-
-        /* Flashing inner border for button */
-        .flashing-border {
-            animation: inset-flash 1s infinite;
-        }
-
-        @keyframes inset-flash {
-            0%, 100% {
-                box-shadow: inset 0 0 10px #ff0000;
-            }
-            50% {
-                box-shadow: inset 0 0 10px #770000;
             }
         }
 
@@ -137,10 +137,10 @@
         codeInput.addEventListener('input', () => {
             if (codeInput.value === correctCode) {
                 selfDestructButton.disabled = false; // Enable the button
-                selfDestructButton.classList.add("flashing-border"); // Make button's inner border flash
+                selfDestructButton.classList.add("flashing-background"); // Make button's background flash
             } else {
                 selfDestructButton.disabled = true; // Keep it disabled
-                selfDestructButton.classList.remove("flashing-border"); // Remove flashing effect
+                selfDestructButton.classList.remove("flashing-background"); // Remove flashing effect
             }
         });
 
