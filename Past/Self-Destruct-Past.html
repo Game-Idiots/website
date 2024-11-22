@@ -72,6 +72,7 @@
         /* Flashing text effect for countdown */
         .flashing-text {
             animation: text-flash 1s infinite;
+            color: #ff0000; /* Always keep countdown text red */
         }
 
         @keyframes text-flash {
@@ -98,6 +99,13 @@
         #countdown {
             font-size: 2em;
             margin-top: 30px;
+        }
+
+        /* Static red text for "NOOO WAITTTT!" and "Shutdown Success!" */
+        .static-red-text {
+            color: #ff0000; /* Non-flashing red */
+            font-size: 2em;
+            font-weight: bold;
         }
 
         /* Footer text styling */
@@ -171,6 +179,7 @@
         function dramaticSequence() {
             countdownDisplay.classList.remove("flashing-text"); // Stop countdown flashing
             countdownDisplay.textContent = "NOOO WAITTTT!";
+            countdownDisplay.classList.add("static-red-text"); // Make NOOO WAITTTT! text red but not flashing
             setTimeout(() => {
                 countdownDisplay.textContent = "Shutdown Success!";
                 setTimeout(() => {
