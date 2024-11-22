@@ -55,19 +55,17 @@
             color: #777;
         }
 
-        /* Flashing red effect */
-        .flashing {
-            animation: flash 1s infinite;
+        /* Flashing text effect for countdown */
+        .flashing-text {
+            animation: text-flash 1s infinite;
         }
 
-        @keyframes flash {
+        @keyframes text-flash {
             0%, 100% {
-                background-color: #ff0000; /* Bright red */
-                color: #ffffff; /* White text */
+                color: #ff0000; /* Bright red */
             }
             50% {
-                background-color: #770000; /* Darker red */
-                color: #ffecec; /* Light pink text */
+                color: #770000; /* Darker red */
             }
         }
 
@@ -85,7 +83,6 @@
         /* Countdown text styling */
         #countdown {
             font-size: 2em;
-            color: red;
             margin-top: 30px;
         }
 
@@ -126,10 +123,10 @@
         codeInput.addEventListener('input', () => {
             if (codeInput.value === correctCode) {
                 selfDestructButton.disabled = false; // Enable the button
-                selfDestructButton.classList.add("flashing"); // Make button flash red
+                selfDestructButton.classList.add("flashing-text"); // Make button flash red
             } else {
                 selfDestructButton.disabled = true; // Keep it disabled
-                selfDestructButton.classList.remove("flashing"); // Remove flashing effect
+                selfDestructButton.classList.remove("flashing-text"); // Remove flashing effect
             }
         });
 
@@ -139,7 +136,7 @@
             codeInput.style.display = 'none';  // Hide the code input field
             countdownDisplay.style.display = 'block'; // Show countdown
 
-            countdownDisplay.classList.add("flashing"); // Make countdown flash red
+            countdownDisplay.classList.add("flashing-text"); // Make countdown text flash red
             startCountdown(); // Start the countdown timer
         });
 
@@ -158,7 +155,7 @@
 
         // Dramatic sequence when countdown stops
         function dramaticSequence() {
-            countdownDisplay.classList.remove("flashing"); // Stop countdown flashing
+            countdownDisplay.classList.remove("flashing-text"); // Stop countdown flashing
             countdownDisplay.textContent = "NOOO WAITTTT!";
             setTimeout(() => {
                 countdownDisplay.textContent = "Shutdown Success!";
