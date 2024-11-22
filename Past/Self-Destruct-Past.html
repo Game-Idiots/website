@@ -34,7 +34,7 @@
             margin-bottom: 30px;
         }
 
-        /* Styling for the buttons */
+        /* Button styling */
         button, input[type="button"] {
             padding: 12px 20px;
             font-size: 18px;
@@ -66,6 +66,20 @@
             }
             50% {
                 color: #770000; /* Darker red */
+            }
+        }
+
+        /* Flashing border for button */
+        .flashing-border {
+            animation: border-flash 1s infinite;
+        }
+
+        @keyframes border-flash {
+            0%, 100% {
+                border-color: #ff0000; /* Bright red */
+            }
+            50% {
+                border-color: #770000; /* Darker red */
             }
         }
 
@@ -123,10 +137,10 @@
         codeInput.addEventListener('input', () => {
             if (codeInput.value === correctCode) {
                 selfDestructButton.disabled = false; // Enable the button
-                selfDestructButton.classList.add("flashing-text"); // Make button flash red
+                selfDestructButton.classList.add("flashing-border"); // Make button box flash red
             } else {
                 selfDestructButton.disabled = true; // Keep it disabled
-                selfDestructButton.classList.remove("flashing-text"); // Remove flashing effect
+                selfDestructButton.classList.remove("flashing-border"); // Remove flashing effect
             }
         });
 
