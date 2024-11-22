@@ -156,6 +156,10 @@
 
         // Function to create the blackout screen with "Coming Soon!"
         function createBlackoutScreen() {
+            // Disable scrolling
+            document.body.style.overflow = "hidden";
+
+            // Create blackout screen
             const blackoutDiv = document.createElement('div');
             blackoutDiv.style.position = 'fixed';
             blackoutDiv.style.top = '0';
