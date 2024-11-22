@@ -157,17 +157,18 @@
         // Function to create the blackout screen with "Coming Soon!"
         function createBlackoutScreen() {
             const blackoutDiv = document.createElement('div');
-            blackoutDiv.style.position = 'absolute';
+            blackoutDiv.style.position = 'fixed';
             blackoutDiv.style.top = '0';
             blackoutDiv.style.left = '0';
-            blackoutDiv.style.width = '100%';
-            blackoutDiv.style.height = '100%';
+            blackoutDiv.style.width = '100vw';
+            blackoutDiv.style.height = '100vh';
             blackoutDiv.style.backgroundColor = 'black';
             blackoutDiv.style.color = 'white';
             blackoutDiv.style.display = 'flex';
             blackoutDiv.style.justifyContent = 'center';
             blackoutDiv.style.alignItems = 'center';
             blackoutDiv.style.fontSize = '3em';
+            blackoutDiv.style.zIndex = '9999'; // Ensures it is on top of everything
             blackoutDiv.textContent = 'Coming Soon!';
             document.body.appendChild(blackoutDiv); // Append the blackout div to the body
         }
