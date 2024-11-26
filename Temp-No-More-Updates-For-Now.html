@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Update</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+            flex-direction: column;
+        }
+        
+        .glitch {
+            position: relative;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            color: white;
+        }
+
+        .glitch:before,
+        .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #ff0000;
+            z-index: -1;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+            animation: glitch-anim 1s infinite linear alternate-reverse;
+        }
+
+        .glitch:after {
+            color: #00ff00;
+            animation-delay: 0.2s;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .glitch-message {
+            color: #ff6347;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(85px, 9999px, 56px, 0);
+                transform: skew(0.4deg);
+            }
+            10% {
+                clip: rect(40px, 9999px, 62px, 0);
+                transform: skew(0.5deg);
+            }
+            20% {
+                clip: rect(60px, 9999px, 50px, 0);
+                transform: skew(0.3deg);
+            }
+            30% {
+                clip: rect(65px, 9999px, 95px, 0);
+                transform: skew(0.5deg);
+            }
+            40% {
+                clip: rect(80px, 9999px, 70px, 0);
+                transform: skew(0.2deg);
+            }
+            50% {
+                clip: rect(40px, 9999px, 90px, 0);
+                transform: skew(0.4deg);
+            }
+            60% {
+                clip: rect(55px, 9999px, 60px, 0);
+                transform: skew(0.5deg);
+            }
+            70% {
+                clip: rect(80px, 9999px, 70px, 0);
+                transform: skew(0.2deg);
+            }
+            80% {
+                clip: rect(40px, 9999px, 50px, 0);
+                transform: skew(0.5deg);
+            }
+            90% {
+                clip: rect(60px, 9999px, 70px, 0);
+                transform: skew(0.3deg);
+            }
+            100% {
+                clip: rect(70px, 9999px, 80px, 0);
+                transform: skew(0.4deg);
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="glitch" data-text="No More Updates For Now">No More Updates For Now</div>
+    <div class="message">Only for like 2-3 days...</div>
+    <div class="glitch-message">Unless things change in those 2-3 days that I am talking about...</div>
+</body>
+</html>
