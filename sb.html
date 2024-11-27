@@ -8,180 +8,210 @@
     <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
     <title>Minecraft Bedrock Mod Showcase</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #e5e5e5;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
 
-        header {
-            background-color: #3b9b3e;
-            padding: 20px;
-            color: white;
-            position: relative;
-        }
+    header {
+        background-color: #1a8d1a; /* Minecraft grass block color */
+        padding: 30px;
+        color: white;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
+    header h1 {
+        margin: 0;
+        font-size: 3em;
+    }
 
-        nav {
-            margin-top: 10px;
-        }
+    nav {
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
 
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+    nav a:hover {
+        color: #a6d8a0; /* Lighter green on hover */
+        text-decoration: underline;
+    }
 
-        .mod-description, .mod-features, .mod-installation {
-            max-width: 600px;
-            margin: 20px auto;
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+    .mod-description, .mod-features, .mod-installation {
+        max-width: 700px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        font-size: 1.1em;
+        line-height: 1.6;
+        background-color: #fafafa;
+    }
 
-        h2 {
-            margin-top: 20px;
-            color: #3b9b3e;
-        }
+    .mod-description p, .mod-features ul, .mod-installation ol {
+        text-align: left;
+        font-size: 1.1em;
+    }
 
-        .image-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px 0;
-        }
+    h2 {
+        color: #1a8d1a; /* Green matching Minecraft theme */
+        margin-top: 20px;
+        text-transform: uppercase;
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
 
-        .image-gallery img {
-            width: 200px;
-            height: auto;
-            margin: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+    .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+    }
 
-        .video-container {
-            margin: 20px 0;
-        }
+    .image-gallery img {
+        width: 220px;
+        height: auto;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        border: 2px solid #1a8d1a; /* Minecraft green border */
+    }
 
-        .video-container video {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-        }
+    .video-container {
+        margin-top: 40px;
+    }
 
-        footer {
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #666;
-        }
+    .video-container video {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        border: 5px solid #1a8d1a;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        #goBackButton {
-            background-color: #3b9b3e;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
-        }
+    footer {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #1a8d1a;
+        color: white;
+        font-size: 0.9em;
+        text-align: center;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        #goBackButton:hover {
-            background-color: #2e7d32;
-        }
+    footer a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-        #alert-box {
-                background-color: #f39c12; /* Alert background color */
-                color: white; /* Text color */
-                padding: 15px; /* Padding for the alert */
-                text-align: center; /* Center text */
-                position: fixed; /* Stay at the top */
-                top: 0; /* Align to the top */
-                left: 0; /* Full-width from left */
-                right: 0; /* Full-width to right */
-                z-index: 1000; /* Make sure it's on top of other elements */
-                display: flex; /* Flexbox for content alignment */
-                justify-content: space-between; /* Space between text and close button */
-                align-items: center;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow for a better look */
-                font-size: 18px; /* Text size */
-                height: 50px; /* Set a fixed height */
-        }
+    footer a:hover {
+        color: #a6d8a0;
+    }
 
-        #close-alert {
-            font-size: 24px; /* Larger close button */
-            margin-left: 20px;
-            cursor: pointer;
-        }
+    #goBackButton {
+        background-color: #1a8d1a;
+        color: white;
+        padding: 15px 25px;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 
-        body.alert-active {
-            margin-top: 50px; /* Add margin to avoid overlap (same as alert-box height) */
-        }
+    #goBackButton:hover {
+        background-color: #146214;
+    }
 
-        #alpha-warning {
-            display: none; /* Initially hidden */
-            position: fixed; /* Full-screen coverage */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            justify-content: center; /* Center vertically */
-            align-items: center; /* Center horizontally */
-            height: 100vh; /* Ensure it takes full viewport height */
-            width: 100vw; /* Ensure it takes full viewport width */
-        }
+    #alert-box {
+        background-color: #f39c12;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-size: 18px;
+        height: 50px;
+    }
 
-        #alpha-warning-text-h1 {
-            margin-bottom: 10px; /* Add spacing between title and paragraph */
-            color: red; /* Flash effect removed */
-        }
+    #close-alert {
+        font-size: 24px;
+        margin-left: 20px;
+        cursor: pointer;
+    }
 
-        #alpha-warning-text-p {
-            margin-bottom: 20px; /* Add spacing between paragraph and button */
-        }
+    #alpha-warning {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        text-align: center;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+    }
 
-        #alpha-warning button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #007bff; /* Blue button */
-            color: white;
-            transition: background-color 0.3s;
-        }
+    #alpha-warning-text-h1 {
+        margin-bottom: 10px;
+        color: #f39c12; /* Bright yellow for alpha warning */
+    }
 
-        #alpha-warning button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-        }
+    #alpha-warning-text-p {
+        margin-bottom: 20px;
+    }
 
-        /* Disable page scrolling when warning is active */
-        body.no-scroll {
-            overflow: hidden;
-        }
-    </style>
+    #alpha-warning button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+    #alpha-warning button:hover {
+        background-color: #0056b3;
+    }
+
+    body.no-scroll {
+        overflow: hidden;
+    }
+
+</style>
 </head>
 <body data-instant-allow-query-string data-instant-vary-accept data-instant-allow-external-links>
 
