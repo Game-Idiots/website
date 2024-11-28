@@ -15,15 +15,14 @@
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        text-align: center;
         flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
     }
 
     header {
-        background-color: #4CAF50; /* Minecraft-inspired green */
+        background-color: #4CAF50; /* Minecraft green */
         padding: 20px;
         color: white;
         width: 100%;
@@ -52,38 +51,35 @@
     }
 
     nav a:hover {
-        color: #a6d8a0; /* Lighter green on hover */
+        color: #a6d8a0;
         text-decoration: underline;
     }
 
-    .mod-description, .mod-features, .mod-installation {
-        width: 80%;
-        max-width: 700px;
-        margin: 20px 0;
+    main {
+        width: 100%;
+        max-width: 800px;
+        margin: 20px;
+    }
+
+    section {
         background: white;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        font-size: 1.1em;
-        line-height: 1.6;
+        margin-bottom: 20px;
     }
 
-    .mod-description h2, .mod-features h2, .mod-installation h2 {
-        color: #4CAF50; /* Minecraft green */
-        margin-bottom: 10px;
+    h2 {
+        color: #4CAF50;
         font-size: 1.8em;
         font-weight: bold;
-    }
-
-    .mod-description p, .mod-features ul, .mod-installation ol {
-        text-align: left;
+        margin-bottom: 10px;
     }
 
     .image-gallery {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        margin-top: 20px;
     }
 
     .image-gallery img {
@@ -92,10 +88,6 @@
         margin: 10px;
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .video-container {
-        margin-top: 20px;
     }
 
     .video-container video {
@@ -107,13 +99,12 @@
     }
 
     footer {
-        margin-top: 40px;
         padding: 20px;
         background-color: #4CAF50;
         color: white;
-        font-size: 0.9em;
         width: 100%;
         text-align: center;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
     }
 
     footer a {
@@ -139,7 +130,7 @@
     }
 
     #goBackButton:hover {
-        background-color: #388E3C; /* Darker green */
+        background-color: #388E3C;
     }
 
     #alert-box {
