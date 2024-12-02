@@ -16,6 +16,11 @@ body {
     color: #ffffff;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 /* Header Styles */
@@ -24,6 +29,8 @@ header {
     padding: 20px;
     text-align: center;
     border-bottom: 5px solid #2a9d8f;
+    width: 100%;
+    max-width: 900px;
 }
 
 header h1 {
@@ -33,6 +40,11 @@ header h1 {
 }
 
 /* Navigation Bar */
+nav {
+    text-align: center;
+    margin-top: 10px;
+}
+
 nav a {
     color: #ffffff;
     text-decoration: none;
@@ -53,6 +65,8 @@ section {
     border: 3px solid #2a9d8f;
     border-radius: 10px;
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    text-align: center;
 }
 
 /* Headings */
@@ -98,6 +112,9 @@ footer {
     padding: 20px;
     background-color: #3c3c3c;
     color: white;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
 }
 
 footer a {
@@ -110,6 +127,13 @@ footer a:hover {
 }
 
 /* Gallery Images */
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 .image-gallery img {
     width: 100%;
     max-width: 200px;
@@ -176,6 +200,8 @@ input[type="email"] {
     text-align: center;
     border: 3px solid #2a9d8f;
     border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
 }
 
 .alpha-warning-content h1 {
