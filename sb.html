@@ -8,193 +8,213 @@
     <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
     <title>Minecraft Bedrock Mod Showcase</title>
     <style>
-    body {
-        font-family: 'Press Start 2P', Arial, sans-serif; /* Retro gaming font */
-        background-color: #2b2b2b; /* Dark stone background */
-        color: #f4f4f4; /* Light text for contrast */
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
+    /* General Page Styling */
+body {
+    font-family: 'Minecraft', Arial, sans-serif;
+    background: linear-gradient(to bottom, #457f4f, #2b3e1e); /* Grass-to-dirt gradient */
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+}
 
-    header {
-        background-color: #3B9B3E; /* Creeper Green */
-        padding: 20px 0;
-        color: white;
-        text-transform: uppercase;
-        border-bottom: 5px solid #2e7d32;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    }
+/* Header Section */
+header {
+    background: #4a683d; /* Dark green, matching Minecraft's biome */
+    padding: 30px 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
 
+header h1 {
+    font-size: 3em;
+    color: #ffde57; /* Gold text */
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Bar */
+nav {
+    margin-top: 15px;
+    background: #3a5637; /* Dark green for nav */
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+nav a {
+    color: #ffde57; /* Gold */
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ff9f00; /* Brighter gold */
+}
+
+/* Section Styling */
+section {
+    background: #3d3d3d; /* Stone-like background */
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Section Titles */
+section h2 {
+    font-size: 2.2em;
+    color: #4ACFAC; /* Aqua text */
+    margin-bottom: 15px;
+}
+
+/* Paragraph and List Styling */
+section p, section li {
+    font-size: 1.3em;
+    color: #ddd;
+    line-height: 1.8;
+}
+
+/* Button Styling */
+button {
+    background: #ffde57; /* Gold */
+    color: black;
+    padding: 15px 25px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #e6b800; /* Darker gold */
+}
+
+/* Gallery */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 3px solid #4ACFAC; /* Aqua border */
+}
+
+/* Video Container */
+.video-container video {
+    width: 100%;
+    border-radius: 12px;
+    border: 4px solid #3b9b3e;
+}
+
+/* Footer Styling */
+footer {
+    background: #2b3e1e; /* Dark dirt background */
+    padding: 20px;
+    color: #ccc;
+    text-align: center;
+    border-top: 5px solid #4a683d;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.5);
+}
+
+footer a {
+    color: #ffde57;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #ff9f00;
+}
+
+/* Alert Box */
+#alert-box {
+    background-color: #f39c12; /* Alert background color */
+    color: white; /* Text color */
+    padding: 15px; /* Padding for the alert */
+    text-align: center; /* Center text */
+    position: fixed; /* Stay at the top */
+    top: 0; /* Align to the top */
+    left: 0; /* Full-width from left */
+    right: 0; /* Full-width to right */
+    z-index: 1000; /* Make sure it's on top of other elements */
+    display: flex; /* Flexbox for content alignment */
+    justify-content: space-between; /* Space between text and close button */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow for a better look */
+    font-size: 18px; /* Text size */
+    height: 50px; /* Set a fixed height */
+}
+
+#close-alert {
+    font-size: 24px; /* Larger close button */
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* Alpha Warning Box */
+#alpha-warning {
+    display: none; /* Initially hidden */
+    position: fixed; /* Full-screen coverage */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Ensure it takes full viewport height */
+    width: 100vw; /* Ensure it takes full viewport width */
+}
+
+#alpha-warning-text-h1 {
+    margin-bottom: 10px; /* Add spacing between title and paragraph */
+    color: red; /* Flash effect removed */
+}
+
+#alpha-warning-text-p {
+    margin-bottom: 20px; /* Add spacing between paragraph and button */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     header h1 {
-        font-size: 3em;
-        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
-        margin: 0;
-    }
-
-    nav {
-        margin-top: 10px;
-        font-size: 1.2em;
-    }
-
-    nav a {
-        color: white;
-        margin: 0 10px;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    nav a:hover {
-        color: #ffcc00; /* Gold highlight */
-    }
-
-    main {
-        width: 100%;
-        max-width: 900px;
-        margin: 20px auto;
+        font-size: 2em;
     }
 
     section {
-        background: #3b3b3b; /* Dark stone texture */
+        width: 95%;
         padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        margin-bottom: 20px;
     }
 
-    h2 {
-        color: #ffcc00; /* Gold section titles */
-        font-size: 2em;
-        margin-bottom: 10px;
+    nav a {
+        font-size: 1em;
     }
 
-    p, li {
+    button {
         font-size: 1.2em;
+        padding: 12px 20px;
     }
-
-    .image-gallery {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .image-gallery img {
-        width: 200px;
-        height: auto;
-        margin: 10px;
-        border-radius: 8px;
-        border: 3px solid #4CAF50; /* Green border */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .video-container video {
-        width: 100%;
-        max-width: 800px;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    #goBackButton {
-        background-color: #FFCC00; /* Gold button */
-        color: black;
-        padding: 15px 30px;
-        font-size: 1.5em;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        text-transform: uppercase;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    }
-
-    #goBackButton:hover {
-        background-color: #D4AC0D; /* Darker gold */
-    }
-
-    footer {
-        background-color: #2e2e2e; /* Dark footer */
-        color: white;
-        padding: 20px;
-        margin-top: 40px;
-        text-align: center;
-        border-top: 5px solid #3b9b3e;
-        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    footer a {
-        color: #ffcc00;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    footer a:hover {
-        color: #ff9900; /* Orange highlight */
-    }
-
-    /* Alert Box */
-    #alert-box {
-        background-color: #FF5733; /* Vibrant orange */
-        color: white;
-        padding: 15px;
-        text-align: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 18px;
-        height: 50px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    #close-alert {
-        font-size: 24px;
-        margin-left: 20px;
-        cursor: pointer;
-    }
-
-    /* Alpha Warning Overlay */
-    #alpha-warning {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
-        text-align: center;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #alpha-warning-text-h1 {
-        color: #ffcc00;
-        font-size: 3em;
-    }
-
-    #alpha-warning button {
-        padding: 10px 20px;
-        font-size: 1.5em;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        background-color: #007bff;
-        color: white;
-        transition: background-color 0.3s;
-    }
-
-    #alpha-warning button:hover {
-        background-color: #0056b3;
-    }
+}
 </style>
 </head>
 <body data-instant-allow-query-string data-instant-vary-accept data-instant-allow-external-links>
