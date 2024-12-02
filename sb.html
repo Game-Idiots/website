@@ -6,214 +6,189 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Soundboard!">
     <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Minecraft Bedrock Mod Showcase</title>
     <style>
-    /* General Page Styling */
+    /* General Styles */
 body {
-    font-family: 'Minecraft', Arial, sans-serif;
-    background: linear-gradient(to bottom, #457f4f, #2b3e1e); /* Grass-to-dirt gradient */
-    color: white;
+    font-family: 'Minecraftia', sans-serif; /* Use a pixel-style font like Minecraft */
+    background-color: #2b2b2b;
+    color: #ffffff;
     margin: 0;
     padding: 0;
-    text-align: center;
-    overflow-x: hidden;
 }
 
-/* Header Section */
+/* Header Styles */
 header {
-    background: #4a683d; /* Dark green, matching Minecraft's biome */
-    padding: 30px 0;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: #3c3c3c;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #2a9d8f;
 }
 
 header h1 {
-    font-size: 3em;
-    color: #ffde57; /* Gold text */
-    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+    font-size: 3rem;
+    color: #2a9d8f;
+    text-shadow: 2px 2px #000000;
 }
 
 /* Navigation Bar */
-nav {
-    margin-top: 15px;
-    background: #3a5637; /* Dark green for nav */
-    padding: 10px;
-    border-radius: 10px;
-    display: inline-block;
-}
-
 nav a {
-    color: #ffde57; /* Gold */
-    text-transform: uppercase;
+    color: #ffffff;
     text-decoration: none;
-    font-size: 1.2em;
     margin: 0 15px;
-    font-weight: bold;
-    transition: color 0.3s;
+    font-size: 1.2rem;
 }
 
 nav a:hover {
-    color: #ff9f00; /* Brighter gold */
+    color: #2a9d8f;
 }
 
-/* Section Styling */
+/* Section Styles */
 section {
-    background: #3d3d3d; /* Stone-like background */
-    border-radius: 12px;
-    padding: 25px;
+    padding: 30px;
     margin: 20px auto;
-    width: 90%;
-    max-width: 800px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-/* Section Titles */
-section h2 {
-    font-size: 2.2em;
-    color: #4ACFAC; /* Aqua text */
-    margin-bottom: 15px;
-}
-
-/* Paragraph and List Styling */
-section p, section li {
-    font-size: 1.3em;
-    color: #ddd;
-    line-height: 1.8;
-}
-
-/* Button Styling */
-button {
-    background: #ffde57; /* Gold */
-    color: black;
-    padding: 15px 25px;
-    font-size: 1.5em;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-button:hover {
-    background: #e6b800; /* Darker gold */
-}
-
-/* Gallery */
-.image-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.image-gallery img {
-    width: 100%;
-    height: auto;
+    max-width: 900px;
+    background-color: #3c3c3c;
+    border: 3px solid #2a9d8f;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    border: 3px solid #4ACFAC; /* Aqua border */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Video Container */
-.video-container video {
-    width: 100%;
-    border-radius: 12px;
-    border: 4px solid #3b9b3e;
+/* Headings */
+h2 {
+    font-size: 2rem;
+    color: #2a9d8f;
 }
 
-/* Footer Styling */
-footer {
-    background: #2b3e1e; /* Dark dirt background */
-    padding: 20px;
-    color: #ccc;
-    text-align: center;
-    border-top: 5px solid #4a683d;
-    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.5);
+/* Soundboard Buttons */
+.soundboard-button {
+    display: inline-block;
+    background-color: #2a9d8f;
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-footer a {
-    color: #ffde57;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-footer a:hover {
-    color: #ff9f00;
+.soundboard-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.5);
 }
 
 /* Alert Box */
 #alert-box {
-    background-color: #f39c12; /* Alert background color */
-    color: white; /* Text color */
-    padding: 15px; /* Padding for the alert */
-    text-align: center; /* Center text */
-    position: fixed; /* Stay at the top */
-    top: 0; /* Align to the top */
-    left: 0; /* Full-width from left */
-    right: 0; /* Full-width to right */
-    z-index: 1000; /* Make sure it's on top of other elements */
-    display: flex; /* Flexbox for content alignment */
-    justify-content: space-between; /* Space between text and close button */
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow for a better look */
-    font-size: 18px; /* Text size */
-    height: 50px; /* Set a fixed height */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
 }
 
-#close-alert {
-    font-size: 24px; /* Larger close button */
-    margin-left: 20px;
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #3c3c3c;
+    color: white;
+}
+
+footer a {
+    color: #2a9d8f;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* Gallery Images */
+.image-gallery img {
+    width: 100%;
+    max-width: 200px;
+    margin: 10px;
+    border: 3px solid #2a9d8f;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Video Section */
+.video-container video {
+    width: 100%;
+    border: 3px solid #2a9d8f;
+    border-radius: 5px;
+}
+
+/* Buttons and Inputs */
+button, input[type="submit"] {
+    background-color: #2a9d8f;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
     cursor: pointer;
+    font-family: 'Minecraftia', sans-serif;
+    font-size: 1rem;
 }
 
-/* Alpha Warning Box */
+button:hover, input[type="submit"]:hover {
+    background-color: #228b78;
+}
+
+/* Form Input */
+input[type="email"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 80%;
+    font-size: 1rem;
+}
+
+/* Alpha Warning Section */
 #alpha-warning {
-    display: none; /* Initially hidden */
-    position: fixed; /* Full-screen coverage */
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
-    text-align: center;
-    z-index: 1000;
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    height: 100vh; /* Ensure it takes full viewport height */
-    width: 100vw; /* Ensure it takes full viewport width */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
-#alpha-warning-text-h1 {
-    margin-bottom: 10px; /* Add spacing between title and paragraph */
-    color: red; /* Flash effect removed */
+.alpha-warning-content {
+    background-color: #2b2b2b;
+    padding: 30px;
+    text-align: center;
+    border: 3px solid #2a9d8f;
+    border-radius: 10px;
 }
 
-#alpha-warning-text-p {
-    margin-bottom: 20px; /* Add spacing between paragraph and button */
+.alpha-warning-content h1 {
+    font-size: 2rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2em;
-    }
-
-    section {
-        width: 95%;
-        padding: 20px;
-    }
-
-    nav a {
-        font-size: 1em;
-    }
-
-    button {
-        font-size: 1.2em;
-        padding: 12px 20px;
-    }
+#continueButton {
+    background-color: #2a9d8f;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
 }
 </style>
 </head>
