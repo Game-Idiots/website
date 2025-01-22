@@ -2,9 +2,9 @@
 
 ## To Do List
 
-Email ❌
+Email | ❗️ PENDING VERIFICATION ❗️
 
-Newsletter ❌
+Newsletter | ❗️ PENDING VERIFICATION ❗️
 
 Soundboard Page ❌
 
