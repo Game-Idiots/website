@@ -1,5 +1,9 @@
 # Website
 
+## Status
+
+Website: NOT VERIFIED!
+
 ## To Do List
 
 Email | ❗️ PENDING VERIFICATION ❗️
