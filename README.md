@@ -1,14 +1,10 @@
 # Website
 
-## Status
-
-Website: NOT VERIFIED
-
 ## To Do List
 
-Email | ❗️ PENDING VERIFICATION ❗️
+Email | ✅
 
-Newsletter | ❗️ PENDING VERIFICATION ❗️
+Newsletter | ✅
 
 Soundboard Page ❌
 
