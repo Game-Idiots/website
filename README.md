@@ -2,7 +2,7 @@
 
 ## Status
 
-Website: NOT VERIFIED!
+Website: NOT VERIFIED
 
 ## To Do List
 
