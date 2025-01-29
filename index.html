@@ -370,7 +370,20 @@ body.no-scroll {
     />
         <h3 class="project-title">Project 1: Sound Board</h3>
         <p>Unleash Your Creativity with the Ultimate Minecraft Soundboard Add-On!</p>
-        <p>Jan 31, 2025</p>
+        <p id="date"></p>
+    <script>
+        // Get today's date
+        let today = new Date();
+        
+        // Add 1 day
+        today.setDate(today.getDate() + 1);
+
+        // Format the date to YYYY-MM-DD
+        let formattedDate = today.toISOString().split('T')[0];
+
+        // Insert the date into the <p> element
+        document.getElementById('date').innerText = `${formattedDate}`;
+    </script>
         <p class="rating">Rating: No Data</p>
     </a>
 </div>
