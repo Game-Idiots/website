@@ -404,7 +404,24 @@ body.no-scroll {
             class="lazy-load"
         />
             <h3 class="project-title">Project 2: Coming Soon</h3>
-            <p>Coming Soon</p>
+            <p id="date"></p>
+    <script>
+    // Get today's date
+    let today = new Date();
+    
+    // Add 1 day
+    today.setDate(today.getDate() + 999999999999999999999999999999999999999999999999999999999999999999);
+
+    // Format the date to "MMM DD, YYYY" (e.g., "Jan 31, 2025")
+    let formattedDate = today.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+
+    // Insert the formatted date into the <p> element
+    document.getElementById('date').innerText = formattedDate;
+    </script>
             <p class="rating">Rating: No Data</p>
         </div>
 
