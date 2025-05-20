@@ -2,11 +2,10 @@
 
 ## To Do List
 
-Email | ✅
+Email | ❌ coming soon
 
-Newsletter | ✅
+Newsletter | ❌ coming soon
 
-Soundboard Page ❌
 
 ## Questions
 
